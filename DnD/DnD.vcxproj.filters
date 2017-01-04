@@ -13,10 +13,255 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{68117d71-e099-4ac9-b8e2-ea585ccf5708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="new">
+      <UniqueIdentifier>{c8c847a2-a33a-4b6a-811a-ccc420980361}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="BaseMazeGenerator.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Side.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Direction.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MazeUtils.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Maze.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Logger.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonInterface.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="CreationFichierRessources.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTexture.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicEngine.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="IResource.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBuilder.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactoryManager.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceImage.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcesManager.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceTexture.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEngine.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="View.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkEngine.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Color.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Exceptions.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="SideFactory.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcesFile.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="CompleteMazeGenerator.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Rng.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>new</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Timer.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseMazeGenerator.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Side.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeUtils.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Maze.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\NonCopyable.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Array2D.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Logger.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Singleton.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Tools.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonInterface.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="CreationFichierRessources.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTexture.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicEngine.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="IResource.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBuilder.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactoryManager.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceImage.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesManager.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceTexture.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEngine.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkEngine.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\FileReading.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Point.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Policy.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Rectangle.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesFile.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Color.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Exceptions.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\WithSmartPtr.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SideFactory.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CompleteMazeGenerator.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Rng.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>new</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Timer.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
