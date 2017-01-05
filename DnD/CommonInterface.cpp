@@ -2,6 +2,8 @@
 
 #include "Tools/Logger.h"
 
+#include "SGame.h"
+
 //#include <iostream>
 
 CommonInterface::CommonInterface(void)
@@ -38,8 +40,8 @@ void CommonInterface::run()
 {
 	try
 	{
-		//PtrGameState slobby(new SLobby);
-		//myGame.setGameState(PtrGameState(new SMainMenu));//lobby);
+		GameState::ptr sgame(new SGame);
+		myGame.setGameState(sgame);//lobby);
 
 		while(!myGame.isFinished())
 		{

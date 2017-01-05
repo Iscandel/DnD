@@ -71,6 +71,14 @@ public:
 	///////////////////////////////////////////////////////////////////////////////
 	unsigned int getHeight() const {return myHeight;}
 
+	///////////////////////////////////////////////////////////////////////////////
+	// 
+	///////////////////////////////////////////////////////////////////////////////
+	void setValue(unsigned int x, unsigned int y, const T& value);
+
+protected:
+	unsigned int _2Dto1D(unsigned int x, unsigned int y) const;
+
 protected:
 	std::vector<T> myArray;
 
@@ -114,7 +122,7 @@ inline T& Array2D<T>::operator() (unsigned int x, unsigned int y)
 		throw IndexHorsLimite("Grille 2D : ", x, y);
 #endif
 
-    return myArray[y * myWidth + x];
+    return *(&myArray[_2Dto1D(x, y)]);
 }
  
 ///////////////////////////////////////////////////////////////////////////////
@@ -128,7 +136,25 @@ inline const T& Array2D<T>::operator() (unsigned int x, unsigned int y) const
        throw IndexHorsLimite("Grille 2D : ", x, y);
 #endif
 
-     return myArray[y * myWidth + x];
+     return *(&myArray[_2Dto1D(x, y)]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// converts 2D indices to 1D
+///////////////////////////////////////////////////////////////////////////////
+template<class T>
+inline unsigned int Array2D<T>::_2Dto1D(unsigned int x, unsigned int y) const
+{
+	return y * myWidth + x;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 
+///////////////////////////////////////////////////////////////////////////////
+template<class T>
+inline void Array2D<T>::setValue(unsigned int x, unsigned int y, const T& value)
+{
+	myArray[_2Dto1D(x, y)] = value;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -43,21 +43,21 @@ public:
 	///
 	/// \param state The state to initialize.
 	///////////////////////////////////////////////////////////////////////////
-	void initState(PtrGameState state);
+	void initState(GameState::ptr state);
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Applies the given game state to the game engine.
 	///
 	/// \param state The state to set.
 	///////////////////////////////////////////////////////////////////////////
-	void setGameState(PtrGameState state);
+	void setGameState(GameState::ptr state);
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Adds a new state to the top of the game state stack of the game engine.
 	///
 	/// \param state The state to add.
 	///////////////////////////////////////////////////////////////////////////
-	void pushState(PtrGameState state);
+	void pushState(GameState::ptr state);
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Removes the top state from the game state stack of the game engine.
@@ -89,7 +89,7 @@ public:
 protected:
 
 	bool myIsFinished;
-	std::vector<PtrGameState> myGameStates; //< Vector of game states
+	std::vector<GameState::ptr> myGameStates; //< Vector of game states
 	//Game myGame;
 	//GameServer myGameServer;
 };

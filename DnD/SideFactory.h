@@ -64,6 +64,7 @@ public:
 	typename BaseType::ptr create() override
 	{
 		typename BaseType::ptr type = BaseType::ptr(new Side());
+		//SideDefManager::getInstance()->getResource("door");
 		type->setAction(Action::ptr(new DoorAction()));
 		type->setType(Side::DOOR);
 		return type;

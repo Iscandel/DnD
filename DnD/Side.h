@@ -3,6 +3,8 @@
 #include "tools/WithSmartPtr.h"
 #include "Action.h"
 
+#include <iostream>
+
 class Side : public WithSmartPtr<Side>
 {
 public:
@@ -29,6 +31,18 @@ public:
 	void setType(SideType type) { myType = type; }
 
 	SideType getType() const { return myType; }
+
+	friend std::ostream& operator <<(std::ostream& os, const Side& maze)
+	{
+		if (maze.getType() == WALL)
+			os << "#";
+		else if (maze.getType() == VOID)
+			os << ".";
+		else
+			os << "\"";
+
+		return os;
+	}
 private:
 	///Side's status
 	bool myIsRevealed;

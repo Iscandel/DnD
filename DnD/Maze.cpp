@@ -168,7 +168,7 @@ Cell::ptr Maze::getNeighbourCell(Cell::ptr cell, Direction direction)
 * @param y
 * @return
 */
-bool Maze::isValidCell(int x, int y)
+bool Maze::isValidCell(int x, int y) const
 {
 	return (x >= 0 && x < getSizeX() && y >= 0 && y < getSizeY());
 }
@@ -177,7 +177,7 @@ bool Maze::isValidCell(int x, int y)
 *
 * @return the size in the x dimension
 */
-int Maze::getSizeX()
+int Maze::getSizeX() const 
 {
 	return myArray.getWidth();
 }
@@ -186,7 +186,7 @@ int Maze::getSizeX()
 *
 * @return the size in the y dimension
 */
-int Maze::getSizeY()
+int Maze::getSizeY() const
 {
 	return myArray.getHeight();
 }
@@ -211,4 +211,50 @@ Cell::ptr Maze::getCell(int x, int y)
 void Maze::setCell(int x, int y, Cell::ptr c)
 {
 	myArray(x, y) = c;
+}
+
+std::ostream& operator <<(std::ostream& os, Maze& maze)
+{
+	for (int i = 0; i < maze.getSizeY(); i++)
+	{
+		//Top walls
+		if (i == 0)
+		{
+			for (int j = 0; j < maze.getSizeX() * 2 + 1; j++)
+				os << "#";
+			os << std::endl;
+		}
+
+		for (int j = 0; j < maze.getSizeX(); j++)
+		{
+			//left wall
+			if (j == 0)
+				os << "#";
+
+			os << ".";
+
+			Cell::ptr cell = maze.getCell(j, i);
+			os << *cell->getSide(Direction::EAST);
+		}
+
+		//Next line
+		os << std::endl;
+
+		//Iterate again for bottom walls...
+		for (int j = 0; j < maze.getSizeX(); j++)
+		{
+			//left wall
+			if (j == 0)
+				os << "#";
+
+			Cell::ptr cell = maze.getCell(j, i);
+			os << *cell->getSide(Direction::SOUTH);
+
+			os << "#";
+		}
+
+		os << std::endl;
+	}
+	
+	return os;
 }

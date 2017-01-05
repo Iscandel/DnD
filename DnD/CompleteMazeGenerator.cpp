@@ -31,77 +31,79 @@ Maze::ptr CompleteMazeGenerator::generate(int x, int y)
 
 void CompleteMazeGenerator::generatePerfect(Maze::ptr maze)
 {
-	//CellCoords currentCell;
-	//std::stack<CellCoords> cellList;// = new Stack<CellCoords>();
+	CellCoords currentCell;
+	std::stack<CellCoords> cellList;// = new Stack<CellCoords>();
 
-	//Array2D<bool> visitedCells(maze->getSizeY(), maze->getSizeX());
-	//for (int i = 0; i < maze->getSizeY(); i++)
-	//{
-	//	for (int j = 0; j < maze->getSizeX(); j++)
-	//	{
-	//		visitedCells(i, j) = false;
-	//	}
-	//}
+	//Vector<bool> is a special specialization class that causes 
+	//some compilation troubles here...so let's use int
+	Array2D<int> visitedCells(maze->getSizeY(), maze->getSizeX());
+	for (int i = 0; i < maze->getSizeY(); i++)
+	{
+		for (int j = 0; j < maze->getSizeX(); j++)
+		{
+			visitedCells(i, j) = 0;
+		}
+	}
 
-	////boolean init = true;
-	//Rng rng;
-	//int randX = rng.random(0, maze->getSizeX());
-	//int randY = rng.random(0, maze->getSizeY());
-	////Random random = new Random();
-	////int randX = random.nextInt(maze.getSizeX());
-	////int randY = random.nextInt(maze.getSizeY());
+	//boolean init = true;
+	Rng rng;
+	int randX = rng.random(0, maze->getSizeX() - 1);
+	int randY = rng.random(0, maze->getSizeY() - 1);
+	//Random random = new Random();
+	//int randX = random.nextInt(maze.getSizeX());
+	//int randY = random.nextInt(maze.getSizeY());
 
-	//currentCell = CellCoords(randX, randY, maze->getCell(randX, randY));
-	////currentCell.myCell.visitee = true;
-	//visitedCells(randY, randX) = true;
+	currentCell = CellCoords(randX, randY, maze->getCell(randX, randY));
+	//currentCell.myCell.visitee = true;
+	visitedCells(randY, randX) = 1;
 
-	//cellList.push(currentCell);
+	cellList.push(currentCell);
 
-	//do//(init || currentCell.myCell != maze.getCell(randX, randY))
-	//{
-	//	//init = false;
-	//	std::vector<CellCoords> vec;// = new ArrayList<CellCoords>();
+	do//(init || currentCell.myCell != maze.getCell(randX, randY))
+	{
+		//init = false;
+		std::vector<CellCoords> vec;// = new ArrayList<CellCoords>();
 
-	//	for (int i = -1; i <= 1; i++)
-	//	{
-	//		for (int j = -1; j <= 1; j++)
-	//		{
-	//			int tmpX = currentCell.x + j;
-	//			int tmpY = currentCell.y + i;
+		for (int i = -1; i <= 1; i++)
+		{
+			for (int j = -1; j <= 1; j++)
+			{
+				int tmpX = currentCell.x + j;
+				int tmpY = currentCell.y + i;
 
-	//			//Check for valid cells around and ignore diagonal cells (+ the current one)
-	//			if (std::abs(i) != std::abs(j) && maze->isValidCell(tmpX, tmpY) && !visitedCells(tmpY, tmpX))
-	//			{
-	//				vec.push_back(CellCoords(tmpX, tmpY, maze->getCell(tmpX, tmpY)));
-	//			}
-	//		}
-	//	}
+				//Check for valid cells around and ignore diagonal cells (+ the current one)
+				if (std::abs(i) != std::abs(j) && maze->isValidCell(tmpX, tmpY) && !((bool)visitedCells(tmpY, tmpX)))
+				{
+					vec.push_back(CellCoords(tmpX, tmpY, maze->getCell(tmpX, tmpY)));
+				}
+			}
+		}
 
-	//	//try to chose next cell
-	//	if (vec.size() != 0)
-	//	{
-	//		int vecInt = rng.random(0, vec.size());
-	//		CellCoords chosenCell = vec[vecInt];
-	//		visitedCells(chosenCell.y, chosenCell.x) = true;
-	//		//chosenCell.myCell.visitee = true;
+		//try to chose next cell
+		if (vec.size() != 0)
+		{
+			int vecInt = rng.random(0, vec.size() - 1);
+			CellCoords chosenCell = vec[vecInt];
+			visitedCells(chosenCell.y, chosenCell.x) = 1;
+			//chosenCell.myCell.visitee = true;
 
-	//		breakWall(maze, currentCell, MazeUtils::getDirection(currentCell.x,
-	//			currentCell.y,
-	//			chosenCell.x,
-	//			chosenCell.y));
-	//		//currentCell, chosenCell);
+			breakWall(maze, currentCell, MazeUtils::getDirection(currentCell.x,
+				currentCell.y,
+				chosenCell.x,
+				chosenCell.y));
+			//currentCell, chosenCell);
 
-	//		currentCell = chosenCell;
+			currentCell = chosenCell;
 
-	//		cellList.push(currentCell);
-	//	}
-	//	else
-	//	{
-	//		currentCell = cellList.top();
-	//		cellList.pop();
-	//	}
+			cellList.push(currentCell);
+		}
+		else
+		{
+			currentCell = cellList.top();
+			cellList.pop();
+		}
 
-	//} while (currentCell.myCell != maze->getCell(randX, randY));
+	} while (currentCell.myCell != maze->getCell(randX, randY));
 }
 
 void CompleteMazeGenerator::generateUnperfect(Maze::ptr maze, int perc)
@@ -122,7 +124,7 @@ void CompleteMazeGenerator::generateUnperfect(Maze::ptr maze, int perc)
 	int nb = (int)((int)(list.size() * perc) / 100.f);
 	for (int i = 0; i < nb; i++)
 	{
-		int randVal = rng.random(0, list.size());
+		int randVal = rng.random(0, list.size() - 1);
 
 		CellCoords cell = list[randVal];
 		bool broken = false;
@@ -130,7 +132,7 @@ void CompleteMazeGenerator::generateUnperfect(Maze::ptr maze, int perc)
 		while (!broken)
 		{
 
-			int randDir = rng.random(0, 4);//random.nextInt(4);
+			int randDir = rng.random(0, 4 - 1);//random.nextInt(4);
 
 
 			if (randDir == 0)

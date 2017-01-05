@@ -6,6 +6,8 @@
 #include "Side.h"
 #include "Cell.h"
 
+#include <iostream>
+
 class Maze : public WithSmartPtr<Maze>
 {
 public:
@@ -58,19 +60,19 @@ public:
 	* @param y
 	* @return
 	*/
-	bool isValidCell(int x, int y);
+	bool isValidCell(int x, int y) const;
 
 	/**
 	*
 	* @return the size in the x dimension
 	*/
-	int getSizeX();
+	int getSizeX() const;
 
 	/**
 	*
 	* @return the size in the y dimension
 	*/
-	int getSizeY();
+	int getSizeY() const;
 
 	/**
 	*
@@ -87,6 +89,8 @@ public:
 	* @param c
 	*/
 	void setCell(int x, int y, Cell::ptr c);
+
+	friend std::ostream& operator <<(std::ostream& os, Maze& maze);
 	
 protected:
 	Array2D<Cell::ptr> myArray;

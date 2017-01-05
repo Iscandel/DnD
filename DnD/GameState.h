@@ -4,16 +4,15 @@
 #include "Engine.h"
 #include "Message.h"
 
+#include "tools/WithSmartPtr.h"
 #include "View.h"
 
 #include <SFML/Graphics.hpp>
 
-typedef std::shared_ptr<GameState> PtrGameState;
-
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Base class for game state.
 ///////////////////////////////////////////////////////////////////////////////
-class GameState : public Engine
+class GameState : public Engine, public WithSmartPtr<GameState>
 {
 public:
 	///////////////////////////////////////////////////////////////////////////
@@ -74,7 +73,7 @@ public:
 	///
 	/// \param state The new state to set.
 	///////////////////////////////////////////////////////////////////////////
-	void setGameState(PtrGameState state);
+	void setGameState(GameState::ptr state);
 
 	bool isVisible() const {return myIsVisible;}
 

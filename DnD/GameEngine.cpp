@@ -45,7 +45,7 @@ void GameEngine::update()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-void GameEngine::initState(PtrGameState state)
+void GameEngine::initState(GameState::ptr state)
 {
 	state->linkGameEngine(this);
 	state->linkGraphicEngine(getGraphicEngine());
@@ -58,7 +58,7 @@ void GameEngine::initState(PtrGameState state)
 // d'un menu qui apparait en jeu. Le jeu est dessiné derrière, soit 2 états
 // affichés, mais seul le premier capte les évènements
 ///////////////////////////////////////////////////////////////////////////////
-void GameEngine::pushState(PtrGameState state)
+void GameEngine::pushState(GameState::ptr state)
 {
 	initState(state);
 	myGameStates.push_back(state);
@@ -110,7 +110,7 @@ void GameEngine::draw()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-void GameEngine::setGameState(PtrGameState g)
+void GameEngine::setGameState(GameState::ptr g)
 {
 	//initState(g);
 	while(popState());
