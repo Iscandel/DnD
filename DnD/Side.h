@@ -2,10 +2,13 @@
 
 #include "tools/WithSmartPtr.h"
 #include "Action.h"
+#include "Entity.h"
+#include "ResourceImage.h"
 
 #include <iostream>
+#include <vector>
 
-class Side : public WithSmartPtr<Side>
+class Side : public WithSmartPtr<Side>, public GraphicEntity
 {
 public:
 	enum SideType {
@@ -13,6 +16,9 @@ public:
 		WALL,
 		DOOR
 	};
+
+public:
+	typedef std::map<std::string, ResourceImage::ptr> ResourceImagesMap;
 
 public:
 	Side();
@@ -32,6 +38,34 @@ public:
 
 	SideType getType() const { return myType; }
 
+	virtual void update(const Game&, unsigned int) {}
+
+	std::vector<Image>& getCurrentImages() { return myCurrentImages; } //ou std::vector. Retourner éventuellement l'objet Image
+
+	void addResourceImage(const std::string& idName, ResourceImage::ptr res)
+	{
+		myImages[idName] = res;
+	}
+
+	void removeResourceImage(const std::string& idName)
+	{
+	}
+
+	void addCurrentDrawnImage(const std::string& name, int num = 0)
+	{
+		ResourceImagesMap::iterator it = myImages.find(name);
+		if (it != myImages.end())
+		{
+			myCurrentImages.push_back(it->second->getImage(num));
+		}
+	}
+
+	void setCurrentDrawnImage(const std::string& name, int num = 0)
+	{
+		myCurrentImages.clear();
+		addCurrentDrawnImage(name, num);
+	}
+
 	friend std::ostream& operator <<(std::ostream& os, const Side& maze)
 	{
 		if (maze.getType() == WALL)
@@ -50,5 +84,9 @@ private:
 	Action::ptr myAction;
 
 	SideType myType;
+
+	ResourceImagesMap myImages;
+	//PtrResourceImage myCurrentImage;
+	std::vector<Image> myCurrentImages;
 };
 

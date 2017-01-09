@@ -15,7 +15,7 @@ class Image //ressource ?
 {
 public:
 	Image(int textureId, const IntRect& rect, const Point<int>& offset = Point<int>());
-	PtrResourceTexture getResourceTexture() {return myTexture;}
+	ResourceTexture::ptr getResourceTexture() {return myTexture;}
 	const IntRect& getRect() const {return myRect;}
 	const Point<int>& getOffset() const {return myOffset;}
 	int getTextureId() {return myTextureId;}
@@ -25,11 +25,11 @@ public:
 protected:
 	IntRect myRect;
 	Point<int> myOffset;
-	PtrResourceTexture myTexture;
+	ResourceTexture::ptr myTexture;
 	int myTextureId;
 }; //+ResourceImage manager qui contient des images d'un meme type
 
-class ResourceImage : public IResource
+class ResourceImage : public IResource, public WithSmartPtr<ResourceImage>
 {
 public:
 	ResourceImage(/*PtrImage Img*/);
@@ -38,7 +38,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	// Renvoie un pointeur sur l'image numéro num
 	///////////////////////////////////////////////////////////////////////////
-	PtrResourceTexture getResourceTexture(int num = 0) {return myImages[num].getResourceTexture();}
+	ResourceTexture::ptr getResourceTexture(int num = 0) {return myImages[num].getResourceTexture();}
 
 	Image& getImage(int num = 0) {return myImages[num];}
 
@@ -99,7 +99,7 @@ protected:
 	std::vector<std::string> mySounds;
 };
 
-typedef std::shared_ptr<ResourceImage> PtrResourceImage;
+//typedef std::shared_ptr<ResourceImage> PtrResourceImage;
 
 //class ResourceImage : public IResource
 //{

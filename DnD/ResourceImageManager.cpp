@@ -1,13 +1,12 @@
-#include "TextureManager.h"
+#include "ResourceImageManager.h"
 #include "tools/FileReading.h"
 #include "tools/Logger.h"
-#include "ResourcesFile.h"
 
-TextureManager::TextureManager(void)
+ResourceImageManager::ResourceImageManager(void)
 {
 }
 
-TextureManager::~TextureManager(void)
+ResourceImageManager::~ResourceImageManager(void)
 {
 }
 
@@ -21,7 +20,7 @@ TextureManager::~TextureManager(void)
 ///////////////////////////////////////////////////////////////////////////////
 // Charge la ressource id
 ///////////////////////////////////////////////////////////////////////////////
-TextureManager::PtrResource TextureManager::loadResource(int id)
+ResourceImageManager::PtrResource ResourceImageManager::loadResource(int id)
 {
 	MapResources::iterator it = myResources.find(id);
 	if(it == myResources.end())
@@ -30,7 +29,7 @@ TextureManager::PtrResource TextureManager::loadResource(int id)
 	//MonThread.push_back(boost::shared_ptr<sf::Thread>());
 	//MonThread.back().reset(new sf::Thread(&ElementSkinsManager::th_chargement, &it->second));//&MesRessources[it->first]));
 	//MonThread.back()->Launch();
-	it->second->reload(true);
+	it->second->reload();
 
 	return it->second;
 }
@@ -38,7 +37,7 @@ TextureManager::PtrResource TextureManager::loadResource(int id)
 ///////////////////////////////////////////////////////////////////////////////
 // Libère la ressource id si seul le manager l'utilise
 ///////////////////////////////////////////////////////////////////////////////
-void TextureManager::freeResource(int id)
+void ResourceImageManager::freeResource(int id)
 {
 	MapResources::iterator it = myResources.find(id);
 	if(it == myResources.end())
@@ -54,7 +53,7 @@ void TextureManager::freeResource(int id)
 // Libere toutes les ressources qui sont uniquement utilisées par 
 // le manager
 ///////////////////////////////////////////////////////////////////////////////
-void TextureManager::freeResources()
+void ResourceImageManager::freeResources()
 {
 	MapResources::iterator it = myResources.begin();
 	for(; it != myResources.end(); ++it)
@@ -70,12 +69,12 @@ void TextureManager::freeResources()
 // Précharge toutes les ressources utilisables par le manager : Offsets,
 // et couleur de transparence
 ///////////////////////////////////////////////////////////////////////////////
-bool TextureManager::preload()
+bool ResourceImageManager::preload()
 {
-	TextFile file("./data/resourceTextures.dat");
+	TextFile file("./data/resourceImages.dat");
 	if (!file.isOpen())
 	{
-		ILogger::log(ILogger::ERRORS) << "Impossible de trouver le fichier d'images TexturesDat.dat";
+		ILogger::log(ILogger::ERRORS) << "Impossible de trouver le fichier d'images ResourceImages.dat";
 		return false;
 	}
 
@@ -87,13 +86,29 @@ bool TextureManager::preload()
 	int num = 0;
 	while(num < nbElements)
 	{
-		int id;
-		std::string path;
+		int id, textureId, x, y, width, height, isRect;
+
 		//L'ID
 		file >> id;
-		file >> path;
-		myResources[id].reset(new ResourceTexture); //RessourceTexture<datFile> ?
-		myResources[id]->setTexturePath(path);
+		myResources[id].reset(new ResourceImage);
+
+		int nbIm = 0, nbImages;
+		file >> nbImages;
+		while(nbIm < nbImages)
+		{
+			file >> textureId >> isRect;
+			if (isRect == 1)
+				file >> x >> y >> width >> height;
+			else
+				x = y = width = height = -1;
+
+			IntRect rect(x, y, width, height);
+
+			Image image(textureId, rect);
+			myResources[id]->add(image);
+
+			nbIm++;
+		}
 
 		num++;	
 	}

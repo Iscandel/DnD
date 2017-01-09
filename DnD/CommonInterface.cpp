@@ -4,6 +4,8 @@
 
 #include "SGame.h"
 
+#include "CreationFichierRessources.h"
+
 //#include <iostream>
 
 CommonInterface::CommonInterface(void)

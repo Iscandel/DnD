@@ -57,6 +57,13 @@ Image::Image(int textureId, const IntRect& rect, const Point<int>& offset)
 void Image::reload()
 {
 	myTexture = TextureManager::getInstance()->getResource(myTextureId);
+	if (myRect.width == -1 || myRect.height == -1)
+	{
+		myRect.x = 0;
+		myRect.y = 0;
+		myRect.width = myTexture->getTexture()->getSize().x;
+		myRect.height = myTexture->getTexture()->getSize().y;
+	}
 }
 
 void Image::free()

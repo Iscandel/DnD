@@ -18,10 +18,24 @@ namespace utiles
 	std::vector<std::string> fichiers;
 	std::vector<std::string>IdFichiers;
 
-	fichiers.push_back("./data/textures/cartes.png");
-	//IdFichiers.push_back("cardMat");
-	fichiers.push_back("./data/textures/tapis3Bis.png");
-	fichiers.push_back("./data/textures/fond.png");
+	fichiers.push_back("./data/textures/tile1.png");
+	fichiers.push_back("./data/textures/tile2.png");
+	fichiers.push_back("./data/textures/tile3.png");
+	fichiers.push_back("./data/textures/tile4.png");
+	fichiers.push_back("./data/textures/tile5.png");
+	fichiers.push_back("./data/textures/tile6.png");
+	fichiers.push_back("./data/textures/tile7.png");
+	fichiers.push_back("./data/textures/tile8.png");
+	fichiers.push_back("./data/textures/tile9.png");
+	fichiers.push_back("./data/textures/tile10.png");
+	fichiers.push_back("./data/textures/tile11.png");
+	fichiers.push_back("./data/textures/tile12.png");
+	fichiers.push_back("./data/textures/tile13.png");
+	fichiers.push_back("./data/textures/tile14.png");
+	fichiers.push_back("./data/textures/tile15.png");
+	fichiers.push_back("./data/textures/tile16.png");
+	fichiers.push_back("./data/textures/wall.png");
+	fichiers.push_back("./data/textures/player1.png");
 
 	ResourcesFile::getInstance()->create(fichiers, "./data/TexturesDat.dat");//, IdFichiers);
 

@@ -3,6 +3,8 @@
 
 #include "Array2D.h"
 #include "Color.h"
+
+#include <algorithm>
 #include <string>
 
 namespace tools

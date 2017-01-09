@@ -4,7 +4,8 @@
 #include "SideFactory.h"
 
 Side::Side()
-:myIsRevealed(false)
+:GraphicEntity(0)
+,myIsRevealed(false)
 {
 }
 

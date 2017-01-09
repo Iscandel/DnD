@@ -6,7 +6,7 @@
 #include "Engine.h"
 #include "Message.h"
 #include "GameState.h"
-//#include "Game.h"
+#include "Game.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Class handling the game.
@@ -78,7 +78,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	bool isFinished() {return myIsFinished;}
 
-	//Game& getGame() {return myGame;}
+	Game& getGame() {return myGame;}
 
 	//GameServer& getGameServer() {return myGameServer;}
 
@@ -90,7 +90,7 @@ protected:
 
 	bool myIsFinished;
 	std::vector<GameState::ptr> myGameStates; //< Vector of game states
-	//Game myGame;
+	Game myGame;
 	//GameServer myGameServer;
 };
 

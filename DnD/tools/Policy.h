@@ -123,8 +123,8 @@ public:
 template<>
 inline std::string BinaryFilePolicy::execute(std::ifstream& file)
 {
-	sf::Int32 stringSize;
-	file.read(reinterpret_cast<char*>(&stringSize), sizeof(sf::Int32));
+	int stringSize;
+	file.read(reinterpret_cast<char*>(&stringSize), sizeof(int));
 
 	char* buffer = new char[stringSize + 1];
 	buffer[stringSize] = '\0';

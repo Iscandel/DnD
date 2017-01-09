@@ -6,10 +6,21 @@
 #include "GraphicEngine.h"
 #include "tools/FileReading.h"
 
+#include "CompleteMazeGenerator.h"
 
 GameView::GameView(const std::string& path)
 {
 	loadViewPosition(path);
+
+	//CompleteMazeGenerator gene(30);
+	//maze = gene.generate(8, 8);
+	//std::cout << *(maze.get());
+
+	//if (!textureMur.loadFromFile("D:\\C et CPP\\Applications\\DnD\\DnD\\data\\wall.png"))
+	//	std::cout << "fdsjhfskql\n";
+
+	//if(!textureFond.loadFromFile("D:\\C et CPP\\Applications\\DnD\\DnD\\data\\textures\\tile2.png"))
+	//	std::cout << "zraerazz\n";
 }
 
 
@@ -34,17 +45,180 @@ void GameView::loadViewPosition(const std::string& path)
 
 void GameView::draw(GameState& state)
 {
-	//Game& game = state.getGameEngine()->getGame();
-	//int windowSizeX = state.getGraphicEngine()->getWindowSizeX();
-	//int windowSizeY = state.getGraphicEngine()->getWindowSizeY();
+	int windowSizeX = state.getGraphicEngine()->getWindowSizeX();
+	int windowSizeY = state.getGraphicEngine()->getWindowSizeY();
 
-	//PtrResourceTexture fond = TextureManager::getInstance()->getResource(2);
+	drawRect(state, sf::Color(128, 128, 128), sf::Vector2f(), sf::Vector2f(windowSizeX, windowSizeY));
 
-	//sf::Sprite spFond;
-	//spFond.SetTexture(*fond->getTexture());
-	//spFond.SetPosition(0, 0);
-	//spFond.SetScale((float)windowSizeX / fond->getTexture()->GetWidth(), (float)windowSizeY / fond->getTexture()->GetHeight());
-	//state.getGraphicEngine()->draw(spFond);
+	Maze::ptr maze = state.getGameEngine()->getGame().getMaze();
+
+	double x = 0;
+	double y = 0;
+
+	const Point<double>& cellSize = getGivenPosition("cellSize");
+	const Point<double>& wallSizeHoriz = getGivenPosition("wallSizeHoriz");
+	const Point<double>& wallSizeVert = getGivenPosition("wallSizeVert");
+
+	for (int i = 0; i < maze->getSizeY(); i++)
+	{
+		for (int j = 0; j < maze->getSizeX(); j++)
+		{
+			Cell::ptr cell = maze->getCell(j, i);
+
+			std::vector<Image>& resource = cell->getCurrentImages();
+			sf::Vector2f pixelSize(cellSize.x * (double)windowSizeX, cellSize.y * (double)windowSizeY);
+			sf::Vector2f pos(x * windowSizeX, y * windowSizeY);
+			drawImage(state, resource, pixelSize, pos, 0.f);
+
+			drawCellShadows(state, x, y, windowSizeX, windowSizeY);
+
+			if (cell->getSide(Direction::EAST)->getType() == Side::WALL)
+			{
+				Side::ptr side = cell->getSide(Direction::EAST);
+				std::vector<Image>& resource = side->getCurrentImages();
+				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
+				sf::Vector2f pos((x + cellSize.x + wallSizeVert.x) * windowSizeX, (y - wallSizeHoriz.y / 2.) * windowSizeY);
+				drawImage(state, resource, pixelSize, pos, 90.f);
+			}
+			if (cell->getSide(Direction::SOUTH)->getType() == Side::WALL)
+			{
+				Side::ptr side = cell->getSide(Direction::SOUTH);
+				std::vector<Image>& resource = side->getCurrentImages();
+				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
+				sf::Vector2f pos((x - wallSizeHoriz.y / 2.) * windowSizeX, (y + cellSize.y) * windowSizeY);
+				drawImage(state, resource, pixelSize, pos, 0.f);
+			}
+
+			x += cellSize.x + wallSizeVert.x;
+		}
+		x = 0.;
+		y += cellSize.y + wallSizeHoriz.y;
+	}
+
+
+
+
+
+
+
+
+
+	//Maze::ptr maze = state.getGameEngine()->getGame().getMaze();
+	//sf::Sprite sp;
+	//
+	////sp.setTexture(textureFond);
+	////sp.setScale(80.f / textureFond.getSize().x, 80.f / textureFond.getSize().y);
+	//int x = 0;
+	//int y = 0;
+
+	//
+	//sf::Sprite spWallRot;
+	//sf::Sprite spWall;
+	////spWallRot.setTexture(textureMur);
+	////spWall.setTexture(textureMur);
+	//
+	//for (int i = 0; i < maze->getSizeY(); i++)
+	//{
+	//	for (int j = 0; j < maze->getSizeX(); j++)
+	//	{
+	//		Cell::ptr cell = maze->getCell(j, i);
+	//		
+	//		//sp.setPosition(x, y);
+
+	//		std::vector<Image>& resource = cell->getCurrentImages();
+	//		for (unsigned int k = 0; k < resource.size(); k++)
+	//		{
+	//			PtrTexture texture = resource[k].getResourceTexture()->getTexture();
+	//			sp.setTexture(*texture);
+	//			IntRect rect = resource[k].getRect();
+	//			if (rect.width > 0 && rect.height > 0)
+	//			{
+	//				sf::IntRect sfRect(rect.x, rect.y, rect.width, rect.height);
+	//				sp.setTextureRect(sfRect);
+	//			}
+
+	//			sp.setScale(80.f / texture->getSize().x, 80.f / texture->getSize().y);
+	//			//sp.setScale((cell->getRelSizeX() * (double)1024) / 300.,//rect.width,
+	//			//(cell->getRelSizeY() * (double)768) / 300.);//rect.height);
+	//			//rotation is in clockwise order for SFML
+	//			//sp.setRotation(-cards[j]->getRotation());
+
+	//			sp.setPosition(x, y);//cards[j]->getX() * windowSizeX, cards[j]->getY() * windowSizeY);
+	//			state.getGraphicEngine()->draw(sp);
+	//		}
+
+
+	//		sf::Color shadowCol(50, 50, 50);
+	//		drawRect(state, shadowCol, sf::Vector2f(x, y), sf::Vector2f(80, 2));
+	//		drawRect(state, shadowCol, sf::Vector2f(x, y), sf::Vector2f(2, 80));
+	//		sf::Color lightCol(170, 170, 170);
+	//		drawRect(state, lightCol, sf::Vector2f(x, y + 78), sf::Vector2f(80, 2));
+	//		drawRect(state, lightCol, sf::Vector2f(x + 78, y), sf::Vector2f(2, 80));
+
+	//		if (cell->getSide(Direction::EAST)->getType() == Side::WALL)
+	//		{			
+	//			
+	//			////spWallRot.setOrigin(textureMur.getSize().x / 2.f, textureMur.getSize().y / 2.f);
+	//			//spWallRot.setRotation(90.f);
+	//			////		spWallRot.setOrigin(0, 0);		
+	//			//spWallRot.setScale(80.f / textureMur.getSize().x, 20.f / textureMur.getSize().y);
+	//			//spWallRot.setPosition(x + 80 + 20, y);
+	//			
+	//			//
+	//			Side::ptr side = cell->getSide(Direction::EAST);
+	//			std::vector<Image>& resource = side->getCurrentImages();
+	//			for (unsigned int k = 0; k < resource.size(); k++)
+	//			{
+	//				PtrTexture texture = resource[k].getResourceTexture()->getTexture();
+	//				spWallRot.setTexture(*texture);
+	//				IntRect rect = resource[k].getRect();
+	//				if (rect.width > 0 && rect.height > 0)
+	//				{
+	//					sf::IntRect sfRect(rect.x, rect.y, rect.width, rect.height);
+	//					spWallRot.setTextureRect(sfRect);
+	//				}
+	//				spWallRot.setRotation(90.f);
+	//				//		spWallRot.setOrigin(0, 0);		
+	//				spWallRot.setScale(100.f / texture->getSize().x, 20.f / texture->getSize().y);
+	//				spWallRot.setPosition(x + 80 + 20, y - 10);
+
+	//				state.getGraphicEngine()->draw(spWallRot);
+	//			}
+	//			//
+	//		}
+	//		if (cell->getSide(Direction::SOUTH)->getType() == Side::WALL)
+	//		{
+	//			//spWall.setScale(80.f / textureMur.getSize().x, 20.f / textureMur.getSize().y);
+	//			//spWall.setPosition(x, y + 80);
+	//			//state.getGraphicEngine()->draw(spWall);
+
+	//			//
+	//			Side::ptr side = cell->getSide(Direction::SOUTH);
+	//			std::vector<Image>& resource = side->getCurrentImages();
+	//			for (unsigned int k = 0; k < resource.size(); k++)
+	//			{
+	//				PtrTexture texture = resource[k].getResourceTexture()->getTexture();
+	//				spWall.setTexture(*texture);
+	//				IntRect rect = resource[k].getRect();
+	//				if (rect.width > 0 && rect.height > 0)
+	//				{
+	//					sf::IntRect sfRect(rect.x, rect.y, rect.width, rect.height);
+	//					spWall.setTextureRect(sfRect);
+	//				}
+
+	//				spWall.setScale(100.f / texture->getSize().x, 20.f / texture->getSize().y);
+	//				spWall.setPosition(x - 10, y + 80);
+	//				state.getGraphicEngine()->draw(spWall);
+	//			}
+	//			//
+	//		}
+
+	//		x += 80 + 20;
+	//	}
+	//	x = 0;
+	//	y += 80 + 20;
+	//}
+
 
 	////Players
 	//int number = game.getNumberPlayers();
@@ -71,6 +245,67 @@ void GameView::draw(GameState& state)
 	////TrickSet (no ref)
 	//cards = game.getTrickSet().getCards();
 	//drawCards(state, cards);
+}
+
+void GameView::drawRect(GameState& state, const sf::Color& col, const sf::Vector2f& pos, const sf::Vector2f& size)
+{
+	sf::RectangleShape rect;
+	rect.setFillColor(col);
+	rect.setPosition(pos);
+	rect.setSize(size);
+	state.getGraphicEngine()->draw(rect);
+}
+
+void GameView::drawCellShadows(GameState& state, double x, double y, int windowSizeX, int windowSizeY)
+{
+	sf::Color shadowCol(50, 50, 50);
+	const Point<double>& shadowSize = getGivenPosition("shadowSize");
+	const Point<double>& cellSize = getGivenPosition("cellSize");
+
+	//horiz
+	drawRect(state, 
+		shadowCol, 
+		sf::Vector2f(x * windowSizeX, y * windowSizeY), 
+		sf::Vector2f(cellSize.x * windowSizeX, shadowSize.y * windowSizeY));
+	//vert
+	drawRect(state, 
+		shadowCol, 
+		sf::Vector2f(x * windowSizeX, y * windowSizeY), 
+		sf::Vector2f(shadowSize.x * windowSizeX, cellSize.y * windowSizeY));
+
+	sf::Color lightCol(170, 170, 170);
+	//horiz
+	drawRect(state, 
+		lightCol, 
+		sf::Vector2f(x * windowSizeX, (y  + cellSize.y - shadowSize.y) * windowSizeY), 
+		sf::Vector2f(cellSize.x * windowSizeX, shadowSize.y * windowSizeY));
+	//vert
+	drawRect(state, 
+		lightCol, 
+		sf::Vector2f((x + cellSize.x - shadowSize.x) * windowSizeX, y * windowSizeY), 
+		sf::Vector2f(shadowSize.x * windowSizeX, cellSize.y * windowSizeY));
+}
+
+void GameView::drawImage(GameState& state, std::vector<Image>& resource, const sf::Vector2f& pixelSize, const sf::Vector2f& pos, float rotation)
+{
+	sf::Sprite sprite;
+	for (unsigned int k = 0; k < resource.size(); k++)
+	{
+		PtrTexture texture = resource[k].getResourceTexture()->getTexture();
+		sprite.setTexture(*texture);
+		IntRect rect = resource[k].getRect();
+		//if (rect.width > 0 && rect.height > 0)
+		{
+			sf::IntRect sfRect(rect.x, rect.y, rect.width, rect.height);
+			sprite.setTextureRect(sfRect);
+		}
+		sprite.setRotation(rotation);
+		//spWallRot.setOrigin(0, 0);		
+		sprite.setScale(pixelSize.x / rect.width, pixelSize.y / rect.height);
+		sprite.setPosition(pos);
+
+		state.getGraphicEngine()->draw(sprite);
+	}
 }
 
 //void GameView::drawCards(GameState& state, const std::vector<PtrCard>& cards)

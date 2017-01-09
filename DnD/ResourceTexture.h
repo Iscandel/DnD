@@ -5,6 +5,7 @@
 #include "DataTexture.h"
 #include "tools/Point.h"
 #include "tools/Rectangle.h"
+#include "tools/WithSmartPtr.h"
 
 #include <iostream>
 #include <string>
@@ -14,7 +15,7 @@
 // Ressource traduisant un ensemble d'images
 ///////////////////////////////////////////////////////////////////////////////
 
-class ResourceTexture : public IResource
+class ResourceTexture : public IResource, public WithSmartPtr<ResourceTexture>
 {
 public:
 	ResourceTexture(/*PtrImage Img*/);
@@ -59,6 +60,6 @@ protected:
 	Color myTransparentColor;
 };
 
-typedef std::shared_ptr<ResourceTexture> PtrResourceTexture;
+//typedef std::shared_ptr<ResourceTexture> PtrResourceTexture;
 
 #endif

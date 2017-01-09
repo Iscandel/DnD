@@ -22,10 +22,18 @@ SGame::~SGame(void)
 
 void SGame::init()
 {
-	setView(View::ptr(new GameView("")));//data / gameViewPos.txt")));
-	CompleteMazeGenerator gene(30);
-	Maze::ptr maze = gene.generate(10, 10);
-	std::cout << *(maze.get());
+	setView(View::ptr(new GameView("data/gameViewPos.txt")));
+
+	Maze::ptr maze = getGameEngine()->getGame().getMaze();
+	for (int i = 0; i < maze->getSizeY(); i++)
+	{
+		for (int j = 0; j < maze->getSizeX(); j++)
+		{
+			Cell::ptr cell = maze->getCell(j, i);
+			Point<double>& pos = myView->getGivenPosition("cellSize");
+			cell->setRelSize(pos.x, pos.y);
+		}
+	}
 }
 
 bool SGame::catchEvent(const sf::Event& ev)

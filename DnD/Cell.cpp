@@ -1,6 +1,8 @@
 #include "Cell.h"
 
-Cell::Cell() {
+Cell::Cell()
+:GraphicEntity(0)
+{
 	auto factory = ObjectFactoryManager<Side>::getInstance()->getFactory("Void");
 	myEastSide = factory->create();
 	myNorthSide = factory->create();
@@ -9,7 +11,9 @@ Cell::Cell() {
 }
 
 
-Cell::Cell(Side::ptr east, Side::ptr north, Side::ptr west, Side::ptr south) {
+Cell::Cell(Side::ptr east, Side::ptr north, Side::ptr west, Side::ptr south) 
+:GraphicEntity(0)
+{
 	myEastSide = east;
 	myNorthSide = north;
 	myWestSide = west;
@@ -52,5 +56,28 @@ void Cell::setSide(Direction direction, Side::ptr side) {
 	default:
 		break;
 	}
+}
 
+void Cell::addResourceImage(const std::string& idName, ResourceImage::ptr res)
+{
+	myImages[idName] = res;
+}
+
+void removeResourceImage(const std::string& idName)
+{
+}
+
+void Cell::addCurrentDrawnImage(const std::string& name, int num)
+{
+	ResourceImagesMap::iterator it = myImages.find(name);
+	if (it != myImages.end())
+	{
+		myCurrentImages.push_back(it->second->getImage(num));
+	}
+}
+
+void Cell::setCurrentDrawnImage(const std::string& name, int num)
+{
+	myCurrentImages.clear();
+	addCurrentDrawnImage(name, num);
 }

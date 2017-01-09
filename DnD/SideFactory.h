@@ -2,6 +2,8 @@
 #include "ObjectFactory.h"
 
 #include "Action.h"
+#include "ResourceImageManager.h"
+#include "SideDefManager.h"
 
 template<class BaseType, class ObjectType>//, typename ...Args>
 class WallFactory : public ObjectFactory<BaseType>//, ObjectType>//, typename ...Args>
@@ -18,6 +20,9 @@ public:
 	typename BaseType::ptr create() override
 	{
 		typename BaseType::ptr type = BaseType::ptr(new Side());
+		const SideDef& def = SideDefManager::getInstance()->getDef("Wall");
+		type->addResourceImage("main", ResourceImageManager::getInstance()->getResource(def.imageId));
+		type->setCurrentDrawnImage("main");
 		type->setAction(Action::ptr(new WallAction()));
 		type->setType(Side::WALL);
 		return type;
@@ -64,6 +69,9 @@ public:
 	typename BaseType::ptr create() override
 	{
 		typename BaseType::ptr type = BaseType::ptr(new Side());
+		const SideDef& def = SideDefManager::getInstance()->getDef("Door");
+		type->addResourceImage("main", ResourceImageManager::getInstance()->getResource(def.imageId));
+		type->setCurrentDrawnImage("main");
 		//SideDefManager::getInstance()->getResource("door");
 		type->setAction(Action::ptr(new DoorAction()));
 		type->setType(Side::DOOR);
