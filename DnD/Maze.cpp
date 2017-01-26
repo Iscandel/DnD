@@ -28,6 +28,7 @@ Maze::Maze(int nx, int ny)
 Maze::Maze(int nx, int ny, bool fullWalls)
 :myArray(nx, ny)
 {
+	//Walls needed because the completeMazeGenerator breaks walls
 	auto wallFactory = ObjectFactoryManager<Side>::getInstance()->getFactory("Wall");
 
 	//Fill with walls
@@ -37,7 +38,11 @@ Maze::Maze(int nx, int ny, bool fullWalls)
 		{
 			for (int j = 0; j < nx; j++)
 			{
-				setCell(j, i, Cell::ptr(new Cell(wallFactory->create(), wallFactory->create(), wallFactory->create(), wallFactory->create())));
+				setCell(j, i, Cell::ptr(new Cell(Point<int>(j, i), 
+					wallFactory->create(), 
+					wallFactory->create(), 
+					wallFactory->create(), 
+					wallFactory->create())));
 			}
 		}
 	}
@@ -159,6 +164,7 @@ Cell::ptr Maze::getNeighbourCell(Cell::ptr cell, Direction direction)
 		}
 	}
 
+	i--;
 	return getNeighbourCell(j, i, direction);
 }
 

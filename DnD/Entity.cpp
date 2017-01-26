@@ -6,6 +6,7 @@
 Entity::Entity(int id)
 :myId(id)
 ,myToDestroy(false)
+,myHasLost(false)
 {
 }
 
@@ -26,11 +27,12 @@ GraphicEntity::GraphicEntity(int id)
 
 Rect<double> GraphicEntity::getBoundingRect(int windowSizeX, int windowSizeY)
 {
+	throw std::runtime_error("Not implemented");
 	//Local coordinate system
-	Rect<double> boundingRect(0. - myOrigin.x * windowSizeX, //A vérif
-							  0. - myOrigin.y * windowSizeY, 
-							  getRelSizeX() * windowSizeX, 
-							  getRelSizeY() * windowSizeY);
+	//Rect<double> boundingRect(0. - myOrigin.x * windowSizeX, //A vérif
+	//						  0. - myOrigin.y * windowSizeY, 
+	//						  getRelSizeX() * windowSizeX, 
+	//						  getRelSizeY() * windowSizeY);
 
 	//double rotation = getRotation();
 	//if(std::abs(rotation) > 0.00001)
@@ -66,6 +68,6 @@ Rect<double> GraphicEntity::getBoundingRect(int windowSizeX, int windowSizeY)
 
 	//boundingRect.x += getX() + myOrigin.x;
 	//boundingRect.y += getY() + myOrigin.y;
-	return boundingRect;
+	//return boundingRect;
 }
 

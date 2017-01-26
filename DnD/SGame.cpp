@@ -5,6 +5,7 @@
 #include "GraphicEngine.h"
 #include "MessageBuilder.h"
 #include "NetworkEngine.h"
+#include "SoundEngine.h"
 #include "TextureManager.h"
 #include "tools/Logger.h"
 //#include "tools/Tools.h"
@@ -13,6 +14,8 @@
 
 SGame::SGame(void)
 {
+	myTurnSoundByPlayerVectorPos.push_back("p1NewTurn");
+	myTurnSoundByPlayerVectorPos.push_back("p2NewTurn");
 }
 
 
@@ -31,13 +34,46 @@ void SGame::init()
 		{
 			Cell::ptr cell = maze->getCell(j, i);
 			Point<double>& pos = myView->getGivenPosition("cellSize");
-			cell->setRelSize(pos.x, pos.y);
+			cell->setRelSize(pos.x, pos.y); //not used for now
 		}
 	}
 }
 
 bool SGame::catchEvent(const sf::Event& ev)
 {
+		if (ev.type == sf::Event::KeyPressed)
+		{
+			if (ev.key.code == sf::Keyboard::Right)
+			{
+				//if(isLocalHumanPlayer(getCurrentId())
+				Message msg = MessageBuilder::clMove(Direction::EAST);
+				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+			}
+
+			else if (ev.key.code == sf::Keyboard::Left)
+			{
+				Message msg = MessageBuilder::clMove(Direction::WEST);
+				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+			}
+
+			else if (ev.key.code == sf::Keyboard::Up)
+			{
+				Message msg = MessageBuilder::clMove(Direction::NORTH);
+				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+			}
+
+			else if (ev.key.code == sf::Keyboard::Down)
+			{
+				Message msg = MessageBuilder::clMove(Direction::SOUTH);
+				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+			}
+
+			else if (ev.key.code == sf::Keyboard::Space)
+			{
+				Message msg = MessageBuilder::clEndTurn();
+				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+			}
+		}
 	//Game& game = getGameEngine()->getGame();
 	//EntityManager entityManager = game.getEntityManager();
 
@@ -84,8 +120,8 @@ void SGame::update()
 {
 	processQueue();
 
-	//Game& game = getGameEngine()->getGame();
-	//game.update(getGraphicEngine()->getElapsedTime());
+	Game& game = getGameEngine()->getGame();
+	game.update(*this, getGraphicEngine()->getElapsedTime());
 
 	//std::vector<TimerFunction>::iterator it = myTimerFunctions.begin();
 	//for (; it != myTimerFunctions.end();)
@@ -111,58 +147,115 @@ void SGame::processMessage(const Message& msg)
 {
 	switch (msg.type)
 	{
+	case Message::MessageType::SV_MOVE:
+	{
+		//Move player
+		getSoundEngine()->playSound("move");
+	}
+	break;
+
+	case Message::MessageType::SV_WALL:
+	{
+		//reveal the wall
+
+		getSoundEngine()->playSound("wall");
+	}
+	break;
+
+	case Message::MessageType::SV_NEW_TURN:
+	{
+		int id;
+		if (!MessageBuilder::extractSvNewTurn(msg, id))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		std::vector<Player::ptr> players = game.getPlayers();
+		for (unsigned int i = 0; i < players.size(); i++)
+		{
+			if (id == players[i]->getId())
+			{
+				std::string sound = getTurnSound(i);
+				if (sound != "")
+					getSoundEngine()->pushSound(sound);
+			}
+		}
+		
+		//reveal the wall
+
+		//getSoundEngine()->pushSound("endTurn");
+	}
+	break;
+
+	case Message::MessageType::SV_DRAGOON_AWAKES:
+	{
+		//reveal the wall
+
+		getSoundEngine()->pushSound("dragoonWakesUp");
+	}
+	break;
+
+	case Message::MessageType::SV_DRAGOON_MOVES:
+	{
+		//reveal the wall
+
+		getSoundEngine()->pushSound("dragoonMoves");
+	}
+	break;
+
+	case Message::MessageType::SV_TAKE_TREASURE:
+	{
+		int id;
+		if (!MessageBuilder::extractSvTakeTreasure(msg, id))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		std::vector<Player::ptr> players = game.getPlayers();
+		for (Player::ptr player : players)
+		{
+			player->setTreasure(false);
+		}
+
+		Player::ptr player = game.getPlayer(id);
+		player->setTreasure(true);
+		getSoundEngine()->pushSound("treasureFound");
+	}
+	break;
+
+	case Message::MessageType::SV_GAME_WON:
+	{
+		int id;
+		if (!MessageBuilder::extractSvGameWon(msg, id))
+			return;
+
+		getSoundEngine()->pushSound("win");
+	}
+	break;
+
+	case Message::MessageType::SV_PLAYER_WOUNDED:
+	{
+		int id, numberLives;
+		if (!MessageBuilder::extractSvPlayerWounded(msg, id, numberLives))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		
+		Player::ptr player = game.getPlayer(id);
+		player->setNumberOfLives((Player::Lives)numberLives);
+
+
+		getSoundEngine()->pushSound("dragoonAttacks");
+	}
+	break;
+
 	default:
 		break;
 	}
 }
 
+std::string SGame::getTurnSound(int pos)
+{
+	if (pos < myTurnSoundByPlayerVectorPos.size() && pos >= 0)
+		return myTurnSoundByPlayerVectorPos[pos];
 
-//void SGame::draw()
-//{
-//	Game& game = getGameEngine()->getGame();
-//
-//	PtrResourceTexture fond = TextureManager::getInstance()->getResource(2);
-//
-//	float x = 0, y = 0;
-//	sf::Sprite spFond;
-//	spFond.SetTexture(*fond->getTexture());
-//	spFond.SetPosition(0, 0);
-//	spFond.SetScale(1.f, 1.f);
-//	getGameEngine()->getGraphicEngine()->draw(spFond);
-//	
-//	int number = game.getNumberPlayers();
-//	for(int i = 0; i < number; i++)
-//	{
-//		x = 0;
-//
-//		Player* player = game.getPlayer(i);
-//		const std::vector<PtrCard>& cards = player->getCards();
-//
-//		//std::cout << (static_cast<CardHandler<Player>* >(player)) << std::endl;
-//
-//		for(unsigned int j = 0; j < cards.size(); j++)
-//		{
-//			PtrResourceImage resource = cards[j]->getImage();
-//			PtrTexture texture = resource->getResourceTexture()->getTexture();
-//			sf::Sprite sp;
-//			sp.SetTexture(*texture);
-//			IntRect rect = resource->getImage().getRect();
-//			sf::IntRect sfRect(rect.x, rect.y, rect.width, rect.height);
-//			sp.SetTextureRect(sfRect);
-//			sp.SetPosition(x, y);
-//
-//			cards[j]->setPosition(Point<float>(x, y));
-//			cards[j]->setSize(rect.width, rect.height);
-//			if(cards[j]->isSelected())
-//			{
-//				sp.SetColor(sf::Color(100, 100, 200));
-//			}
-//
-//			x += 50;
-//
-//			getGameEngine()->getGraphicEngine()->draw(sp);
-//		}
-//
-//		y += 300;
-//	}
-//}
+	return "";
+}

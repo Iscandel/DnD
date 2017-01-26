@@ -50,12 +50,31 @@ public:
 	//		EXAMPLE_2
 	//	};
 	//};
-	//struct MessageType
-	//{
-	//	enum messageType
-	//	{							
-	//	};
-	//};
+	struct MessageType
+	{
+		enum messageType
+		{		
+			CL_MOVE,
+			CL_DRAGOON_MOVES,
+			CL_DRAGOON_AWAKES,
+			CL_PLAYER_LOOSES,
+			CL_PLAYER_WOUNDED,
+			CL_END_TURN,
+			SV_DRAGOON_AWAKES,
+			SV_MOVE,
+			SV_WALL,
+			PLAY_SOUND,
+			PLAY_MUSIC,
+			STOP_MUSIC,
+			SV_MAZE,
+			SV_NEW_TURN,
+			SV_DRAGOON_MOVES,
+			SV_TAKE_TREASURE,
+			SV_GAME_WON,
+			SV_PLAYER_WOUNDED,
+			SV_PLAYER_LOOSES
+		};
+	};
 
 	//All the keys associated to messages
 	struct Key
@@ -64,6 +83,47 @@ public:
 			//sData map key
 			enum {
 				GAME_NAME
+			};
+		};
+
+		struct clMove {
+			enum {
+				ID,			//iData, filled par server for distant players
+				DIRECTION,  //iData, enum
+			};
+		};
+
+		struct clDragoonMoves {
+			enum {
+				ID,			//iData
+				DIRECTION_HORIZ,  //iData, enum
+				DIRECTION_VERT,  //iData, enum
+			};
+		};
+
+		struct clPlayerLooses {
+			enum {
+				ID,			//iData
+			};
+		};
+
+		struct ClEndTurn { //Special sent by server to server...to change, maybe
+			enum {
+				ID,			//iData
+			};
+		};
+
+		struct clPlayerWounded {
+			enum {
+				ID,			//iData
+			};
+		};
+
+		struct SvMove {
+			enum {
+				ID,
+				X,
+				Y
 			};
 		};
 
@@ -107,6 +167,43 @@ public:
 		struct SvServerFull {
 			enum {
 				INFO, //sData
+			};
+		};
+
+		struct SvTakeTreasure {
+			enum {
+				ID, //iData
+			};
+		};
+
+		struct SvGameWon {
+			enum {
+				ID, //iData
+			};
+		};
+
+		struct SvNewTurn {
+			enum {
+				ID, //iData
+			};
+		};
+
+		struct SvPlayerWounded {
+			enum {
+				ID, //iData
+				NUMBER_LIVES //iData
+			};
+		};
+
+		struct SvPlayerLooses {
+			enum {
+				ID, //iData
+			};
+		};
+
+		struct PlaySound {
+			enum {
+				ID_SOUND, //sData
 			};
 		};
 	};

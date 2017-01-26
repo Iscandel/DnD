@@ -73,7 +73,9 @@ public:
 	///
 	/// \param state The new state to set.
 	///////////////////////////////////////////////////////////////////////////
-	void setGameState(GameState::ptr state);
+	void setClientGameState(GameState::ptr state);
+
+	void setServerGameState(GameState::ptr state);
 
 	bool isVisible() const {return myIsVisible;}
 
@@ -81,7 +83,7 @@ public:
 
 	void setView(View::ptr view) {myView = view;}
 
-	void sendMessage(const Message& m);
+	virtual void sendMessage(const Message& m, int id = 0) = 0;
 
 	bool isNotLocalId(int id);
 
@@ -90,6 +92,19 @@ protected:
 	bool myIsVisible;
 
 	View::ptr myView;
+};
+
+class ClientGameState : public GameState
+{
+public:
+	virtual void sendMessage(const Message& m, int id = 0) override;
+};
+
+class ServerGameState : public GameState
+{
+public:
+	//Id not used here
+	virtual void sendMessage(const Message& m, int id = 0) { std::runtime_error("Send message"); }
 };
 
 #endif

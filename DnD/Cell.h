@@ -10,6 +10,9 @@
 class Cell : public WithSmartPtr<Cell>, public GraphicEntity
 {
 public:
+	using ptr = WithSmartPtr<Cell>::ptr;
+
+public:
 	typedef std::map<std::string, ResourceImage::ptr> ResourceImagesMap;
 
 public:
@@ -26,7 +29,7 @@ public:
 	* @param west
 	* @param south
 	*/
-	Cell(Side::ptr east, Side::ptr north, Side::ptr west, Side::ptr south);
+	Cell(const Point<int>& coords, Side::ptr east, Side::ptr north, Side::ptr west, Side::ptr south);
 
 	/**
 	*
@@ -37,7 +40,7 @@ public:
 
 	void setSide(Direction direction, Side::ptr side);
 
-	virtual void update(const Game&, unsigned int) {}
+	virtual void update(GameState&, const Game&, unsigned int) override {}
 
 	void addResourceImage(const std::string& idName, ResourceImage::ptr res);// {myImages.insert(std::make_pair(idName, res));}// = res;}
 																		   //void setImageBack(PtrResourceImage res) {myImageBack = res;}
@@ -47,7 +50,11 @@ public:
 	void addCurrentDrawnImage(const std::string& name, int num = 0);
 	void setCurrentDrawnImage(const std::string& name, int num = 0);
 
+	const Point<int>& getCoords() const { return myCoords; }
+
 protected:
+	Point<int> myCoords;
+
 	//public boolean visitee = false;
 	/**
 	* The east side.

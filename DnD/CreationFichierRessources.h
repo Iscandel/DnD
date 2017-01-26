@@ -10,6 +10,8 @@ namespace utiles
 	// Pour l'interface graphique
 	///////////////////////////////////////////////////////////////////////////
 	void creerGuiDat();
+
+	void createSounds();
 };
 
 #endif

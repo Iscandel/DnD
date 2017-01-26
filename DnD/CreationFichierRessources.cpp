@@ -36,11 +36,56 @@ namespace utiles
 	fichiers.push_back("./data/textures/tile16.png");
 	fichiers.push_back("./data/textures/wall.png");
 	fichiers.push_back("./data/textures/player1.png");
+	fichiers.push_back("./data/textures/dragoon.png");
+	fichiers.push_back("./data/textures/player2.png");
 
 	ResourcesFile::getInstance()->create(fichiers, "./data/TexturesDat.dat");//, IdFichiers);
 
 	std::cout << "DAT TexturesDat.dat créé" << std::endl;
 }
+
+	void createSounds()
+	{
+		std::vector<std::string> files;
+		std::vector<std::string> id;
+
+		files.push_back("./data/badMove.wav");
+		id.push_back("badMove");
+
+		files.push_back("./data/door.wav");
+		id.push_back("door.wav");
+
+		files.push_back("./data/dragoonMoves.wav");
+		id.push_back("dragoonMoves");
+
+		files.push_back("./data/dragoonAttacks.wav");
+		id.push_back("dragoonAttacks");
+
+		files.push_back("./data/dragoonWakesUp.wav");
+		id.push_back("dragoonWakesUp");
+
+		files.push_back("./data/p1NewTurn.wav");
+		id.push_back("p1NewTurn");
+
+		files.push_back("./data/p2NewTurn.wav");
+		id.push_back("p2NewTurn");
+
+		files.push_back("./data/move.wav");
+		id.push_back("move");
+
+		files.push_back("./data/treasureFound.wav");
+		id.push_back("treasureFound");
+
+		files.push_back("./data/wall.wav");
+		id.push_back("wall");
+
+		files.push_back("./data/win.wav");
+		id.push_back("win");
+
+		ResourcesFile::getInstance()->create(files, "./data/SoundDat.dat", id);
+		
+		std::cout << "DAT SoundDat.dat created" << std::endl;
+	}
 //void creerGuiDat()
 //{
 //	std::vector<std::string> fichiers;

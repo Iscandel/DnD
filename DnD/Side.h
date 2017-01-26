@@ -11,6 +11,11 @@
 class Side : public WithSmartPtr<Side>, public GraphicEntity
 {
 public:
+	using ptr = WithSmartPtr<Side>::ptr;
+	//C++ pre-11
+	//typedef WithSmartPtr<Side>::ptr ptr;
+
+public:
 	enum SideType {
 		VOID,
 		WALL,
@@ -38,7 +43,7 @@ public:
 
 	SideType getType() const { return myType; }
 
-	virtual void update(const Game&, unsigned int) {}
+	virtual void update(GameState&, const Game&, unsigned int) override {}
 
 	std::vector<Image>& getCurrentImages() { return myCurrentImages; } //ou std::vector. Retourner éventuellement l'objet Image
 

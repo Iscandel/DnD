@@ -20,6 +20,7 @@ public:
 		global_urng().seed(rd());
 	}
 
+	//from from to thru (included)
 	int random(int from, int thru)
 	{
 		static std::uniform_int_distribution<>d{};

@@ -36,7 +36,7 @@ public:
 
 	void load(const std::string& path);
 
-	int getNumberElements() { return myMap.size(); }
+	int getNumberElements() { return (int) myMap.size(); }
 
 protected:
 	DefMap myMap;

@@ -158,8 +158,11 @@
     <ClCompile Include="CreationFichierRessources.cpp" />
     <ClCompile Include="DataTexture.cpp" />
     <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="Dragoon.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="EntityState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -171,18 +174,23 @@
     <ClCompile Include="MazeUtils.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MessageBuilder.cpp" />
+    <ClCompile Include="MovingDragoon.cpp" />
     <ClCompile Include="NetworkEngine.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="ObjectFactoryManager.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceImage.cpp" />
     <ClCompile Include="ResourceImageManager.cpp" />
     <ClCompile Include="ResourcesFile.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="ResourceTexture.cpp" />
     <ClCompile Include="SGame.cpp" />
+    <ClCompile Include="SGameServer.cpp" />
     <ClCompile Include="Side.cpp" />
     <ClCompile Include="SideDefManager.cpp" />
     <ClCompile Include="SideFactory.cpp" />
+    <ClCompile Include="ResourceSoundBuffer.cpp" />
+    <ClCompile Include="SoundBufferManager.cpp" />
     <ClCompile Include="SoundEngine.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="tools\Color.cpp" />
@@ -190,7 +198,9 @@
     <ClCompile Include="tools\Logger.cpp" />
     <ClCompile Include="tools\Rng.cpp" />
     <ClCompile Include="tools\Timer.cpp" />
+    <ClCompile Include="Treasure.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="EmptyMazeGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -203,8 +213,11 @@
     <ClInclude Include="CreationFichierRessources.h" />
     <ClInclude Include="DataTexture.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="Dragoon.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="EntityState.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameState.h" />
@@ -215,18 +228,23 @@
     <ClInclude Include="MazeUtils.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MessageBuilder.h" />
+    <ClInclude Include="MovingDragoon.h" />
     <ClInclude Include="NetworkEngine.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="ObjectFactoryManager.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceImage.h" />
     <ClInclude Include="ResourceImageManager.h" />
     <ClInclude Include="ResourcesFile.h" />
     <ClInclude Include="ResourcesManager.h" />
     <ClInclude Include="ResourceTexture.h" />
     <ClInclude Include="SGame.h" />
+    <ClInclude Include="SGameServer.h" />
     <ClInclude Include="Side.h" />
     <ClInclude Include="SideDefManager.h" />
     <ClInclude Include="SideFactory.h" />
+    <ClInclude Include="ResourceSoundBuffer.h" />
+    <ClInclude Include="SoundBufferManager.h" />
     <ClInclude Include="SoundEngine.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="tools\Array2D.h" />
@@ -243,7 +261,9 @@
     <ClInclude Include="tools\Timer.h" />
     <ClInclude Include="tools\Tools.h" />
     <ClInclude Include="tools\WithSmartPtr.h" />
+    <ClInclude Include="Treasure.h" />
     <ClInclude Include="View.h" />
+    <ClInclude Include="EmptyMazeGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

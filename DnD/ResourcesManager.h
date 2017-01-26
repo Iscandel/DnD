@@ -70,8 +70,6 @@ protected:
 	///////////////////////////////////////////////////////////////////////////
 	virtual PtrResource loadResource(TypeId id) = 0;
 
-	//sf::Mutex MyMutex;
-
 protected:
 	///Array containing all the resources, by identifier
 	MapResources myResources;

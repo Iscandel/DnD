@@ -1,13 +1,12 @@
 #pragma once
+
 #include "GameState.h"
 
-#include <string>
-
-class SGame : public ClientGameState
+class SGameServer : public ServerGameState
 {
 public:
-	SGame();
-	~SGame();
+	SGameServer();
+	~SGameServer();
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Pauses the game state.
@@ -24,21 +23,25 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	virtual void update();
 
-	void init();
+	void init() override;
 
 	bool catchEvent(const sf::Event& ev);
 
 	virtual void processMessage(const Message& msg);
 
-	std::string getTurnSound(int pos);
+	void sendMessage(const Message& msg);
+
+	void sendMessage(const Message& msg, int id);
+
+	void sendMessageExceptLocal(const Message& msg);
+
+	void sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded);
 
 protected:
 	//std::vector<TimerFunction> myTimerFunctions;
-	std::vector<std::string> myTurnSoundByPlayerVectorPos;
 
 protected:
 	//Player* myStarter;
 	//std::vector<Player*> myPlayers;
 	//std::vector<Card> myCards;
 };
-

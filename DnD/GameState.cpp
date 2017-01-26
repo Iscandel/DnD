@@ -20,24 +20,30 @@ GameState::~GameState(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-void GameState::setGameState(GameState::ptr state)
+void GameState::setClientGameState(GameState::ptr state)
 {
-	getGameEngine()->setGameState(state);
+	getGameEngine()->setClientGameState(state);
+}
+
+void GameState::setServerGameState(GameState::ptr state)
+{
+	getGameEngine()->setServerGameState(state);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-void GameState::sendMessage(const Message& m)
+void ClientGameState::sendMessage(const Message& m, int id)
 {
-	if(getNetworkEngine()->isMulti())// && !getNetworkEngine()->isServer())
+	if(getNetworkEngine()->isMulti() && !getNetworkEngine()->isServer())
 	{
 		getNetworkEngine()->sendMessage(m);
 	}
 	else
 	{
-		getGameEngine()->processMessage(m); //send to server first
-	}
-			
+		Message mod = m;
+		mod.iData[0] = id;
+		getGameEngine()->processMessage(mod); //send to server first
+	}	
 }
 
 //bool GameState::isNotLocalId(int id) 

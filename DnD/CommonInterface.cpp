@@ -3,6 +3,7 @@
 #include "Tools/Logger.h"
 
 #include "SGame.h"
+#include "SGameServer.h"
 
 #include "CreationFichierRessources.h"
 
@@ -11,6 +12,7 @@
 CommonInterface::CommonInterface(void)
 {
 	//utiles::creerGuiDat();
+	//utiles::createSounds();
 
 	myGame.linkGameEngine(&myGame);
 	myGame.linkGraphicEngine(&myGraphic);
@@ -43,7 +45,9 @@ void CommonInterface::run()
 	try
 	{
 		GameState::ptr sgame(new SGame);
-		myGame.setGameState(sgame);//lobby);
+		myGame.setClientGameState(sgame);//lobby);
+		ServerGameState::ptr serverGame(new SGameServer);
+		myGame.setServerGameState(serverGame);
 
 		while(!myGame.isFinished())
 		{

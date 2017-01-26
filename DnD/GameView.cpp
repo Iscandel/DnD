@@ -6,7 +6,8 @@
 #include "GraphicEngine.h"
 #include "tools/FileReading.h"
 
-#include "CompleteMazeGenerator.h"
+
+#include "ResourceImageManager.h"
 
 GameView::GameView(const std::string& path)
 {
@@ -50,7 +51,8 @@ void GameView::draw(GameState& state)
 
 	drawRect(state, sf::Color(128, 128, 128), sf::Vector2f(), sf::Vector2f(windowSizeX, windowSizeY));
 
-	Maze::ptr maze = state.getGameEngine()->getGame().getMaze();
+	Game& game = state.getGameEngine()->getGame();
+	Maze::ptr maze = game.getMaze();
 
 	double x = 0;
 	double y = 0;
@@ -66,24 +68,25 @@ void GameView::draw(GameState& state)
 			Cell::ptr cell = maze->getCell(j, i);
 
 			std::vector<Image>& resource = cell->getCurrentImages();
-			sf::Vector2f pixelSize(cellSize.x * (double)windowSizeX, cellSize.y * (double)windowSizeY);
+			sf::Vector2f pixelSize(cellSize.x * (float)windowSizeX, cellSize.y * (float)windowSizeY);
 			sf::Vector2f pos(x * windowSizeX, y * windowSizeY);
 			drawImage(state, resource, pixelSize, pos, 0.f);
 
 			drawCellShadows(state, x, y, windowSizeX, windowSizeY);
 
-			if (cell->getSide(Direction::EAST)->getType() == Side::WALL)
+			Side::ptr sideEast = cell->getSide(Direction::EAST);
+			if (sideEast->getType() == Side::WALL && sideEast->isRevealed())
 			{
-				Side::ptr side = cell->getSide(Direction::EAST);
-				std::vector<Image>& resource = side->getCurrentImages();
+				std::vector<Image>& resource = sideEast->getCurrentImages();
 				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
 				sf::Vector2f pos((x + cellSize.x + wallSizeVert.x) * windowSizeX, (y - wallSizeHoriz.y / 2.) * windowSizeY);
 				drawImage(state, resource, pixelSize, pos, 90.f);
 			}
-			if (cell->getSide(Direction::SOUTH)->getType() == Side::WALL)
+
+			Side::ptr sideSouth = cell->getSide(Direction::SOUTH);
+			if (sideSouth->getType() == Side::WALL && sideSouth->isRevealed())
 			{
-				Side::ptr side = cell->getSide(Direction::SOUTH);
-				std::vector<Image>& resource = side->getCurrentImages();
+				std::vector<Image>& resource = sideSouth->getCurrentImages();
 				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
 				sf::Vector2f pos((x - wallSizeHoriz.y / 2.) * windowSizeX, (y + cellSize.y) * windowSizeY);
 				drawImage(state, resource, pixelSize, pos, 0.f);
@@ -95,7 +98,47 @@ void GameView::draw(GameState& state)
 		y += cellSize.y + wallSizeHoriz.y;
 	}
 
+	
 
+	//Player 1
+	{
+		//SecretRoom
+		int id = 1; //to change
+		auto player = game.getManager().getPlayer(id); //to change
+		const Point<int>& secretRoom = player->getSecretRoomPos();
+		drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Green);
+
+		auto resource = ResourceImageManager::getInstance()->getResource(18);
+		std::vector<Image> im; im.push_back(resource->getImage(0));
+		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+		sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
+		drawImage(state, im, pixelSize, pos, 0.f);
+	}
+
+	//Player 2
+	{
+		//SecretRoom
+		int id = 2; //to change
+		auto player = game.getManager().getPlayer(id); //to change
+		const Point<int>& secretRoom = player->getSecretRoomPos();
+		drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Yellow);
+
+		auto resource = ResourceImageManager::getInstance()->getResource(21);
+		std::vector<Image> im; im.push_back(resource->getImage(0));
+		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+		sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
+		drawImage(state, im, pixelSize, pos, 0.f);
+	}
+
+	//Dragoon (debug)
+	{
+		auto resource = ResourceImageManager::getInstance()->getResource(20);
+		std::vector<Image> im; im.push_back(resource->getImage(0));
+		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+		auto dragoon = game.getDragoon(); //to change
+		sf::Vector2f pos(dragoon->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, dragoon->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
+		drawImage(state, im, pixelSize, pos, 0.f);
+	}
 
 
 
@@ -306,6 +349,28 @@ void GameView::drawImage(GameState& state, std::vector<Image>& resource, const s
 
 		state.getGraphicEngine()->draw(sprite);
 	}
+}
+
+void GameView::drawSecretRoom(GameState& state, int x, int y, int windowSizeX, int windowSizeY, const sf::Color& fill)
+{
+	const Point<double>& cellSize = getGivenPosition("cellSize");
+	const Point<double>& wallSizeHoriz = getGivenPosition("wallSizeHoriz");
+	const Point<double>& wallSizeVert = getGivenPosition("wallSizeVert");
+
+	sf::Vector2f cellPixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
+	sf::Vector2f pos(x * (cellSize.x + wallSizeVert.x), y * (cellSize.y + wallSizeHoriz.y));
+
+	double ratio = 0.7;
+	sf::Vector2f roomSize = sf::Vector2f(ratio * cellSize.x, ratio * cellSize.y);
+
+	sf::Vector2f finalPos((pos.x + cellSize.x / 2.f - roomSize.x / 2.f)  * windowSizeX, (pos.y + cellSize.y / 2.f - roomSize.y / 2.f)  * windowSizeY);
+	sf::RectangleShape rect;
+	rect.setFillColor(fill);
+	rect.setPosition(finalPos);
+	rect.setSize(sf::Vector2f(roomSize.x * windowSizeX, roomSize.y * windowSizeY));
+	rect.setOutlineColor(sf::Color(10, 50, 10));
+	rect.setOutlineThickness(4.f);
+	state.getGraphicEngine()->draw(rect);
 }
 
 //void GameView::drawCards(GameState& state, const std::vector<PtrCard>& cards)
