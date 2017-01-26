@@ -38,12 +38,64 @@ bool Dragoon::onMoved(SGameServer& state)
 	bool handled = false;
 	std::vector<Player::ptr> players = myGame->getPlayers();
 
-	for (Player::ptr player : players)
+	Player::ptr player = getWeakestPlayerOnDragoonCell();
+
+	if(player)
+		return player->onArrivedOnCell(state, *this);
+	else
 	{
-		handled |= player->onArrivedOnCell(state, *this); //Choose best player if they are both on the same cell
+		for (Player::ptr player : players)
+		{
+			bool res = player->onArrivedOnCell(state, *this); //Choose best player if they are both on the same cell
+			if (res)
+			{
+				player->resetStepsRemaining();
+				//while (player->hasStepsRemaining())
+				//	player->doStep();
+			}
+			handled |= res;
+		}
 	}
 
 	return handled;
+}
+
+Player::ptr Dragoon::getWeakestPlayerOnDragoonCell()
+{
+	bool handled = false;
+	std::vector<Player::ptr> players = myGame->getPlayers();
+
+	int minStrength = 1e6;
+
+	Player::ptr res;
+
+	std::vector<Player::ptr> candidates;
+
+	for (Player::ptr player : players)
+	{
+		if (player->getAbstractPos() == getAbstractPos())
+		{
+			candidates.push_back(player);
+		}
+	}
+
+	if (candidates.size() == 0)
+		return res;
+
+	res = candidates[0];
+	minStrength = res->getStrength();
+	
+
+	for (unsigned int i = 1; i <  candidates.size(); i++)
+	{
+		if (candidates[i]->getStrength() < minStrength)
+		{
+			minStrength = candidates[i]->getStrength();
+			res = candidates[i];
+		}
+	}
+
+	return res;
 }
 
 bool Dragoon::awakeIfSucceed(const Point<int>& pos)
@@ -73,16 +125,17 @@ Player::ptr Dragoon::chooseTarget()
 {
 	Player::ptr res;
 	std::vector<Player::ptr> players = myGame->getPlayers();
-	int minDist = 1e6;
+	double minDist = 1e6;
 
 	for (Player::ptr player : players)
 	{
 		if (player->hasTreasure())
 			return player;
 
-		int tmp = getDistanceTo(player->getAbstractPos());
+		double tmp = getEuclideanDistanceTo(player->getAbstractPos());
 		if (tmp < minDist && !player->isInSecretRoom())
 		{
+			minDist = tmp;
 			res = player;
 		}
 	}
@@ -90,9 +143,14 @@ Player::ptr Dragoon::chooseTarget()
 	return res;
 }
 
-int Dragoon::getDistanceTo(const Point<int> pos)
+int Dragoon::getDistanceTo(const Point<int>& pos)
 {
 	return	std::abs(pos.x - getAbstractX()) + std::abs(pos.y - getAbstractY());
+}
+
+double Dragoon::getEuclideanDistanceTo(const Point<int>& pos)
+{
+	return	std::sqrt(std::pow(pos.x - getAbstractX(), 2) + std::pow(pos.y - getAbstractY(), 2));
 }
 
 void Dragoon::moveToChoosenPlayer(GameState& state, Player::ptr player)
@@ -166,6 +224,9 @@ void Dragoon::attack(SGameServer& state, Player& target)
 {
 	if (target.hasTreasure())
 	{
+		Game& game = state.getGameEngine()->getGame();
+		Treasure::ptr treasure = game.getTreasure();
+		treasure->setTaken(false);
 		Message msg = MessageBuilder::clPlayerLooses(target.getId());
 		state.processMessage(msg);
 	}

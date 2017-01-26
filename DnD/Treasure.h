@@ -19,7 +19,7 @@ public:
 
 	bool onArrivedOnCell(SGameServer&, Dragoon&) override;
 
-	bool setTaken(bool taken) { myIsTaken = taken; }
+	void setTaken(bool taken) { myIsTaken = taken; }
 	bool wasTaken() const { return myIsTaken; }
 
 	void takeTreasure(SGameServer& state, Player& player);

@@ -2,6 +2,8 @@
 
 #include "GameState.h"
 
+#include "Player.h"
+
 class SGameServer : public ServerGameState
 {
 public:
@@ -37,8 +39,11 @@ public:
 
 	void sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded);
 
+	void handlePlayerDefeat(Player::ptr player);
+
 protected:
 	//std::vector<TimerFunction> myTimerFunctions;
+	bool nextPlayerIfHasLost(Player::ptr player);
 
 protected:
 	//Player* myStarter;

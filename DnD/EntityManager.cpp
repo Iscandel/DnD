@@ -6,11 +6,15 @@ void EntityManager::update()
 	std::map<int, Entity::ptr>::iterator it = myEntities.begin();
 	for(it; it != myEntities.end();)
 	{
-		if(it->second->mustBeDestroyed())
+		if (it->second->mustBeDestroyed())
+		{
+			myPlayers.erase(it->first);
 			it = myEntities.erase(it);
+		}
 		else if (it->second->hasLost())
 		{
 			myLostEntities[it->first] = it->second;
+			myPlayers.erase(it->first);
 			it = myEntities.erase(it);
 		}
 		else

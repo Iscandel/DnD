@@ -25,7 +25,9 @@ public:
 
 	bool onMoved(SGameServer& state) override;
 
-	int getDistanceTo(const Point<int> pos);
+	int getDistanceTo(const Point<int>& pos);
+
+	double getEuclideanDistanceTo(const Point<int>& pos);
 
 	bool isAwake() const { return myIsAwake; }
 
@@ -42,6 +44,8 @@ public:
 	bool isReadyToAttack(const Point<int>& pos);
 	
 	void attack(SGameServer& state, Player&);
+
+	Player::ptr getWeakestPlayerOnDragoonCell();
 	//Dragoon receives player that just moved
 	bool onArrivedOnCell(SGameServer&state, Player& player);
 

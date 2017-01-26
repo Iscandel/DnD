@@ -34,7 +34,7 @@ public:
 
 protected:
 	//std::vector<TimerFunction> myTimerFunctions;
-	std::vector<std::string> myTurnSoundByPlayerVectorPos;
+	std::map<int, std::string> myTurnSoundByPlayerId;
 
 protected:
 	//Player* myStarter;

@@ -72,8 +72,16 @@ void SGameServer::processMessage(const Message& msg)
 
 		Game& game = getGameEngine()->getGame();
 		Player::ptr player = game.getPlayer(id);
+
+		//Should not happen
+		if (nextPlayerIfHasLost(player))
+			return;
+
 		Maze::ptr maze = game.getMaze();
 		Cell::ptr cell = maze->getCell(player->getAbstractX(), player->getAbstractY());
+
+		//Renew player strength
+		player->tryRenewStrength();
 		
 		if (cell && cell->getSide(direction)->getType() != Side::WALL)
 		{
@@ -113,7 +121,7 @@ void SGameServer::processMessage(const Message& msg)
 		{
 			cell->getSide(direction)->revealSide(); //to change
 			player->resetStepsRemaining();
-			Message m = MessageBuilder::svWall();
+			Message m = MessageBuilder::svWall(cell->getAbstractX(), cell->getAbstractY(), direction);
 			sendMessage(m);
 			
 			//next turn
@@ -138,8 +146,10 @@ void SGameServer::processMessage(const Message& msg)
 		if (!MessageBuilder::extractClPlayerLooses(msg, id))
 			return;
 
-		//Message m = MessageBuilder::svPlayerLooses(id);
-		//sendMessage(m);
+		Game& game = getGameEngine()->getGame();
+		Player::ptr player = game.getPlayer(id);
+
+		handlePlayerDefeat(player);
 	}
 	break;
 
@@ -151,6 +161,10 @@ void SGameServer::processMessage(const Message& msg)
 
 		Game& game = getGameEngine()->getGame();
 		Player::ptr player = game.getPlayer(id);
+
+		while (player->hasStepsRemaining())
+			player->doStep();
+
 		if (player->hasMoreThanOneLife())
 		{
 			player->setAbstractPosition(player->getSecretRoomPos());
@@ -167,8 +181,7 @@ void SGameServer::processMessage(const Message& msg)
 		}
 		else
 		{
-			Message m = MessageBuilder::svPlayerLooses(id);
-			sendMessage(m);
+			handlePlayerDefeat(player);
 
 			//checkGameOver();
 		}
@@ -185,6 +198,13 @@ void SGameServer::processMessage(const Message& msg)
 
 		if (id != game.getCurrentIdTurn())
 			return;
+
+		//Should not happen
+		Player::ptr player = game.getPlayer(id);
+		if (nextPlayerIfHasLost(player))
+			return;
+
+		player->resetStepsRemaining();
 		
 		int nextId = game.nextEntityTurn();
 		Message m = MessageBuilder::svNewTurn(nextId);
@@ -230,6 +250,7 @@ void SGameServer::processMessage(const Message& msg)
 			Message m = MessageBuilder::svDragoonMoves();
 			sendMessage(m);
 
+			//Dragoon has attacked
 			if (dragoon->onMoved(*this))
 			{
 				//Only players can play after a dragoon attack
@@ -238,14 +259,14 @@ void SGameServer::processMessage(const Message& msg)
 				//getGameEngine()->processMessage(m);
 				sendMessage(m);
 			}
-			else
+			else //Dragoon has only moved
 			{
 				int nextId = game.nextEntityTurn();
 				Message m = MessageBuilder::svNewTurn(nextId);
 				sendMessage(m);
 			}
 		}
-		else
+		else //Dragoon has not moved (stays in treasure room)
 		{
 			int nextId = game.nextEntityTurn();
 			Message m = MessageBuilder::svNewTurn(nextId);
@@ -257,6 +278,32 @@ void SGameServer::processMessage(const Message& msg)
 	default:
 		break;
 	}
+}
+
+void SGameServer::handlePlayerDefeat(Player::ptr player)
+{
+	player->defeat();
+
+	Game& game = getGameEngine()->getGame();
+	game.getManager().removeEntity(player->getId());
+
+	Message m = MessageBuilder::svPlayerLooses(player->getId());
+	sendMessage(m);
+}
+
+
+bool SGameServer::nextPlayerIfHasLost(Player::ptr player)
+{
+	if (player->hasLost())
+	{
+		Game& game = getGameEngine()->getGame();
+		int nextId = game.nextEntityTurn();
+		Message m = MessageBuilder::svNewTurn(nextId);
+		sendMessage(m);
+		return true;
+	}
+
+	return false;
 }
 
 void SGameServer::sendMessage(const Message& msg)

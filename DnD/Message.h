@@ -70,6 +70,7 @@ public:
 			SV_NEW_TURN,
 			SV_DRAGOON_MOVES,
 			SV_TAKE_TREASURE,
+			SV_PLAYER_TAKES_TREASURE_FROM_PLAYER,
 			SV_GAME_WON,
 			SV_PLAYER_WOUNDED,
 			SV_PLAYER_LOOSES
@@ -124,6 +125,20 @@ public:
 				ID,
 				X,
 				Y
+			};
+		};
+
+		struct SvWall {
+			enum {
+				X,
+				Y,
+				DIRECTION
+			};
+		};
+
+		struct SvPlayerTakesTreasureFromPlayer {
+			enum {
+				ID_WINNER, //iData
 			};
 		};
 

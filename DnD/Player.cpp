@@ -12,12 +12,15 @@ Player::Player(int id, Game* game)
 ,myGame(game)
 ,myLives(LIVE_3)
 ,myHasTreasure(false)
-,myHasLost(false)
+,MAX_STRENGTH(20)
 ,STEPS_TREASURE(4)
+,RENEW_STRENGTH_FREQ(20)
 {
 	myStepsByLives[LIVE_1] = STEPS_1;
 	myStepsByLives[LIVE_2] = STEPS_2;
 	myStepsByLives[LIVE_3] = STEPS_3;
+
+	myStrength = MAX_STRENGTH;
 
 	myCurrentMaxSteps = myStepsByLives[myLives];
 	resetStepsRemaining();
@@ -50,6 +53,14 @@ int Player::getMaxSteps() const
 	//}
 	//else
 	//	throw std::runtime_error("Number of lives not correct.\n");
+}
+
+void Player::setTreasure(bool treasure)
+{
+	if (treasure && getCurrentStepsRemaining() > STEPS_TREASURE)
+		setCurrentStepsRemaining(STEPS_TREASURE);
+	
+	myHasTreasure = treasure;
 }
 
 
@@ -94,12 +105,13 @@ bool Player::onMoved(SGameServer& state)
 //Player receives player moving
 bool Player::onArrivedOnCell(SGameServer& state, Player& player)
 {
-	if (hasTreasure() || player.hasTreasure())
+	if ((hasTreasure() || player.hasTreasure()) && player.getAbstractPos() == getAbstractPos())
 	{
-//		fightForTreasure(player);
+		fightForTreasure(state, player);
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
 //Player receives dragoon
@@ -118,7 +130,7 @@ bool Player::onArrivedOnCell(SGameServer& state, Dragoon& dragoon)
 	}
 	else
 	{
-		if (dragoon.isReadyToAttack(getAbstractPos()))
+		if (dragoon.isReadyToAttack(getAbstractPos())) //maybe a test if dragoon and other player already occupy the cell ?
 		{
 			dragoon.attack(state, *this);
 			return true;
@@ -126,5 +138,47 @@ bool Player::onArrivedOnCell(SGameServer& state, Dragoon& dragoon)
 	}
 
 	return false;
+}
+
+void Player::fightForTreasure(SGameServer& state, Player& player)
+{
+	std::vector<Player::ptr> players = myGame->getPlayers();
+
+	std::cout << "player receiving has " << getStrength() << " vs " << player.getStrength() << std::endl;
+
+	for (Player::ptr tmpPlayer : players)
+	{
+		tmpPlayer->setTreasure(false);
+	}
+
+	if (getStrength() > player.getStrength())
+	{
+		setTreasure(true);
+	}
+	else if (getStrength() < player.getStrength())
+	{
+		player.setTreasure(true);
+	}
+	else
+	{
+		if(myRandom.random(1, 2) == 1)
+			setTreasure(true);
+		else
+			player.setTreasure(true);
+	}
+
+	Message msg = MessageBuilder::svPlayerTakesTreasureFromPlayer((hasTreasure() ? getId() : player.getId()));
+	state.sendMessage(msg);
+
+	std::cout << "winner is " << (hasTreasure() ? getId() : player.getId()) << std::endl;
+}
+
+void Player::tryRenewStrength()
+{
+	int value = myRandom.random(1, 100);
+	if (value <= RENEW_STRENGTH_FREQ)
+	{
+		myStrength = MAX_STRENGTH;
+	}
 }
 

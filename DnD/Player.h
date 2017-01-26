@@ -1,10 +1,12 @@
 #pragma once
 
 
+#include <iostream>
 #include <vector>
 #include "tools/WithSmartPtr.h"
 
 #include "Entity.h"
+#include "tools/Rng.h"
 
 class Game;
 
@@ -46,10 +48,13 @@ public:
 
 	void setCurrentStepsRemaining(int nb) { myCurrentStepsRemaining = nb; }
 	int getCurrentStepsRemaining() const { return myCurrentStepsRemaining; }
-	void doStep() { myCurrentStepsRemaining--; }
+	void doStep() { myCurrentStepsRemaining--; myStrength--; std::cout << "il reste " << myCurrentStepsRemaining << std::endl; }
 	bool hasStepsRemaining() const { return myCurrentStepsRemaining > 0; }
-	void resetStepsRemaining() { myCurrentStepsRemaining = myCurrentMaxSteps; }
+	void resetStepsRemaining() { myCurrentStepsRemaining = getMaxSteps(); }
 	int getMaxSteps() const;
+
+	int getStrength() const { return myStrength; }
+	void tryRenewStrength();
 
 	Lives getNumberOfLives() const { return myLives; }
 	bool hasMoreThanOneLife() const { return myLives > LIVE_1; }
@@ -60,7 +65,7 @@ public:
 
 	void setSecretRoomPos(const Point<int>& pos) { mySecretRoom = pos; }
 
-	void setTreasure(bool treasure) { myHasTreasure = treasure; }
+	void setTreasure(bool treasure);
 	bool hasTreasure() const { return myHasTreasure; }
 
 	bool onMoved(SGameServer& state) override;
@@ -72,17 +77,13 @@ public:
 	bool onArrivedOnCell(SGameServer& state, Dragoon& dragoon);
 
 	bool isInSecretRoom() const { return myAbstractPos == getSecretRoomPos(); }
-
-	void defeat() { myHasLost = true; }
-	bool hasLost() const { return myHasLost; }
+	
+	void fightForTreasure(SGameServer& state, Player& player);
 
 	// bool Player::onArrivedOnCell(GameState::ptr state, Treasure::ptr treasure)
 	// {
 	//	return false;
 	// }
-	//void setTeam(PtrTeam team) {myTeam = team;}
-
-	//PtrTeam getTeam() {return myTeam;}
 
 	//void isHuman() {return myIsHuman;}
 
@@ -109,9 +110,13 @@ protected:
 
 	bool myHasTreasure;
 
-	bool myHasLost;
+	int myStrength;
 
+	const int RENEW_STRENGTH_FREQ;
+	const int MAX_STRENGTH;
 	const int STEPS_TREASURE;
+
+	Rng myRandom;
 };
 
 //typedef boost::shared_ptr<Player> PtrPlayer;

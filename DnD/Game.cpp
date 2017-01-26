@@ -12,7 +12,7 @@
 
 
 Game::Game()
-:myMazeUnperfectPerc(30)
+:myMazeUnperfectPerc(80)
 ,myMazeSize(8)
 {
 	ResourcesFile::getInstance()->read("./data/TexturesDat.dat", "TexturesDat");
@@ -32,6 +32,7 @@ Game::Game()
 		player->setSecretRoomPos(Point<int>(0, 0));
 		player->setAbstractPosition(player->getSecretRoomPos());
 		myManager.registerPlayer(player);
+		player->setName("Yo");
 		myCurrentIdTurn = player->getId();
 	}
 
@@ -40,6 +41,7 @@ Game::Game()
 		player->setSecretRoomPos(Point<int>(3, 0));
 		player->setAbstractPosition(player->getSecretRoomPos());
 		myManager.registerPlayer(player);
+		player->setName("Player 2");
 	}
 
 	int xTres = 5; int yTres = 5;
@@ -172,7 +174,7 @@ int Game::nextPlayerTurn()
 	if(id == getDragoon()->getId())
 		myCurrentIdTurn = players[0]->getId();
 
-	return myCurrentIdTurn;
+	return id;
 }
 
 Dragoon::ptr Game::getDragoon()

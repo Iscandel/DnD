@@ -17,10 +17,11 @@ public:
 	static Message clDragonAwakes();
 	static Message clDragoonMoves(Direction vert, Direction horiz);
 	static Message clMove(Direction direction);
-	static Message clPlayerLooses(int id);
-	static Message clPlayerWounded(int id);
+	static Message clPlayerLooses(int id); //called by server
+	static Message clPlayerWounded(int id); //called by server
 	static Message clEndTurn();
-	static Message svWall();
+	static Message clEndTurn(int id); //called by server
+	static Message svWall(int cellX, int cellY, Direction direction);
 	static Message svPlayerMove(int id, const Point<int>& coords);
 	static Message svMaze(const Maze::ptr maze);
 	static Message svNewTurn(int id);
@@ -28,6 +29,7 @@ public:
 	static Message svDragoonMoves();
 	static Message svTakeTreasure(int id);
 	static Message svGameWon(int id);
+	static Message svPlayerTakesTreasureFromPlayer(int winnerId);
 	static Message svPlayerWounded(int id, int numberOfLives);
 	static Message svPlayerLooses(int id);
 
@@ -40,4 +42,6 @@ public:
 	static bool extractSvTakeTreasure(const Message& msg, int& id);
 	static bool extractSvGameWon(const Message& msg, int& id);
 	static bool extractSvPlayerWounded(const Message& msg, int& id, int& numberLives);
+	static bool extractSvWall(const Message& msg, int& cellX, int& cellY, Direction& direction);
+	static bool extractSvPlayerTakesTreasureFromPlayer(const Message& msg, int& winnerId);
 };

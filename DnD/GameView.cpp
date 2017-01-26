@@ -60,6 +60,7 @@ void GameView::draw(GameState& state)
 	const Point<double>& cellSize = getGivenPosition("cellSize");
 	const Point<double>& wallSizeHoriz = getGivenPosition("wallSizeHoriz");
 	const Point<double>& wallSizeVert = getGivenPosition("wallSizeVert");
+	const Point<double>& boardOffset = getGivenPosition("boardOffset");
 
 	for (int i = 0; i < maze->getSizeY(); i++)
 	{
@@ -105,14 +106,17 @@ void GameView::draw(GameState& state)
 		//SecretRoom
 		int id = 1; //to change
 		auto player = game.getManager().getPlayer(id); //to change
-		const Point<int>& secretRoom = player->getSecretRoomPos();
-		drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Green);
+		if (player)
+		{
+			const Point<int>& secretRoom = player->getSecretRoomPos();
+			drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Green);
 
-		auto resource = ResourceImageManager::getInstance()->getResource(18);
-		std::vector<Image> im; im.push_back(resource->getImage(0));
-		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
-		sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
-		drawImage(state, im, pixelSize, pos, 0.f);
+			auto resource = ResourceImageManager::getInstance()->getResource(18);
+			std::vector<Image> im; im.push_back(resource->getImage(0));
+			sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+			sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
+			drawImage(state, im, pixelSize, pos, 0.f);
+		}
 	}
 
 	//Player 2
@@ -120,14 +124,17 @@ void GameView::draw(GameState& state)
 		//SecretRoom
 		int id = 2; //to change
 		auto player = game.getManager().getPlayer(id); //to change
-		const Point<int>& secretRoom = player->getSecretRoomPos();
-		drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Yellow);
+		if (player)
+		{
+			const Point<int>& secretRoom = player->getSecretRoomPos();
+			drawSecretRoom(state, secretRoom.x, secretRoom.y, windowSizeX, windowSizeY, sf::Color::Yellow);
 
-		auto resource = ResourceImageManager::getInstance()->getResource(21);
-		std::vector<Image> im; im.push_back(resource->getImage(0));
-		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
-		sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
-		drawImage(state, im, pixelSize, pos, 0.f);
+			auto resource = ResourceImageManager::getInstance()->getResource(21);
+			std::vector<Image> im; im.push_back(resource->getImage(0));
+			sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+			sf::Vector2f pos(player->getAbstractX() * (cellSize.x + wallSizeVert.x) * windowSizeX, player->getAbstractY() * (cellSize.y + wallSizeHoriz.y) * windowSizeY);
+			drawImage(state, im, pixelSize, pos, 0.f);
+		}
 	}
 
 	//Dragoon (debug)

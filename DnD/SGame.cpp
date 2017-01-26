@@ -14,8 +14,8 @@
 
 SGame::SGame(void)
 {
-	myTurnSoundByPlayerVectorPos.push_back("p1NewTurn");
-	myTurnSoundByPlayerVectorPos.push_back("p2NewTurn");
+	myTurnSoundByPlayerId[1] = "p1NewTurn"; //To change
+	myTurnSoundByPlayerId[2] = "p2NewTurn"; //To change
 }
 
 
@@ -157,6 +157,15 @@ void SGame::processMessage(const Message& msg)
 	case Message::MessageType::SV_WALL:
 	{
 		//reveal the wall
+		int cellX, cellY;
+		Direction direction;
+		if (!MessageBuilder::extractSvWall(msg, cellX, cellY, direction))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		Maze::ptr maze = game.getMaze();
+		Cell::ptr cell = maze->getCell(cellX, cellY);
+		cell->getSide(direction)->revealSide();
 
 		getSoundEngine()->playSound("wall");
 	}
@@ -170,15 +179,9 @@ void SGame::processMessage(const Message& msg)
 
 		Game& game = getGameEngine()->getGame();
 		std::vector<Player::ptr> players = game.getPlayers();
-		for (unsigned int i = 0; i < players.size(); i++)
-		{
-			if (id == players[i]->getId())
-			{
-				std::string sound = getTurnSound(i);
-				if (sound != "")
-					getSoundEngine()->pushSound(sound);
-			}
-		}
+		std::string sound = getTurnSound(id);
+		if (sound != "")
+			getSoundEngine()->pushSound(sound);
 		
 		//reveal the wall
 
@@ -188,16 +191,12 @@ void SGame::processMessage(const Message& msg)
 
 	case Message::MessageType::SV_DRAGOON_AWAKES:
 	{
-		//reveal the wall
-
 		getSoundEngine()->pushSound("dragoonWakesUp");
 	}
 	break;
 
 	case Message::MessageType::SV_DRAGOON_MOVES:
 	{
-		//reveal the wall
-
 		getSoundEngine()->pushSound("dragoonMoves");
 	}
 	break;
@@ -214,6 +213,29 @@ void SGame::processMessage(const Message& msg)
 		{
 			player->setTreasure(false);
 		}
+
+		Player::ptr player = game.getPlayer(id);
+		player->setTreasure(true);
+		getSoundEngine()->pushSound("treasureFound");
+	}
+	break;
+
+	case Message::MessageType::SV_PLAYER_TAKES_TREASURE_FROM_PLAYER:
+	{
+		int id;
+		if (!MessageBuilder::extractSvPlayerTakesTreasureFromPlayer(msg, id))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		std::vector<Player::ptr> players = game.getPlayers();
+		for (Player::ptr player : players)
+		{
+			player->setTreasure(false);
+		}
+
+		std::string sound = getTurnSound(id);
+		if (sound != "")
+			getSoundEngine()->pushSound(sound);
 
 		Player::ptr player = game.getPlayer(id);
 		player->setTreasure(true);
@@ -252,10 +274,11 @@ void SGame::processMessage(const Message& msg)
 	}
 }
 
-std::string SGame::getTurnSound(int pos)
+std::string SGame::getTurnSound(int id)
 {
-	if (pos < myTurnSoundByPlayerVectorPos.size() && pos >= 0)
-		return myTurnSoundByPlayerVectorPos[pos];
+	std::map<int, std::string>::iterator it = myTurnSoundByPlayerId.find(id);
+	if (it != myTurnSoundByPlayerId.end())
+		return it->second;
 
 	return "";
 }

@@ -40,6 +40,8 @@ public:
 
 	int getCurrentIdTurn() const { return myCurrentIdTurn; }
 
+	std::vector<int> getLocalIds() { return myLocalIds; }
+
 protected:
 	void initDefaultMaze();
 
@@ -55,5 +57,7 @@ protected:
 	int myMazeSize;
 
 	int myCurrentIdTurn;
+
+	std::vector<int> myLocalIds;
 };
 

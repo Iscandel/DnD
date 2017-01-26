@@ -28,6 +28,9 @@ bool Treasure::onArrivedOnCell(SGameServer& state, Player& player)
 			takeTreasure(state, player);
 			Message msg = MessageBuilder::svTakeTreasure(player.getId());
 			state.sendMessage(msg);
+			
+			msg = MessageBuilder::clEndTurn(player.getId());
+			state.sendMessage(msg);
 
 			return true;
 		}
@@ -43,6 +46,8 @@ bool Treasure::onArrivedOnCell(SGameServer&, Dragoon&)
 
 void Treasure::takeTreasure(SGameServer& state, Player& player)
 {
+	setTaken(true);
+
 	std::vector<Player::ptr> players = myGame->getPlayers();
 
 	for (Player::ptr tmpPlayer : players)

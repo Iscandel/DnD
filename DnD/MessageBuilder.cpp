@@ -86,6 +86,19 @@ Message MessageBuilder::clEndTurn()
 
 	return msg;
 }
+
+Message MessageBuilder::clEndTurn(int id)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CL_END_TURN;
+
+	msg.iData[Message::Key::ClEndTurn::ID] = id;
+
+	return msg;
+}
+
+
 Message MessageBuilder::svPlayerMove(int id, const Point<int>& coords)
 {
 	Message msg;
@@ -127,11 +140,15 @@ Message MessageBuilder::svMaze(const Maze::ptr maze)
 	return msg;
 }
 
-Message MessageBuilder::svWall()
+Message MessageBuilder::svWall(int cellX, int cellY, Direction direction)
 {
 	Message msg;
 
 	msg.type = Message::MessageType::SV_WALL;
+
+	msg.iData[Message::Key::SvWall::X] = cellX;
+	msg.iData[Message::Key::SvWall::Y] = cellY;
+	msg.iData[Message::Key::SvWall::DIRECTION] = (int) direction;
 
 	return msg;
 }
@@ -172,6 +189,17 @@ Message MessageBuilder::svTakeTreasure(int id)
 	msg.type = Message::MessageType::SV_TAKE_TREASURE;
 
 	msg.iData[Message::Key::SvTakeTreasure::ID] = id;
+
+	return msg;
+}
+
+Message MessageBuilder::svPlayerTakesTreasureFromPlayer(int winnerId)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_PLAYER_TAKES_TREASURE_FROM_PLAYER;
+
+	msg.iData[Message::Key::SvPlayerTakesTreasureFromPlayer::ID_WINNER] = winnerId;
 
 	return msg;
 }
@@ -306,6 +334,19 @@ bool MessageBuilder::extractSvTakeTreasure(const Message& msg, int& id)
 	return true;
 }
 
+
+bool MessageBuilder::extractSvPlayerTakesTreasureFromPlayer(const Message& msg, int& winnerId)
+{
+	if (msg.type != Message::MessageType::SV_PLAYER_TAKES_TREASURE_FROM_PLAYER ||
+		msg.iData.find(Message::Key::SvPlayerTakesTreasureFromPlayer::ID_WINNER) == msg.iData.end())
+	{
+		return false;
+	}
+
+	winnerId = msg.iData[Message::Key::SvPlayerTakesTreasureFromPlayer::ID_WINNER];
+
+	return true;
+}
 bool MessageBuilder::extractSvGameWon(const Message& msg, int& id)
 {
 	if (msg.type != Message::MessageType::SV_GAME_WON ||
@@ -330,6 +371,23 @@ bool MessageBuilder::extractSvPlayerWounded(const Message& msg, int& id, int& nu
 
 	id = msg.iData[Message::Key::SvPlayerWounded::ID];
 	numberLives = msg.iData[Message::Key::SvPlayerWounded::NUMBER_LIVES];
+
+	return true;
+}
+
+bool MessageBuilder::extractSvWall(const Message& msg, int& cellX, int& cellY, Direction& direction)
+{
+	if (msg.type != Message::MessageType::SV_WALL ||
+		msg.iData.find(Message::Key::SvWall::X) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvWall::Y) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvWall::DIRECTION) == msg.iData.end())
+	{
+		return false;
+	}
+
+	cellX = msg.iData[Message::Key::SvWall::X];
+	cellY = msg.iData[Message::Key::SvWall::Y];
+	direction = (Direction) msg.iData[Message::Key::SvWall::DIRECTION];
 
 	return true;
 }
