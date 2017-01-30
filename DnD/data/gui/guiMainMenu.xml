@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="soloButton" type="Button"> 
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <!--<position type="uniform">parent.width / 2 - width / 2; parent.height / 3</position>-->
+      <position type="relative">0.35; 0.3</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+   <text>Solo</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+  <widget name="multiButton" type="Button">
+    <dimensions>
+      <!--<position type="uniform">parent.width / 2 - width / 2; parent.height / 2</position>-->
+      <position type="relative">0.35; 0.5</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Multi</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+  <widget name="optionsButton" type="Button"> 
+    <text>Options</text>
+    <dimensions> 
+      <position type="relative">0.35; 0.7</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+ 
+    <textAlignment>center</textAlignment>
+  </widget>
+</WidgetList>

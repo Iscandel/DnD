@@ -23,6 +23,9 @@ void SGameServer::init()
 	CompleteMazeGenerator gene(game.getMazeUnperfectPerc());
 
 	game.createMaze(gene, game.getMazeSize(), game.getMazeSize());
+
+	Message msg = MessageBuilder::svGameRunning();
+	sendMessage(msg);
 }
 
 bool SGameServer::catchEvent(const sf::Event&)
@@ -72,6 +75,9 @@ void SGameServer::processMessage(const Message& msg)
 
 		Game& game = getGameEngine()->getGame();
 		Player::ptr player = game.getPlayer(id);
+
+		if (!player || id != game.getCurrentIdTurn())
+			return;
 
 		//Should not happen
 		if (nextPlayerIfHasLost(player))
@@ -306,35 +312,35 @@ bool SGameServer::nextPlayerIfHasLost(Player::ptr player)
 	return false;
 }
 
-void SGameServer::sendMessage(const Message& msg)
-{
-	getGameEngine()->processMessage(msg);
-//	getNetworkEngine()->sendMessageTCPToAll(msg);
-}
-
-void SGameServer::sendMessage(const Message& msg, int id)
-{
-//	getNetworkEngine()->sendMessageTCPToAllExcept(msg, id);
-}
-
-void SGameServer::sendMessageExceptLocal(const Message& msg)
-{
-//	getNetworkEngine()->sendMessageTCPToAll(msg);
-}
-
-void SGameServer::sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded)
-{
-	Game& game = getGameEngine()->getGame();
-	bool notLocal = false;
-
-	for (int excl : excluded)
-	{
-//		if (game.isLocalId(excl))
-			notLocal = true;
-	}
-
-	if (!notLocal)
-		getGameEngine()->processMessage(msg);
-
-//	getNetworkEngine()->sendMessageTCPToAllExcept(msg, excluded)
-}
+//void SGameServer::sendMessage(const Message& msg)
+//{
+//	getGameEngine()->processMessage(msg);
+////	getNetworkEngine()->sendMessageTCPToAll(msg);
+//}
+//
+//void SGameServer::sendMessage(const Message& msg, int id)
+//{
+////	getNetworkEngine()->sendMessageTCPToAllExcept(msg, id);
+//}
+//
+//void SGameServer::sendMessageExceptLocal(const Message& msg)
+//{
+////	getNetworkEngine()->sendMessageTCPToAll(msg);
+//}
+//
+//void SGameServer::sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded)
+//{
+//	Game& game = getGameEngine()->getGame();
+//	bool notLocal = false;
+//
+//	for (int excl : excluded)
+//	{
+////		if (game.isLocalId(excl))
+//			notLocal = true;
+//	}
+//
+//	if (!notLocal)
+//		getGameEngine()->processMessage(msg);
+//
+////	getNetworkEngine()->sendMessageTCPToAllExcept(msg, excluded)
+//}

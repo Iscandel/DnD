@@ -1,0 +1,136 @@
+#ifndef H__MOUSECLICKANALYZER_090920112213__H
+#define H__MOUSECLICKANALYZER_090920112213__H
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+#include <ctime>
+
+#include "Gaia/Config.h"
+#include "Gaia/Point.h"
+#include "Gaia/Event.h"
+#include "Gaia/tools/NonCopyable.h"
+#include "Gaia/tools/Exceptions.h"
+#include "Gaia/tools/Singleton.h"
+
+namespace gaia
+{
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Simple tool to estimate elapsed time.
+	///////////////////////////////////////////////////////////////////////////
+	class GAIA_DLL BasicTimer
+	{
+	public:
+		///////////////////////////////////////////////////////////////////////
+		/// \brief Constructor.
+		///////////////////////////////////////////////////////////////////////
+		BasicTimer()
+		{
+			if (CLOCKS_PER_SEC < 1000)
+				throw GuiException("clock() function is too inaccurate on your system");
+			
+			//Coefficient used to estimate elapsed time.
+			myMultiplier = 1000.f / CLOCKS_PER_SEC;
+
+			reset();
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		/// \brief Returns the time elapsed since the last reset of the timer, 
+		/// in millisecondes.
+		///
+		/// \return The elapsed time.
+		///////////////////////////////////////////////////////////////////////
+		float elapsedTime()
+		{
+			return (clock() / (CLOCKS_PER_SEC * myMultiplier) - myStartingTime);
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		/// \brief Reset the timer.
+		///////////////////////////////////////////////////////////////////////
+		void reset()
+		{
+			myStartingTime = getTime();
+		}
+
+	protected:
+		///////////////////////////////////////////////////////////////////////
+		/// \brief Returns the time elapsed since 1970 (?)
+		///
+		/// \return The elapsed time.
+		///////////////////////////////////////////////////////////////////////
+		float getTime() const
+		{
+			return (clock() / (CLOCKS_PER_SEC * myMultiplier));
+		}
+
+	protected:
+		float myMultiplier; ///< Coefficient.
+		float myStartingTime; ///< Starting time.
+	};
+
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Manages double clicks.
+///////////////////////////////////////////////////////////////////////////////
+class GAIA_DLL MouseClickAnalyzer : public NonCopyable
+{
+public:
+	///////////////////////////////////////////////////////////////////////////
+	// \brief Constructor.
+	///////////////////////////////////////////////////////////////////////////
+	MouseClickAnalyzer(void);
+
+	///////////////////////////////////////////////////////////////////////////
+	// \brief Destructor.
+	///////////////////////////////////////////////////////////////////////////
+	~MouseClickAnalyzer(void);
+
+	///Max time between 2 clicks, before dropping a double click
+	static const float TIME_OUT_DOUBLE_CLICK;
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Update step. It is only called when a mouse event was triggered.
+	///
+	/// \param ev : Mouse event just triggered.
+	/// \param mousePos : Mouse position in the window.
+	///
+	/// \return whether we should handle the next mouse event.
+	///////////////////////////////////////////////////////////////////////////
+	bool updateDoubleClick(const MouseEvent& ev, const Point& mousePos);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Indicates whether a double click was made.
+	///
+	/// \return true is a double click was made, false if not.
+	///////////////////////////////////////////////////////////////////////////
+	bool isDoubleClick() const {return myIsDoubleClick;}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Indicate whether we can take into account the mouse pressed / 
+	/// released event.
+	///
+	/// \return true if we shouldn't ignore mouse pressed / released events.
+	///////////////////////////////////////////////////////////////////////////
+	bool okPourClic() const {return myIsOkForClick;}
+
+	void setDoubleClickHandled(bool handled);
+
+protected:
+	///Number of clicks since the last clock reset
+	unsigned int myNumberOfClicks;
+	///Timer
+	BasicTimer myTimer;
+	//Last button pressed (left / right / middle)
+	MouseButton::Button myLastButton;
+	///Last click position
+	Point myLastPosition;
+	///We did a double click
+	bool myIsDoubleClick;
+	///Don't ignore mouse events
+	bool myIsOkForClick;
+};
+
+};
+
+#endif

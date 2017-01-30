@@ -83,6 +83,13 @@ Player::ptr EntityManager::getPlayer(int id)
 	return Player::ptr();
 }
 
+void EntityManager::clear()
+{
+	myEntities.clear();
+	myPlayers.clear();
+	myLostEntities.clear();
+}
+
 //Player::ptr EntityManager::getPlayer(int id)
 //{
 //	EntityMap::iterator it = myEntities.find(id);

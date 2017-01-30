@@ -38,6 +38,7 @@ namespace utiles
 	fichiers.push_back("./data/textures/player1.png");
 	fichiers.push_back("./data/textures/dragoon.png");
 	fichiers.push_back("./data/textures/player2.png");
+	fichiers.push_back("./data/textures/treasure.png");
 
 	ResourcesFile::getInstance()->create(fichiers, "./data/TexturesDat.dat");//, IdFichiers);
 

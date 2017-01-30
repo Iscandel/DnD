@@ -132,7 +132,7 @@ inline std::string BinaryFilePolicy::execute(std::ifstream& file)
 	file.read(buffer, stringSize);
 
 	std::string res(buffer);
-	delete buffer;
+	delete[] buffer;
 
 	return res;
 }

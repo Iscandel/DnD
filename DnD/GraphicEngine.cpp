@@ -1,22 +1,24 @@
 #include "GraphicEngine.h"
 #include "GameEngine.h"
-//#include "Gaia/Gaia.h"
-//#include "Gaia/SFMLRenderer/SFMLRenderer.h"
-//#include "Gaia/XMLLoader/XMLGaia.h"
+#include "Gaia/Gaia.h"
+#include "Gaia/SFMLRenderer.h"
+#include "Gaia/XMLGaia.h"
 
 GraphicEngine::GraphicEngine(void)
 :myElapsedTime(0)
 {
 	setWindowSize(Point<int>(1024, 768));
-	myWindow.create(sf::VideoMode(getWindowSizeX(), getWindowSizeY()), "Yop");
+	myWindow.create(sf::VideoMode(getWindowSizeX(), getWindowSizeY()), "DnD");
 	//myWindow.EnableVerticalSync(true);
 	myWindow.setFramerateLimit(60);
-	//gaia::GuiManager::getInstance()->setWindowSize(getWindowSizeX(), getWindowSizeY());
-	//gaia::BaseGraphics* graphics = new gaia::SFMLGraphics(&myWindow);
-	//graphics->setGlobalFont(gaia::PtrFont(new gaia::SFMLFont("./data/fonts/PORKYS_.ttf")));
-	//gaia::GuiManager::getInstance()->setGraphics(graphics);
-	//gaia::xml::XMLWidgetLookLoader::loadImageSet("./data/gui/imagesWindowsTheme.xml");
-	//gaia::xml::XMLWidgetLookLoader::loadLooks("./data/gui/lookWindowsTheme.xml");
+	myWindow.setKeyRepeatEnabled(false);
+	gaia::GuiManager::getInstance()->setWindowSize(getWindowSizeX(), getWindowSizeY());
+	gaia::BaseGraphics* graphics = new gaia::SFMLGraphics(&myWindow);
+	graphics->setGlobalFont(gaia::PtrFont(new gaia::SFMLFont("./data/fonts/arial.ttf")));
+	gaia::GuiManager::getInstance()->setGraphics(graphics);
+	gaia::GuiManager::getInstance()->enableKeyRepeat(true);
+	gaia::xml::XMLWidgetLookLoader::loadImageSet("./data/gui/imagesWindowsTheme.xml");
+	gaia::xml::XMLWidgetLookLoader::loadLooks("./data/gui/lookWindowsTheme.xml");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,7 +55,7 @@ void GraphicEngine::draw()
 	myClock.restart();
 	myWindow.clear(sf::Color::Black);
 	getGameEngine()->draw();
-	//gaia::GuiManager::getInstance()->draw();
+	gaia::GuiManager::getInstance()->draw();
 
 	myWindow.display();
 }

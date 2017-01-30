@@ -1,21 +1,27 @@
 #include "SGame.h"
 
+#include "DraggableImage.h"
 #include "GameEngine.h"
 #include "GameView.h"
 #include "GraphicEngine.h"
 #include "MessageBuilder.h"
 #include "NetworkEngine.h"
+#include "SGameWon.h"
 #include "SoundEngine.h"
 #include "TextureManager.h"
 #include "tools/Logger.h"
-//#include "tools/Tools.h"
+#include "ResourcesFile.h"
+
+#include "Gaia/addFactory.h"
+#include "Gaia/widgetRenderers/ImageBoxRenderer.h"
+#include "Gaia/Gaia.h"
+#include "Gaia/SFMLRenderer.h"
+#include "Gaia/XMLGaia.h"
 
 #include "CompleteMazeGenerator.h"
 
 SGame::SGame(void)
 {
-	myTurnSoundByPlayerId[1] = "p1NewTurn"; //To change
-	myTurnSoundByPlayerId[2] = "p2NewTurn"; //To change
 }
 
 
@@ -24,8 +30,34 @@ SGame::~SGame(void)
 }
 
 void SGame::init()
-{
+{	
 	setView(View::ptr(new GameView("data/gameViewPos.txt")));
+
+	gaia::GuiManager::getInstance()->clean();
+	gaia::xml::XMLGuiLoader::loadGUI("data/gui/guiGame.xml");
+
+	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+	manager->getWidget<gaia::TextBox>("sendBox")->setTextColor(gaia::Color(255, 255, 255));
+
+	initDraggable("./data/textures/dragoon.png", "dragoonImage", "draggableDragoon");
+	initDraggable("./data/textures/treasure.png", "treasureImage", "draggableTreasure");
+
+	//gaia::PtrWidget dragDrag = manager->createWidget("DraggableImage", "draggableDragoon");
+
+
+	
+
+	Game& game = getGameEngine()->getGame();
+	std::vector<Player::ptr> players = game.getPlayers();
+	for (unsigned int i = 0; i < players.size(); i++)	
+	{
+		if (i == 0)
+			myTurnSoundByPlayerId[players[i]->getId()] = "p1NewTurn";
+		else if (i == 1)
+			myTurnSoundByPlayerId[players[i]->getId()] = "p2NewTurn";
+		else
+			ILogger::log() << "Turn tunes : not designed for more than 2P\n";
+	}
 
 	Maze::ptr maze = getGameEngine()->getGame().getMaze();
 	for (int i = 0; i < maze->getSizeY(); i++)
@@ -41,6 +73,8 @@ void SGame::init()
 
 bool SGame::catchEvent(const sf::Event& ev)
 {
+	if (!gaia::GuiManager::getInstance()->processEvent(gaia::SFMLInput(ev)))
+	{
 		if (ev.type == sf::Event::KeyPressed)
 		{
 			if (ev.key.code == sf::Keyboard::Right)
@@ -74,6 +108,7 @@ bool SGame::catchEvent(const sf::Event& ev)
 				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
 			}
 		}
+	}
 	//Game& game = getGameEngine()->getGame();
 	//EntityManager entityManager = game.getEntityManager();
 
@@ -113,7 +148,7 @@ bool SGame::catchEvent(const sf::Event& ev)
 	//	{
 	//	}
 	//}
-	return true;
+	return false;
 }
 
 void SGame::update()
@@ -122,6 +157,8 @@ void SGame::update()
 
 	Game& game = getGameEngine()->getGame();
 	game.update(*this, getGraphicEngine()->getElapsedTime());
+
+	gaia::GuiManager::getInstance()->update(getGraphicEngine()->getElapsedTime());
 
 	//std::vector<TimerFunction>::iterator it = myTimerFunctions.begin();
 	//for (; it != myTimerFunctions.end();)
@@ -249,7 +286,12 @@ void SGame::processMessage(const Message& msg)
 		if (!MessageBuilder::extractSvGameWon(msg, id))
 			return;
 
+		Game& game = getGameEngine()->getGame();
+		Player::ptr winner = game.getPlayer(id);
+		game.setWinner(winner);
+
 		getSoundEngine()->pushSound("win");
+		pushClientGameState(GameState::ptr(new SGameWon));
 	}
 	break;
 
@@ -263,7 +305,6 @@ void SGame::processMessage(const Message& msg)
 		
 		Player::ptr player = game.getPlayer(id);
 		player->setNumberOfLives((Player::Lives)numberLives);
-
 
 		getSoundEngine()->pushSound("dragoonAttacks");
 	}
@@ -281,4 +322,21 @@ std::string SGame::getTurnSound(int id)
 		return it->second;
 
 	return "";
+}
+
+void SGame::initDraggable(const std::string& imageId, const std::string& imageName, const std::string& widgetName)
+{
+	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+
+	long int size = 0;
+	const bool freeMem = true;
+	char* data = ResourcesFile::getInstance()->getFile(imageId, "TexturesDat", &size);
+	sf::Texture* tex = new sf::Texture;
+	tex->loadFromMemory(data, size);
+	delete[] data;
+
+	gaia::Image im(gaia::PtrTexture(new gaia::SFMLTexture(tex)), imageName);
+	boost::shared_ptr<DraggableImage> dragDrag = manager->getWidget<DraggableImage>(widgetName);
+	manager->getWidget<DraggableImage>(widgetName)->setWidgetRenderer(new gaia::ImageBoxRenderer);
+	manager->getWidget<DraggableImage>(widgetName)->setImage(im);
 }

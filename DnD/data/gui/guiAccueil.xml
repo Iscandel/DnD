@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution 
+      selon la taille de la fenêtre.
+      Les nombres inférieurs à correspondent à des positions relatives indépendantes
+      de la résolution
+-->
+<WidgetList>
+  <widget type = "Label" name = "Title">
+    <text>Coincoinche!</text> 
+    <textColor>150 150 20</textColor>
+    <fontSize>70</fontSize>
+    <adjustSize>0</adjustSize>
+    <dimensions>
+      <position type="uniform">parent.width / 2 - width / 2 ; 0</position>
+      <width type="fixed">500</width>
+      <height type="fixed">200</height>
+    </dimensions> 
+  </widget>
+  <widget type="Label" name="Solo">
+    <text>Solo</text>
+    <textColor>150 150 50</textColor>
+    <fontSize>38</fontSize>
+    <dimensions>
+      <fullDimensions type="relative">0.3; 0.4; 0.17; 0.08</fullDimensions>
+    </dimensions>
+    <adjustSize>0</adjustSize>
+  </widget>
+  <widget type="Label" name="Multi">
+    <text>Multi</text>
+    <textColor>150 150 50</textColor>
+    <fontSize>38</fontSize>
+    <dimensions>
+      <fullDimensions type="relative">0.3; 0.6; 0.17; 0.08</fullDimensions>
+    </dimensions>
+    <adjustSize>0</adjustSize>
+  </widget>
+  <widget type="Label" name="Options">
+    <text>Options</text>
+    <textColor>150 150 50</textColor>
+    <fontSize>38</fontSize>
+    <dimensions>
+      <fullDimensions type="relative">0.3; 0.8; 0.17; 0.08</fullDimensions>
+    </dimensions>
+    <adjustSize>0</adjustSize>
+  </widget>
+ 
+  <!--<widget type = "Texte" name = "TextePass" position="0.390625 0.41666 100 40">
+    <textColor>255 255 255</textColor>
+    <texte>Mot de passe : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBPass" position="0.390625 0.455729166666 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Texte" name = "TexteIP" position="0.390625 0.546875 125 40">
+    <textColor>255 255 255</textColor>
+    <texte>Adresse IP du serveur : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBIP" position="0.390625 0.5859375 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Texte" name = "TextePort" position="0.390625 0.6770833333 100 40">
+    <textColor>255 255 255</textColor>
+    <texte>Port : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBPort" position="0.390625 0.7161458333 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "ImageBouton" name = "BoutonConnecter" position=" 0.33203125 0.78125 164 94">
+    -->
+  <!--<images>AccueilBoutonValiderN|AccueilBoutonValiderM|AccueilBoutonValiderC</images>-->
+  <!--
+  </widget>
+
+  <widget type = "Textfield" name = "Test" position="0.6 0.2 100 100">
+  </widget>
+
+  <widget type = "CheckBox" name = "maCB" position="0.4 0.3 100 10">
+  </widget>
+  <widget type = "ListBox" name = "Fhqjkl" position="100 100 100 100"/>
+  <widget type = "ComboBox" name = "agdsq" position="100 300 100 20"/>-->
+</WidgetList>

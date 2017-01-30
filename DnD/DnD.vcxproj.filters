@@ -34,37 +34,37 @@
     <Filter Include="Game\GameStates">
       <UniqueIdentifier>{c7ea8d3d-b742-4a7f-b4f2-373082ac00ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\ServerStates">
-      <UniqueIdentifier>{ddf384c4-608d-409d-8268-4cb3031972a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entity">
       <UniqueIdentifier>{d5d4e393-5339-4b18-ad84-b3012bb01ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{4fd4e31d-5b38-4ed5-905c-647641b4080b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Maze">
+      <UniqueIdentifier>{1baa415d-1b5f-4b25-9023-90189404e496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\EntityStates">
+      <UniqueIdentifier>{f902b86e-c16a-4916-838c-a96fbd7adbe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameStates\ClientStates">
+      <UniqueIdentifier>{403a63ca-98be-4fdc-aa33-a41e1e7b5378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameStates\ServerStates">
+      <UniqueIdentifier>{ddf384c4-608d-409d-8268-4cb3031972a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories">
+      <UniqueIdentifier>{b583c59e-7e3f-4229-ad16-409b5fe88eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Resources">
+      <UniqueIdentifier>{eb3d4242-f78a-4253-b6e6-6c4f58661ef9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="BaseMazeGenerator.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Side.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Direction.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="MazeUtils.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Maze.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="tools\Logger.cpp">
       <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>new</Filter>
@@ -78,25 +78,7 @@
     <ClCompile Include="DataTexture.cpp">
       <Filter>new</Filter>
     </ClCompile>
-    <ClCompile Include="MessageBuilder.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectFactory.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectFactoryManager.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
     <ClCompile Include="ResourcesManager.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="NetworkEngine.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="Message.cpp">
       <Filter>new</Filter>
     </ClCompile>
     <ClCompile Include="tools\Color.cpp">
@@ -105,13 +87,7 @@
     <ClCompile Include="tools\Exceptions.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
-    <ClCompile Include="SideFactory.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Action.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CompleteMazeGenerator.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="tools\Rng.cpp">
@@ -125,15 +101,6 @@
     </ClCompile>
     <ClCompile Include="ResourceImageManager.cpp">
       <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="CellDefManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SideDefManager.cpp">
-      <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="ResourceImage.cpp">
       <Filter>Resources</Filter>
@@ -162,23 +129,11 @@
     <ClCompile Include="ResourceSoundBuffer.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
-    <ClCompile Include="SoundBufferManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngine.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="SGameServer.cpp">
-      <Filter>Game\ServerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="SGame.cpp">
-      <Filter>Game\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="EmptyMazeGenerator.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Game\GameStates\ServerStates</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
       <Filter>Entity</Filter>
@@ -195,29 +150,122 @@
     <ClCompile Include="Treasure.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="EntityState.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="NetworkEngine.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWonView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Side.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="Maze.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="MazeUtils.cpp">
+      <Filter>Game\Maze</Filter>
     </ClCompile>
     <ClCompile Include="MovingDragoon.cpp">
+      <Filter>Game\EntityStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Game\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SGame.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SMainMenu.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SMainMenuSolo.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="CompleteMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityState.cpp">
+      <Filter>Game\EntityStates</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="SideFactory.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Direction.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactoryManager.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="SideDefManager.cpp">
+      <Filter>Game\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBufferManager.cpp">
+      <Filter>Game\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="CellDefManager.cpp">
+      <Filter>Game\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBuilder.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SGameBeginning.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SGameBeginningServer.cpp">
+      <Filter>Game\GameStates\ServerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGameWon.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGameView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBeginningView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDefManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SConnectionMenu.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SLobby.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SLobbyServer.cpp">
+      <Filter>Game\GameStates\ServerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="DraggableImage.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseMazeGenerator.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Side.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MazeUtils.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Maze.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="tools\NonCopyable.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -233,9 +281,6 @@
     <ClInclude Include="tools\Tools.h">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>new</Filter>
     </ClInclude>
@@ -248,25 +293,7 @@
     <ClInclude Include="DataTexture.h">
       <Filter>new</Filter>
     </ClInclude>
-    <ClInclude Include="MessageBuilder.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectFactory.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectFactoryManager.h">
-      <Filter>new</Filter>
-    </ClInclude>
     <ClInclude Include="ResourcesManager.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="NetworkEngine.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="Message.h">
       <Filter>new</Filter>
     </ClInclude>
     <ClInclude Include="tools\FileReading.h">
@@ -290,13 +317,7 @@
     <ClInclude Include="tools\WithSmartPtr.h">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="SideFactory.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Action.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CompleteMazeGenerator.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="tools\Rng.h">
@@ -310,15 +331,6 @@
     </ClInclude>
     <ClInclude Include="ResourceImageManager.h">
       <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="CellDefManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SideDefManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="ResourceImage.h">
       <Filter>Resources</Filter>
@@ -347,23 +359,11 @@
     <ClInclude Include="ResourceSoundBuffer.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="SoundBufferManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngine.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="SGameServer.h">
-      <Filter>Game\ServerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="SGame.h">
-      <Filter>Game\GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="EmptyMazeGenerator.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Game\GameStates\ServerStates</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>Entity</Filter>
@@ -380,10 +380,118 @@
     <ClInclude Include="Treasure.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="EntityState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="NetworkEngine.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWonView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Side.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Maze.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeUtils.h">
+      <Filter>Game\Maze</Filter>
     </ClInclude>
     <ClInclude Include="MovingDragoon.h">
+      <Filter>Game\EntityStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SGame.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SGameWon.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SMainMenu.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SMainMenuSolo.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="CompleteMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityState.h">
+      <Filter>Game\EntityStates</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="SideFactory.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactoryManager.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="SideDefManager.h">
+      <Filter>Game\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBufferManager.h">
+      <Filter>Game\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="CellDefManager.h">
+      <Filter>Game\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBuilder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SGameBeginning.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SGameBeginningServer.h">
+      <Filter>Game\GameStates\ServerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtils.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGameView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBeginningView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDefManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="SConnectionMenu.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SLobby.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SLobbyServer.h">
+      <Filter>Game\GameStates\ServerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="DraggableImage.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

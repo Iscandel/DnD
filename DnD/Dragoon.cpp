@@ -20,7 +20,14 @@ Dragoon::~Dragoon()
 void Dragoon::update(GameState& state, const Game& game, unsigned int)
 {
 	if (myGame->getCurrentIdTurn() != getId())
+	{
+		myTimer.reset();
 		return;
+	}
+
+	if (myTimer.elapsedTime() < 1.5)
+		return;
+	myTimer.reset();
 
 	//EntityStates could be used here (sleeping, chasing...))
 	if (isAwake())
@@ -40,8 +47,12 @@ bool Dragoon::onMoved(SGameServer& state)
 
 	Player::ptr player = getWeakestPlayerOnDragoonCell();
 
-	if(player)
-		return player->onArrivedOnCell(state, *this);
+	if (player)
+	{
+		handled = player->onArrivedOnCell(state, *this);
+		if (handled)
+			player->resetStepsRemaining();
+	}
 	else
 	{
 		for (Player::ptr player : players)

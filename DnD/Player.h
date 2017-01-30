@@ -38,10 +38,6 @@ public:
 
 	//void setState(boost::shared_ptr<EntityState<Player> > state);
 
-	void setName(const std::string& name) { myName = name; }
-
-	const std::string& getName() const { return myName; }
-
 	void setGame(Game* game) { myGame = game; }
 	const Game& getGame() const { return *myGame; }
 	Game& getGame() { return *myGame; }
@@ -61,7 +57,7 @@ public:
 	void removeOneLife();
 	void setNumberOfLives(Lives lives) { myLives = lives; }
 
-	const Point<int> getSecretRoomPos() const { return mySecretRoom; }
+	const Point<int>& getSecretRoomPos() const { return mySecretRoom; }
 
 	void setSecretRoomPos(const Point<int>& pos) { mySecretRoom = pos; }
 
@@ -93,7 +89,7 @@ public:
 protected:
 	//PtrTeam myTeam;
 	//std::vector<PtrCard> myCards;
-	std::string myName;
+
 	//std::shared_ptr<EntityState<Player> > myState;
 
 	Game* myGame;

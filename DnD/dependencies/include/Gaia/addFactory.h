@@ -1,0 +1,32 @@
+#ifndef H__ADDFACTORY_050920110156__H
+#define H__ADDFACTORY_050920110156__H
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+#include "Gaia/WidgetFactoryManager.h"
+
+namespace gaia
+{
+	///////////////////////////////////////////////////////////////////////////
+	/// Adds a defined list of widgets factories. This function shouldn't be 
+	/// called by users. It is for internal use only.
+	///////////////////////////////////////////////////////////////////////////
+	GAIA_DLL void addDefinedFactories();
+
+	///////////////////////////////////////////////////////////////////////////
+	/// This function adds a new widgets factory identified by its template 
+	/// name. So, the template parameter T should be a class derived
+	/// from BaseWidget.
+	///////////////////////////////////////////////////////////////////////////
+	template<class T>
+	void addFactory()
+	{
+		WidgetFactoryManager* manager = WidgetFactoryManager::getInstance();
+	
+		manager->addFactory(PtrWidgetFactory(new TplWidgetFactory<T>));
+	}
+
+} //end namespace
+
+#endif

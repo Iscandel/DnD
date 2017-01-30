@@ -3,6 +3,7 @@
 
 View::View(void)
 {
+	myFont.loadFromFile("./data/fonts/NeverwinterNights.ttf");
 }
 
 

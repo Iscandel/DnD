@@ -1,0 +1,441 @@
+===============================
+ Starting logs...	 28/01/2017 à 01:46:57
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.2 into numbers. Unable to parse string.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.4 into numbers. Unable to parse string.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:48:49
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.2 into numbers. Unable to parse string.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.4 into numbers. Unable to parse string.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:50:49
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.4 into numbers. Unable to parse string.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:52:38
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:54:21
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:54:36
+===============================
+
+[Information] -> XML look loading : unknown key text ignored.
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:54:48
+===============================
+
+[Information] -> XML look loading : unknown key text ignored.
+===============================
+ Starting logs...	 28/01/2017 à 01:55:07
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 01:55:15
+===============================
+
+[Error] -> Layout infos : Failed to convert 0.5 - width / 2 ; 0.6 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 02:01:06
+===============================
+
+[Error] -> Layout infos : Failed to convert parent.width / 2 - width / 2; 0.5 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 03:33:03
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 0. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 03:33:31
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 0. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 03:33:45
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 0. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 03:33:54
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+===============================
+ Starting logs...	 28/01/2017 à 03:34:47
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+===============================
+ Starting logs...	 28/01/2017 à 03:35:16
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+[Error] -> Layout infos : cannot retrieve widget child from : 3. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 3.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 3. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 3.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+===============================
+ Starting logs...	 28/01/2017 à 03:35:22
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+===============================
+ Starting logs...	 28/01/2017 à 03:35:34
+===============================
+
+[Error] -> Layout infos : cannot retrieve widget child from : 2. Unable to parse string.
+[Error] -> Layout infos : cannot deduce value from 2.. Unable to parse string.
+[Error] -> Layout infos: divide by 0.
+===============================
+ Starting logs...	 28/01/2017 à 03:37:29
+===============================
+
+[Error] -> Layout infos : Failed to convert parent.height / 3; parent.height * 0.7 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 03:39:42
+===============================
+
+[Error] -> Layout infos : Failed to convert parent.height / 3; parent.height / 1.42 into numbers. Unable to parse string.
+===============================
+ Starting logs...	 28/01/2017 à 17:00:47
+===============================
+
+[Error] -> Widget button1P not found
+===============================
+ Starting logs...	 28/01/2017 à 23:22:01
+===============================
+
+[Error] -> XML look loader : fullDimensions hasn't got 4 argument : 0.2 0.2 0.3 0.1.
+===============================
+ Starting logs...	 28/01/2017 à 23:24:58
+===============================
+
+[Error] -> XML look loader : fullDimensions hasn't got 4 argument : 0.2 0.2 0.3 0.1.
+===============================
+ Starting logs...	 28/01/2017 à 23:25:53
+===============================
+
+[Error] -> XML look loader : fullDimensions hasn't got 4 argument : 0.2 0.2 0.3 0.1.
+===============================
+ Starting logs...	 28/01/2017 à 23:27:13
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Widget sendBox not found
+===============================
+ Starting logs...	 28/01/2017 à 23:27:38
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 28/01/2017 à 23:31:35
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 28/01/2017 à 23:32:09
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 28/01/2017 à 23:32:28
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 28/01/2017 à 23:32:58
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 00:43:37
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 01:01:54
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 01:02:43
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 01:03:35
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 01:04:46
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 01:55:52
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:18:04
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:18:07
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:22:50
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:22:58
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:26:01
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:26:04
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:27:33
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 29/01/2017 à 03:27:37
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 01:37:56
+===============================
+
+[Error] -> Cannot add image to ImageBox : No renderer set yet.
+===============================
+ Starting logs...	 30/01/2017 à 01:39:13
+===============================
+
+[Error] -> Cannot add image to ImageBox : No renderer set yet.
+===============================
+ Starting logs...	 30/01/2017 à 01:40:37
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 01:40:47
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 01:45:33
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Widget with the same name and different already exists :draggableDragoon. Cannot register
+===============================
+ Starting logs...	 30/01/2017 à 01:55:13
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:00:21
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:00:42
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:16:13
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:20:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:22:11
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:23:00
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:25:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:27:47
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:28:43
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:29:05
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:29:19
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:29:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:29:45
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:30:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:31:06
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:31:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:34:50
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 02:39:21
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:03:37
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:04:17
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:04:50
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:05:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:08:16
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.

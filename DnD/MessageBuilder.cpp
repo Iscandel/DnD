@@ -11,6 +11,18 @@ MessageBuilder::~MessageBuilder(void)
 {
 }
 
+Message MessageBuilder::connection(const std::string& ip, const std::string& pseudo)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CONNECTION;
+
+	msg.sData[Message::Key::Connection::IP] = ip;
+	msg.sData[Message::Key::Connection::PSEUDO] = pseudo;
+
+	return msg;
+}
+
 Message MessageBuilder::clDragonAwakes()
 {
 	Message msg;
@@ -29,6 +41,19 @@ Message MessageBuilder::SvNewPlayer(int id, int team, const std::string& name)
 	//msg.iData[Message::Key::SvNewPlayer::ID] = id;
 	//msg.iData[Message::Key::SvNewPlayer::TEAM] = team;
 	//msg.sData[Message::Key::SvNewPlayer::NAME] = name;
+
+	return msg;
+}
+
+Message MessageBuilder::clChoosesSecretRoom(int x, int y)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CL_CHOOSES_SECRET_ROOM;
+
+	msg.iData[Message::Key::ClChoosesSecretRoom::X] = x;
+	msg.iData[Message::Key::ClChoosesSecretRoom::Y] = y;
+
 
 	return msg;
 }
@@ -238,6 +263,58 @@ Message MessageBuilder::svPlayerLooses(int id)
 	return msg;
 }
 
+Message MessageBuilder::svGameRunning()
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_GAME_RUNNING;
+
+	return msg;
+}
+
+Message MessageBuilder::svConnectionResult(int result, int error)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_CONNECTION_RESULT;
+
+	msg.iData[Message::Key::SvConnectionResult::RESULT] = result;
+	msg.iData[Message::Key::SvConnectionResult::ERROR_CONNEC] = error;
+
+	return msg;
+}
+
+bool MessageBuilder::extractConnection(const Message& msg, std::string& ip, std::string& pseudo)
+{
+	if (msg.type != Message::MessageType::CONNECTION ||
+		msg.sData.find(Message::Key::Connection::IP) == msg.sData.end() ||
+		msg.sData.find(Message::Key::Connection::PSEUDO) == msg.sData.end())
+	{
+		return false;
+	}
+
+	ip = msg.sData[Message::Key::Connection::IP];
+	pseudo = msg.sData[Message::Key::Connection::PSEUDO];
+
+	return true;
+}
+
+bool MessageBuilder::extractClChoosesSecretRoom(const Message& msg, int& id, int& x, int& y)
+{
+	if (msg.iData.find(Message::Key::ClChoosesSecretRoom::ID) == msg.iData.end() ||
+		msg.iData.find(Message::Key::ClChoosesSecretRoom::X) == msg.iData.end() ||
+		msg.iData.find(Message::Key::ClChoosesSecretRoom::Y) == msg.iData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::ClChoosesSecretRoom::ID];
+	x = msg.iData[Message::Key::ClChoosesSecretRoom::X];
+	y = msg.iData[Message::Key::ClChoosesSecretRoom::Y];
+
+	return true;
+}
+
 bool MessageBuilder::extractClMove(const Message& msg, Direction& direction, int& id)
 {
 	if (msg.iData.find(Message::Key::clMove::ID) == msg.iData.end() ||
@@ -388,6 +465,21 @@ bool MessageBuilder::extractSvWall(const Message& msg, int& cellX, int& cellY, D
 	cellX = msg.iData[Message::Key::SvWall::X];
 	cellY = msg.iData[Message::Key::SvWall::Y];
 	direction = (Direction) msg.iData[Message::Key::SvWall::DIRECTION];
+
+	return true;
+}
+
+bool MessageBuilder::extractSvConnectionResult(const Message& msg, int& result, int& error)
+{
+	if (msg.type != Message::MessageType::SV_CONNECTION_RESULT ||
+		msg.iData.find(Message::Key::SvConnectionResult::RESULT) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvConnectionResult::ERROR_CONNEC) == msg.iData.end())
+	{
+		return false;
+	}
+
+	result = msg.iData[Message::Key::SvConnectionResult::RESULT];
+	error = msg.iData[Message::Key::SvConnectionResult::ERROR_CONNEC];
 
 	return true;
 }

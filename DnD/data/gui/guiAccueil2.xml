@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution 
+      selon la taille de la fenêtre.
+      Les nombres inférieurs à correspondent à des positions relatives indépendantes
+      de la résolution
+-->
+<WidgetList>
+  <!--<widget type = "ImageBox" name = "ImgFond" position="0.2109375 0 370 455"/>
+  <widget type = "Label" name = "TexteErreur">
+    <position type="absolute" keepAsRelative="true">100 200 100 50</position>
+    <textColor>255 255 255</textColor>
+    <fontSize>15</fontSize>
+    <text>Hello, world !</text>
+    <adjustSize>0</adjustSize>
+  </widget>
+  <widget type = "Label" name = "TexteLogin">
+    <position type="absolute" keepAsRelative="true">200 200 100 50</position>
+    <textColor>255 255 255</textColor>
+    <text>Login : </text>
+    <fontSize>15</fontSize>
+    <adjustSize>0</adjustSize>
+  </widget>-->
+  <widget type="Button" name="val">
+    <dimensions>
+      <fullDimensions type="relative">0.2; 0.1; 0.17; 0.08</fullDimensions>
+      </dimensions>
+  </widget>
+  <widget type = "TextBox" name = "champ">
+    <dimensions>
+      <fullDimensions type="relative">0.390625; 0.3255208333; 0.15; 0.06</fullDimensions>
+    </dimensions>
+    <textColor>255 0 0</textColor>
+    <!--<couleurFond>0 0 0</couleurFond>-->
+    <fontSize>15</fontSize>
+  </widget>
+  <widget type = "TextField" name = "champ2">
+    <dimensions>
+      <fullDimensions type="relative">0.40; 0.62; 0.55; 0.20</fullDimensions>
+    </dimensions>
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <fontSize>15</fontSize>
+  </widget>
+  <!--<widget type = "Texte" name = "TextePass" position="0.390625 0.41666 100 40">
+    <textColor>255 255 255</textColor>
+    <texte>Mot de passe : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBPass" position="0.390625 0.455729166666 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Texte" name = "TexteIP" position="0.390625 0.546875 125 40">
+    <textColor>255 255 255</textColor>
+    <texte>Adresse IP du serveur : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBIP" position="0.390625 0.5859375 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Texte" name = "TextePort" position="0.390625 0.6770833333 100 40">
+    <textColor>255 255 255</textColor>
+    <texte>Port : </texte>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "Textbox" name = "TBPort" position="0.390625 0.7161458333 94 25">
+    <textColor>255 0 0</textColor>
+    <couleurFond>0 0 0</couleurFond>
+    <taillePolice>10.625</taillePolice>
+  </widget>
+  <widget type = "ImageBouton" name = "BoutonConnecter" position=" 0.33203125 0.78125 164 94">
+    -->
+  <!--<images>AccueilBoutonValiderN|AccueilBoutonValiderM|AccueilBoutonValiderC</images>-->
+  <!--
+  </widget>
+
+  <widget type = "Textfield" name = "Test" position="0.6 0.2 100 100">
+  </widget>
+
+  <widget type = "CheckBox" name = "maCB" position="0.4 0.3 100 10">
+  </widget>
+  <widget type = "ListBox" name = "Fhqjkl" position="100 100 100 100"/>
+  <widget type = "ComboBox" name = "agdsq" position="100 300 100 20"/>-->
+</WidgetList>

@@ -2,6 +2,8 @@
 
 #include "SoundBufferManager.h"
 
+#include "tools/Logger.h"
+
 SoundEngine::SoundEngine(void)
 :myIsSoundEnabled(true)
 ,myIsMusicEnabled(false)
@@ -72,6 +74,18 @@ void SoundEngine::updateSounds()
 
 	//if(erased)
 	//	SoundBufferManager::getInstance()->freeResources();
+}
+
+void SoundEngine::playMusic(const std::string& path)
+{
+	if (myMusic.openFromFile(path))
+	{
+		//myMusic.play();
+	}
+	else
+	{
+		ILogger::log() << "Music " << path << " cannot be loaded.\n";
+	}
 }
 
 void SoundEngine::playSound(const std::string& id)

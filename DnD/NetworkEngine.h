@@ -73,6 +73,7 @@ protected:
 
 	bool myIsReceptionThreadRunning;
 
+	std::string myIP;
 	sf::IpAddress myAddress;
 	unsigned int myPort;
 	std::string myNick;

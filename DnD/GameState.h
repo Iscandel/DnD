@@ -39,12 +39,12 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	/// Pauses the game state.
 	///////////////////////////////////////////////////////////////////////////
-	virtual void pause() = 0;
+	virtual void pause() { myIsPaused = true; }
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Resumes the game state.
 	///////////////////////////////////////////////////////////////////////////
-	virtual void resume() = 0;
+	virtual void resume() { myIsPaused = false; }
 
 	///////////////////////////////////////////////////////////////////////////
 	/// Updates the game state.
@@ -74,8 +74,10 @@ public:
 	/// \param state The new state to set.
 	///////////////////////////////////////////////////////////////////////////
 	void setClientGameState(GameState::ptr state);
+	void pushClientGameState(GameState::ptr state);
 
 	void setServerGameState(GameState::ptr state);
+	void pushServerGameState(GameState::ptr state);
 
 	bool isVisible() const {return myIsVisible;}
 
@@ -85,7 +87,7 @@ public:
 
 	virtual void sendMessage(const Message& m, int id = 0) = 0;
 
-	bool isNotLocalId(int id);
+	//bool isNotLocalId(int id);
 
 protected:
 	bool myIsPaused;
@@ -104,7 +106,13 @@ class ServerGameState : public GameState
 {
 public:
 	//Id not used here
-	virtual void sendMessage(const Message& m, int id = 0) { std::runtime_error("Send message"); }
+	virtual void sendMessage(const Message& m, int id = 0) override;
+
+	void sendMessageToAllExcept(const Message& msg, int id);
+
+	void sendMessageExceptLocal(const Message& msg);
+
+	void sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded);
 };
 
 #endif

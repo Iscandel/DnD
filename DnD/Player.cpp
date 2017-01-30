@@ -24,6 +24,9 @@ Player::Player(int id, Game* game)
 
 	myCurrentMaxSteps = myStepsByLives[myLives];
 	resetStepsRemaining();
+
+	myAbstractPos = Point<int>(-1, -1);
+	//mySecretRoom = Point<int>(-1, -1);
 }
 
 

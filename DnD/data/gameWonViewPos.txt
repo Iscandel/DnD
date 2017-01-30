@@ -1,0 +1,7 @@
+#for a 1024 * 768 window
+#nbElements
+1
+#name
+text
+0.
+0.3

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="BidWindow" type="Window">
+    <dimensions>
+      <fullDimensions type="relative">0.2 ; 0.2 ; 0.45 ; 0.45</fullDimensions>
+    </dimensions>
+    <children>
+      <widget name="valueCombo" type="ComboBox">
+        <dimensions>
+          <position type="relative">0.2 ; 0.2</position>
+          <width type="relative">0.3</width>
+          <height type="fixed">25</height>
+        </dimensions>
+        <!--<text>80
+        90
+        100
+        110
+        120\n130\n140\n150\n160\nCapot\nGénérale</text>-->
+      </widget>
+    </children>
+    <children>
+      <widget name="colorCombo" type="ComboBox">
+        <dimensions>
+          <position type="relative">0.55 ; 0.2</position>
+          <width type="relative">0.3</width>
+          <height type="fixed">25</height>
+        </dimensions>
+        <textColor>150 120 80</textColor>
+      </widget>
+    </children>
+    <children>
+      <widget name="okButton" type="Button">
+        <dimensions>
+          <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+          <position type="relative">0.2 ; 0.6</position>
+          <width type="relative">0.3</width>
+          <height type="fixed">35</height>
+        </dimensions>
+        <text>Valider</text>
+        <textAlignment>center</textAlignment>
+      </widget>
+    </children>
+    <children>
+      <widget name="passButton" type="Button">
+        <dimensions>
+          <!--<fullDimensions type="relative">0.55 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+          <position type="relative">0.55 ; 0.6 </position>
+          <width type="relative">0.3</width>
+          <height type="fixed">35</height>
+        </dimensions>
+        <text>Passer</text>
+        <textAlignment>center</textAlignment>
+      </widget>
+    </children>
+  </widget>
+</WidgetList>

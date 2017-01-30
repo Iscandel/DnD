@@ -1,5 +1,5 @@
 #nbElements
-21
+22
 #1
 #id elem
 1
@@ -65,6 +65,10 @@
 #21
 21
 ./data/textures/player2.png
+#22
+22
+./data/textures/treasure.png
+
 
 
 

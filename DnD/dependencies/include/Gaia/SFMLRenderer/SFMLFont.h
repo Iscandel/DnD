@@ -1,0 +1,122 @@
+#ifndef H__SFMLFONT__130620112052__H
+#define H__SFMLFONT__130620112052__H
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+#include "Gaia/SFMLRenderer/SFMLConfig.h"
+#include "Gaia/BaseFont.h"
+#include "Gaia/BaseGraphics.h"
+
+#include <SFML/Graphics.hpp>
+
+namespace gaia
+{
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Class for manipulating SFML font.
+///////////////////////////////////////////////////////////////////////////////
+class GAIA_SFML_DLL SFMLFont : public BaseFont
+{
+public:
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	///////////////////////////////////////////////////////////////////////////////
+	SFMLFont(void);
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	///
+	/// \param path : Path to the font file to use.
+	///////////////////////////////////////////////////////////////////////////////
+	SFMLFont(const std::string& path);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	/// 
+	/// \param font : Pointer to the SFML font to use. This class destroys the
+	/// font when it changes, or in the destructor.
+	/// \param s
+	///////////////////////////////////////////////////////////////////////////
+	SFMLFont(sf::Font* font);//, const std::string& s = "");
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Destructor.
+	///////////////////////////////////////////////////////////////////////////////
+	~SFMLFont(void);
+
+	//@override
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Draws a string.
+	///
+	/// You shouldn't call this function directly. Use the graphics renderer instead.
+	///
+	/// \param graphics : The graphics rendering object.
+	/// \param text : Text to draw.
+	/// \param x : Top left corner.
+	/// \param y : Top left corner.
+	/// \param col : Text color.
+	/// \param charHeight : Height of the chars to display.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	virtual void drawText(BaseGraphics* graphics, 
+						  const std::string& text, 
+						  int x, 
+						  int y, 
+						  const Color& col, 
+						  unsigned int charHeight);
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Assigns a new SFML font.
+	///
+	/// \param newFont : Pointer to the SFML font. The previous font is destroyed.	///
+	///////////////////////////////////////////////////////////////////////////////
+	void setFont(sf::Font* newFont);
+	
+	//float getTextWidth()
+	//{
+ //       return myString.GetRect().Width;
+	//}
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Computes the width of a given string, with a given character heigth.
+	///
+	/// \param text : Text for which we need the width.
+	/// \param charHeight : Height of the character.
+	///
+	/// \return The text width.
+	///////////////////////////////////////////////////////////////////////////////
+	float getTextWidth(const std::string& text, unsigned int height);
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Computes the height of a given string, with a given character heigth.
+	///
+	/// \param text : Text for which we need the height.
+	/// \param charHeight : Height of the character.
+	///
+	/// \return The text height.
+	///////////////////////////////////////////////////////////////////////////////
+	virtual float getTextHeight(const std::string& text, unsigned int charHeight);
+
+	//void setTexte(const std::string& texte) {myString.SetString(texte);}
+	//std::string getTexte() const {return myString.GetString();}
+
+	//sf::Text& getSFMLChaine() {return myString;}
+
+	///////////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the contained SFML font.
+	///
+	/// \return The encapsulated font.
+	///////////////////////////////////////////////////////////////////////////////
+	const sf::Font& getSFMLFont() const {return *myFont;}
+
+protected:
+	sf::Font* myFont; ///< Pointer to the SFML font.
+	sf::Text myString; ///< Visual string used to draw text.
+};
+
+/// Smart pointer to SFMLFont.
+typedef boost::shared_ptr<SFMLFont> PtrSFMLFont;
+
+} //end namespace
+
+#endif

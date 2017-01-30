@@ -3,6 +3,7 @@
 
 #include "tools/Rng.h"
 
+#include "tools/Timer.h"
 #include "Player.h"
 
 class Game;
@@ -55,5 +56,7 @@ protected:
 	bool myIsAwake;
 	Game* myGame;
 	Rng myRng;
+
+	Timer myTimer;
 };
 

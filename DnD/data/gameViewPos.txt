@@ -1,6 +1,6 @@
-#for a 1280 * 1024 window
+#for a 1024 * 768 window
 #nbElements
-4
+7
 #name
 cellSize
 0.0546875
@@ -20,4 +20,12 @@ shadowSize
 #name
 boardOffset
 0.015625
-0.01953125
+0.158203125
+#name
+playerName
+0.64359375
+0.
+#name
+livesAndSteps
+0.64359375
+0.2

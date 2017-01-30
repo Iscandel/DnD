@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<imageList>
+  <imageSet name ="SetDarkskin">
+    <imageSheet name="All">
+      <texture>./darkskinAll.PNG</texture>
+      <image name = "ButtonN" x="0" y="0" l="134" h="23"/>
+      <image name = "ButtonM" x="0" y="38" l="134" h="23"/>
+      <image name = "ButtonC" x="0" y="71" l="134" h="23"/>
+
+      <image name = "TextBoxBackN" x="0" y="145" l="156" h="23"/>
+      
+      <image name = "CheckboxN" x="175" y="177" l="13" h="13"/>
+      <image name = "CheckboxM" x="223" y="177" l="13" h="13"/>
+      <image name = "CheckboxC" x="271" y="177" l="13" h="13"/>
+      <image name = "CheckboxChecked" x="317" y="204" l="13" h="13"/>
+
+      <image name = "RadioButtonN" x="44" y="763" l="18" h="18"/>
+      <image name = "RadioButtonSelected" x="44" y="789" l="18" h="18"/>
+      
+      <image name = "ComboBoutonN" x="225" y="0" l="23" h="22"/>
+      <image name = "ComboBoutonM" x="225" y="36" l="23" h="22"/>
+      <image name = "ComboBoutonC" x="225" y="72" l="23" h="22"/>
+      <image name = "ScrollbarUpN" x="44" y="533" l="10" h="37"/>
+      <image name = "ScrollbarUpM" x="83" y="533" l="10" h="37"/>
+      <image name = "ScrollbarUpC" x="125" y="533" l="10" h="37"/>
+      <image name = "ScrollbarDownN" x="44" y="665" l="10" h="37"/>
+      <image name = "ScrollbarDownM" x="83" y="665" l="10" h="37"/>
+      <image name = "ScrollbarDownC" x="125" y="665" l="10" h="37"/>
+      <image name = "Thumb" x="46" y="598" l="7" h="25"/>
+      <image name = "ThumbM" x="83" y="596" l="11" h="44"/>
+      <image name = "ThumbC" x="83" y="596" l="11" h="44"/>
+      <image name = "CloseButtonN" x="212" y="490" l="21" h="21"/>
+      <image name = "CloseButtonM" x="274" y="490" l="21" h="21"/>
+      <image name = "CloseButtonC" x="340" y="490" l="21" h="21"/>
+
+      <image name = "leftEdgeWindow" x="187" y="272" l="13" h="152"/>
+      <image name = "topLeftEdgeWindow" x="187" y="243" l="13" h="29"/>
+      <image name = "topEdgeWindow" x="200" y="243" l="248" h="29"/>
+      <image name = "rightEdgeWindow" x="448" y="272" l="13" h="152"/>
+      <image name = "topRightEdgeWindow" x="448" y="243" l="13" h="29"/>
+      <image name = "bottomLeftEdgeWindow" x="187" y="426" l="13" h="12"/>
+      <image name = "bottomEdgeWindow" x="200" y="426" l="248" h="12"/>
+      <image name = "bottomRightEdgeWindow" x="448" y="426" l="13" h="12"/>
+      <image name = "centerWindow" x="200" y="272" l="248" h="152"/>
+
+      <image name = "SliderThumbN" x="0" y="425" l="13" h="24"/>
+      <image name = "SliderThumbM" x="47" y="425" l="13" h="24"/>
+      <image name = "SliderThumbC" x="94" y="425" l="13" h="24"/>
+
+      <image name = "Slider" x="30" y="510" l="106" h="3"/>
+    </imageSheet>
+  </imageSet>
+</imageList>

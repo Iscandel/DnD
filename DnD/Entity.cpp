@@ -71,3 +71,26 @@ Rect<double> GraphicEntity::getBoundingRect(int windowSizeX, int windowSizeY)
 	//return boundingRect;
 }
 
+void GraphicEntity::addResourceImage(const std::string& idName, ResourceImage::ptr res)
+{
+	myImages[idName] = res;
+}
+
+void removeResourceImage(const std::string& idName)
+{
+}
+
+void GraphicEntity::addCurrentDrawnImage(const std::string& name, int num)
+{
+	ResourceImagesMap::iterator it = myImages.find(name);
+	if (it != myImages.end())
+	{
+		myCurrentImages.push_back(it->second->getImage(num));
+	}
+}
+
+void GraphicEntity::setCurrentDrawnImage(const std::string& name, int num)
+{
+	myCurrentImages.clear();
+	addCurrentDrawnImage(name, num);
+}

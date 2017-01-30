@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="chatBox" type="TextField">
+    <dimensions>
+      <fullDimensions type="relative">0.2 ; 0.2 ; 0.4 ; 0.3</fullDimensions>
+    </dimensions>
+  </widget>
+  <widget name="listBox" type="ListBox">
+    <dimensions>
+      <fullDimensions type="relative">0.62 ; 0.2 ; 0.2 ; 0.3</fullDimensions>
+    </dimensions>
+  </widget>
+  <widget name="sendBox" type="TextBox">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.2 ; 0.55</position>
+      <width type="relative">0.4</width>
+      <height type="fixed">35</height>
+    </dimensions>
+  </widget>
+  <widget name="returnButton" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.2 ; 0.65</position>
+      <width type="relative">0.2</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Return</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+  <widget name="startButton" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.42 ; 0.65</position>
+      <width type="relative">0.2</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Start</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+</WidgetList>

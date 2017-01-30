@@ -1,0 +1,102 @@
+#ifndef H__ICARET_150820111735__H
+#define H__ICARET_150820111735__H
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+#include <algorithm>
+#include "Gaia/Config.h"
+
+namespace gaia
+{
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Interface representing a text cursor and provinding functions about
+/// text selection.
+///
+/// A selection is composed of 2 values : first selection position, and last
+/// selection position. When you are selecting text, the caret position is
+/// moving according to the last position value. When you are selecting, the
+/// first selection value is never modified, only the second one.
+///////////////////////////////////////////////////////////////////////////////
+class GAIA_DLL ICaret
+{
+public:
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the position of the text insertion.
+	///////////////////////////////////////////////////////////////////////////
+	ICaret(void);
+	//virtual ~ICaret(void) {}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the position of the text insertion.
+	///
+	/// \return The current position of the caret.
+	///////////////////////////////////////////////////////////////////////////
+	virtual unsigned int getCaretPosition() const {return myCaret;}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Sets the current position of the text insertion.
+	/// 
+	/// If the position is not correct, nothing is done.
+	///
+	/// \param pos : Position to set.
+	/// \param textLength : Length to the associated text.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void setCaretPosition(unsigned int pos, size_t textLength);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the selected text's start position.
+	///
+	/// \return The begining of the selection.
+	///////////////////////////////////////////////////////////////////////////
+	virtual unsigned int getSelectionStart() const;
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the selected text's end position.
+	///
+	/// \return The end position of the selection.
+	///////////////////////////////////////////////////////////////////////////
+	virtual unsigned int getSelectionEnd() const;
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Sets the selected text's start position. Must be lower (or equal)
+	/// than the end of the selection.
+	///
+	/// \pram pos : The begining of the selection.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void setSelectionStart(unsigned int pos);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Sets the selected text's end position. Must be superior (or equal)
+	/// than the begining of the selection.
+	///
+	/// \pram pos : The end of the selection.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void setSelectionEnd(unsigned int pos); //Add something not to exceed text length
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Moves the last selection value according to the given quantity.
+	/// 
+	/// If the position is not correct, nothing is done.
+	///
+	/// \param quantity : Amount of move.
+	/// \param textLength : Length of the associated text.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void moveSelection(int quantity, size_t textLength);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Cancels the selection, setting the start and the end of the
+	/// selection to the caret position
+	///////////////////////////////////////////////////////////////////////////
+	virtual void resetSelection();
+
+protected:
+	//bool myIsDragging;
+	unsigned int myCaret;
+	unsigned int myFirstSelection;
+	unsigned int myLastSelection;
+};
+
+} //end namespace
+
+#endif

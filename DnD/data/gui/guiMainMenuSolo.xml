@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="onePlayer" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.35; 0.3</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>1 player</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+  <widget name="twoPlayers" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.35; 0.5</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>2 players</text>
+    <textAlignment>center</textAlignment>
+  </widget>
+</WidgetList>

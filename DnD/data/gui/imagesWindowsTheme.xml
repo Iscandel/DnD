@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imageList>
+  <imageSet name ="SetWindows">
+    <imageSheet name="All">
+      <texture>./data/gui/WindowsTheme2.PNG</texture>
+      <image name = "CheckboxN" x="120" y="85" l="13" h="13"/>
+      <image name = "CheckboxM" x="137" y="85" l="13" h="13"/>
+      <image name = "CheckboxC" x="153" y="85" l="13" h="13"/>
+      <image name = "RadioButtonN" x="120" y="12" l="11" h="11"/>
+      <image name = "RadioButtonSelected" x="146" y="12" l="11" h="11"/>
+      <image name = "CheckboxCoche" x="172" y="85" l="13" h="13"/>
+      <image name = "ComboBoutonN" x="600" y="534" l="15" h="15"/>
+      <image name = "ComboBoutonM" x="600" y="534" l="15" h="15"/>
+      <image name = "ComboBoutonC" x="600" y="534" l="15" h="15"/>
+      <image name = "ScrollbarUpN" x="599" y="279" l="17" h="17"/>
+      <image name = "ScrollbarUpM" x="599" y="279" l="17" h="17"/>
+      <image name = "ScrollbarUpC" x="599" y="279" l="17" h="17"/>
+      <image name = "ScrollbarDownN" x="600" y="534" l="15" h="15"/>
+      <image name = "ScrollbarDownM" x="600" y="534" l="15" h="15"/>
+      <image name = "ScrollbarDownC" x="600" y="534" l="15" h="15"/>
+      <image name = "Thumb" x="563" y="112" l="17" h="71"/>
+      <image name = "CloseButtonN" x="570" y="10" l="15" h="15"/>
+      <image name = "CloseButtonM" x="587" y="10" l="15" h="15"/>
+      <image name = "CloseButtonC" x="604" y="10" l="15" h="15"/>
+      <image name = "ButtonN" x="245" y="43" l="35" h="27"/>
+      <image name = "ButtonM" x="202" y="43" l="35" h="27"/>
+      <image name = "ButtonC" x="159" y="43" l="35" h="27"/>
+	  <image name = "leftEdgeWindow" x="112" y="153" l="12" h="288"/>
+	  <image name = "topLeftEdgeWindow" x="112" y="121" l="12" h="32"/>
+	  <image name = "topEdgeWindow" x="124" y="121" l="418" h="32"/>
+	  <image name = "rightEdgeWindow" x="542" y="153" l="12" h="288"/>
+	  <image name = "topRightEdgeWindow" x="542" y="121" l="12" h="32"/>
+	  <image name = "bottomLeftEdgeWindow" x="112" y="441" l="12" h="12"/>
+	  <image name = "bottomEdgeWindow" x="124" y="441" l="418" h="12"/>
+	  <image name = "bottomRightEdgeWindow" x="542" y="441" l="12" h="12"/>
+	  <image name = "centerWindow" x="124" y="153" l="416" h="284"/>
+    </imageSheet>
+  </imageSet>
+</imageList>

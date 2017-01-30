@@ -11,16 +11,6 @@ public:
 	~SGameServer();
 
 	///////////////////////////////////////////////////////////////////////////
-	/// Pauses the game state.
-	///////////////////////////////////////////////////////////////////////////
-	virtual void pause() {}
-
-	///////////////////////////////////////////////////////////////////////////
-	/// Resumes the game state.
-	///////////////////////////////////////////////////////////////////////////
-	virtual void resume() {}
-
-	///////////////////////////////////////////////////////////////////////////
 	/// Updates the game state.
 	///////////////////////////////////////////////////////////////////////////
 	virtual void update();
@@ -31,13 +21,13 @@ public:
 
 	virtual void processMessage(const Message& msg);
 
-	void sendMessage(const Message& msg);
+	//void sendMessage(const Message& msg);
 
-	void sendMessage(const Message& msg, int id);
+	//void sendMessage(const Message& msg, int id);
 
-	void sendMessageExceptLocal(const Message& msg);
+	//void sendMessageExceptLocal(const Message& msg);
 
-	void sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded);
+	//void sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded);
 
 	void handlePlayerDefeat(Player::ptr player);
 

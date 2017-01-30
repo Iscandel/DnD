@@ -36,12 +36,15 @@ void GameEngine::update()
 {
 	processQueue();
 		
-	for(unsigned int i = 0; i < myClientGameStates.size(); i++)
+	for (unsigned int i = 0; i < myServerGameStates.size(); i++)
 	{
 		//Update if not paused
 		if (!myServerGameStates[i]->isPaused())
 			myServerGameStates[i]->update();
+	}
 
+	for (unsigned int i = 0; i < myClientGameStates.size(); i++)
+	{
 		//Update if not paused
 		if(!myClientGameStates[i]->isPaused())
 			myClientGameStates[i]->update();
@@ -153,6 +156,12 @@ bool GameEngine::handleEvent(const sf::Event& ev)
 	}
 	else if(ev.type == sf::Event::KeyPressed)
 	{
+		if (ev.key.code == sf::Keyboard::Escape)
+		{
+			stopGame();
+			handled = true;
+		}
+			//	monEstDebug = !monEstDebug;
 		//if(ev.Key.Code == sf::Keyboard::F12)
 		//	monEstDebug = !monEstDebug;
 	}

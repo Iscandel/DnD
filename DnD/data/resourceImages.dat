@@ -1,5 +1,5 @@
 #nbElements
-21
+22
 #1
 1
 #nbImages
@@ -166,6 +166,14 @@
 1
 #textureId
 21
+#Texture sub rect (1 yes, 0 no)
+0
+#22
+22
+#nbImages
+1
+#textureId
+22
 #Texture sub rect (1 yes, 0 no)
 0
 

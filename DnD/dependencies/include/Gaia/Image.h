@@ -1,0 +1,82 @@
+#ifndef H__IMAGE_080620111937__H_
+#define H__IMAGE_080620111937__H_
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+#include "Gaia/BaseTexture.h"
+#include "Gaia/Rectangle.h"
+
+namespace gaia
+{
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Class for manipulating images.
+///
+/// An image contains a texture and a rectangle defining the image area on the
+/// texture. Thus, a same texture can be used (and shared) by different 
+/// images.
+///////////////////////////////////////////////////////////////////////////////
+class GAIA_DLL Image
+{
+public:
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	///
+	/// \param texture : Smart pointer to the texture used.
+	/// \param name : name given to the image.
+	/// \param dest : destination area defining the image on the texture.
+	///////////////////////////////////////////////////////////////////////////
+	Image(PtrTexture texture = PtrTexture(), 
+		  const std::string& name = "", 
+		  const IntRect& dest = IntRect(-1, -1, -1, -1));
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Destructor
+	///////////////////////////////////////////////////////////////////////////
+	~Image();
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the texture contained in the image.
+	///
+	/// \return A smart pointer to the texture.
+	///////////////////////////////////////////////////////////////////////////
+	PtrTexture getTexture() {return myTexture;}
+
+///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the texture contained in the image.
+	///
+	/// \return A constant reference to the texture.
+	///////////////////////////////////////////////////////////////////////////
+	const PtrTexture& getTexture() const {return myTexture;}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the texture contained in the image, converting it into
+	/// the specified type (inherited from BaseTexture).
+	///
+	/// Be careful : for performance reasons, the validity of the conversion is
+	/// not checked.
+	///
+	/// \param T : Template parameter representing the type  to which the base
+	/// texture has to be converted.
+	///
+	/// \return A pointer to the texture.
+	///////////////////////////////////////////////////////////////////////////
+	template<class T>
+	boost::shared_ptr<T> getConvertedTexture() {return boost::static_pointer_cast<T>(myTexture);}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Returns the area defining the image on the texture.
+	///
+	/// \return A rectangle defining the zone.
+	///////////////////////////////////////////////////////////////////////////
+	const IntRect& getRect() const {return myDestination;}
+
+protected:
+	PtrTexture myTexture;
+	std::string myName;
+	IntRect myDestination;
+};
+
+};
+
+#endif

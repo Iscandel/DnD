@@ -45,6 +45,8 @@ public:
 
 	void update();
 
+	void clear();
+
 	//std::vector<PtrGraphicEntity> getEntities() {return myEntities;}
 
 	//Player::ptr getPlayer();

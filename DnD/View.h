@@ -6,6 +6,8 @@
 #include <memory>
 #include "tools/Point.h"
 
+#include <SFML/Graphics.hpp>
+
 class GameState;
 
 class View
@@ -36,6 +38,8 @@ public:
 
 protected:
 	PosMap myPositions;
+
+	sf::Font myFont;
 };
 
 //typedef std::shared_ptr<View> PtrView;

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<lookList resolutionX="640" resolutionY="480">
+  <look name="ImageBox">
+    <widgetRenderer>ImageBoxRenderer</widgetRenderer>
+  </look>
+
+  <look name = "Button">
+    <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+    <image state="normal" imageSheet="All" name="ButtonN"/>
+    <image state="hover" imageSheet="All" name="ButtonM"/>
+    <image state="click" imageSheet="All" name="ButtonC"/>
+  </look>
+
+  <look name="TextBox">
+    <widgetRenderer>TextBoxSimpleRenderer</widgetRenderer>
+    <!--<image></image>-->
+    <area name="text">
+      <fullDimensions type="relative">0.05 ; 0.05 ; 0.88 ; 0.88</fullDimensions>
+    </area>
+    <!--<area name ="text" x = "0.05" y = "0.05" l = "0.88" h = "0.88"></area>-->
+  </look>
+
+  <look name="NumericTextBox">
+    <widgetRenderer>TextboxSimpleRenderer</widgetRenderer>
+    <!--<image></image>-->
+    <area name="text">
+      <fullDimensions type="relative">0.02 ; 0.02 ; 0.96 ; 0.96</fullDimensions>
+    </area>
+    <!--<area name ="text" x = "0.02" y = "0.02" l = "0.96" h = "0.96"></area>-->
+    <!--en coords absolues ?-->
+  </look>
+  <look name="Label">
+    <widgetRenderer>LabelRenderer</widgetRenderer>
+  </look>
+
+  <look name="LinkedLabels">
+    <widgetRenderer>LabelRenderer</widgetRenderer>
+  </look>
+
+  <look name="ProgressBar">
+    <widgetRenderer>ProgressBarImageRenderer</widgetRenderer>
+  </look>
+
+  <look name = "ScrollBar">
+    <widgetRenderer>ScrollBarBaseRenderer</widgetRenderer>
+    <!--<image></image>-->
+    <!--<area name ="thumb" x = "3" y = "4" l = "5" h = "5"></area>-->
+    <child type="Button" genericName="_DecreaseButton">
+      <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+      <dimensions>
+        <position type="fixed" screenDependent="true">0; 0</position>
+        <width type="fixed" screenDependent="true">16</width>
+        <height type="fixed" screenDependent="true">20</height>
+      </dimensions>
+      <!--<position>0 0 0.9999 0.18</position>-->
+      <image state="normal" imageSheet="All" name="ScrollbarUpN"/>
+      <image state="hover" imageSheet="All" name="ScrollbarUpM"/>
+      <image state="click" imageSheet="All" name="ScrollbarUpC"/>
+    </child>
+    <child type="Button" genericName="_IncreaseButton">
+      <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+      <!--<position>0 0.8 0.9999 0.18</position>-->
+      <dimensions>
+        <position type="uniform" screenDependent="true">0 ; parent.height - height</position>
+        <width type="fixed" screenDependent="true">16</width>
+        <height type="fixed" screenDependent="true">20</height>
+      </dimensions>
+      <image state="normal" imageSheet="All" name="ComboBoutonN"/>
+      <image state="hover" imageSheet="All" name="ComboBoutonM"/>
+      <image state="click" imageSheet="All" name="ComboBoutonC"/>
+    </child>
+    <child type="Button" genericName="_Thumb">
+      <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+      <dimensions>
+        <position type="uniform" screenDependent="true">0 ; parent.height - height - parent._IncreaseButton.height</position>
+        <width type="fixed" screenDependent="true">16</width>
+        <height type="fixed" screenDependent="true">23</height>
+      </dimensions>
+      <!--<position>0 0.62 0.999 0.20</position>-->
+      <image state="normal" imageSheet="All" name="Thumb"/>
+      <image state="hover" imageSheet="All" name="Thumb"/>
+      <image state="click" imageSheet="All" name="Thumb"/>
+    </child>
+  </look>
+
+  <look name="TextField">
+    <widgetRenderer>TextFieldSimpleRenderer</widgetRenderer>
+    <area name="text">
+      <position type="fixed"  screenDependent="true">8; 8</position>
+      <width type="uniform" screenDependent="true">_VerticalScrollBar.x - 8 - 2</width>
+      <height type="uniform" screenDependent="true">height - 4</height>
+    </area>
+    <!--<area name="text" x="0.03" y="0" l="0.82" h="0.9999"></area>-->
+    <!--<area name="text">
+      <position type="relative">0.03 0</position>
+      <width type="uniform">width - _VerticalScrollBar.width</width>
+      <height type="uniform">height - _HorizontalScrollBar.heigth</height>
+    </area>-->
+    <child type="ScrollBar" genericName="_VerticalScrollBar">
+      <widgetRenderer>ScrollBarBaseRenderer</widgetRenderer>
+      <!--<position type="fixed" screenDependent="true" anchor="right">4 3</position>-->
+      <dimensions>
+        <position type="uniform" screenDependent="true">parent.width - 4 - width; 3</position>
+        <width type="fixed" screenDependent="true">16</width>
+        <height type="uniform">parent.height - 4</height>
+        <!--<position>0.88 0 0.10 0.9999</position>-->
+      </dimensions>
+      <!--<position>0 0 0 0</position>-->
+    </child>
+  </look>
+
+  <look name="ListBox">
+    <widgetRenderer>ListBoxSimpleRenderer</widgetRenderer>
+    <!--<zone nom="zoneItems" x="0.03" y="0" l="0.82" h="0.9999"></zone>-->
+    <!--<enfant type="Scrollbar" nomGenerique="__ScrollbarVerticale__">
+      <moduleRendu>ScrollbarRendu</moduleRendu>
+      <position>0.88 0 0.10 0.9999</position>
+    </enfant>-->
+  </look>
+
+  <look name="CheckBox">
+    <widgetRenderer>CheckboxImageRenderer</widgetRenderer>
+    <image state="normal" imageSheet="All" name="CheckboxN"/>
+    <image state="hover" imageSheet="All" name="CheckboxM"/>
+    <image state="click" imageSheet="All" name="CheckboxC"/>
+    <image state="checked" imageSheet="All" name="CheckboxCoche"/>
+  </look>
+
+  <look name="ComboBox">
+    <child type="Button" genericName="_ButtonComboBox">
+      <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+      <image state="normal" imageSheet="All" name="ComboBoutonN"/>
+      <image state="hover" imageSheet="All" name="ComboBoutonM"/>
+      <image state="click" imageSheet="All" name="ComboBoutonC"/>
+      <dimensions>
+        <position type="uniform" screenDependent="true">width - 16; 0</position>
+        <width type="fixed" screenDependent="true">16</width>
+        <height type="uniforme" screenDependent="true">height</height>
+      </dimensions>
+      <!--<position>0.80 0 0.20 0.9999</position>-->
+    </child>
+    <child type="TextBox" genericName="_TextBoxComboBox">
+      <widgetRenderer>TextBoxSimpleRenderer</widgetRenderer>
+      <dimensions>
+        <position type="fixed" screenDependent="true">0 ; 0</position>
+        <width type="uniform" screenDependent="true">16</width>
+        <height type="fixed" screenDependent="true">20</height>
+      </dimensions>
+      <!--<position>0 0 0.80 0.9999</position>-->
+    </child>
+    <child type="ComboListBox" genericName="_ListBoxComboBox">
+      <widgetRenderer>ListBoxSimpleRenderer</widgetRenderer>
+      <dimensions>
+        <position type="fixed" screenDependent="true">0 ; height - 20</position>
+        <width type="uniform" screenDependent="true">16</width>
+        <height type="fixed" screenDependent="true">20</height>
+      </dimensions>
+      <!--<position>0 0.99 0.8 0.9999</position>-->
+    </child>
+  </look>
+
+  <look name="TitleBar">
+    <widgetRenderer>TitleBarSimpleRenderer</widgetRenderer>
+    <child type="Button" genericName="_CloseButton">
+      <widgetRenderer>ButtonImageRenderer</widgetRenderer>
+      <dimensions>
+        <position type="uniform" screenDependent="true">parent.width - width - 4; 2 </position>
+        <width type="fixed" screenDependent="true">21</width>
+        <height type="fixed" screenDependent="true">21</height>
+      </dimensions>
+      <image state="normal" imageSheet="All" name="CloseButtonN"/>
+      <image state="hover" imageSheet="All" name="CloseButtonM"/>
+      <image state="click" imageSheet="All" name="CloseButtonC"/>
+    </child>
+  </look>
+
+  <look name="Window">
+    <widgetRenderer>WindowSimpleRenderer</widgetRenderer>
+    <child type="TitleBar" genericName="_TitleBar">
+      <widgetRenderer>TitleBarSimpleRenderer</widgetRenderer>
+      <dimensions>
+        <position type="fixed" screenDependent="true">0 ; 0 </position>
+        <width type="relative">1.</width>
+        <height type="fixed" screenDependent="true">20</height>
+      </dimensions>
+    </child>
+  </look>
+</lookList>

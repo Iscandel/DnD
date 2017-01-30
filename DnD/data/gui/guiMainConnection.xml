@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="pseudoLabel" type="Label">
+    <dimensions>
+      <fullDimensions type="relative">0.2 ; 0.2 ; 0.3 ; 0.1</fullDimensions>
+    </dimensions>
+    <text>Pseudo ?</text>
+    <textColor>255 255 255</textColor>
+  </widget>
+  <widget name="pseudoField" type="TextBox">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.2 ; 0.25</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <textColor>255 255 255</textColor>
+  </widget>
+  <widget name="ipLabel" type="Label">
+    <dimensions>
+      <fullDimensions type="relative">0.2 ; 0.35 ; 0.3 ; 0.1</fullDimensions>
+    </dimensions>
+    <text>IP ?</text>
+    <textColor>255 255 255</textColor>
+  </widget>
+  <widget name="ipField" type="TextBox">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.2 ; 0.40</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <textColor>255 255 255</textColor>
+  </widget>
+  <widget name="connectionButton" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.2 ; 0.60</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Connection</text>
+    <textColor>255 255 255</textColor>
+  </widget>
+  <widget name="hostButton" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.6 ; 0.60</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Host</text>
+    <textColor>255 255 255</textColor>
+  </widget>
+</WidgetList>

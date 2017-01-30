@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--Les dimensions sont données pour du 640 * 480. Tout est redimensionné à l'exécution selon la taille de la fenêtre. Les nombres inférieurs à correspondent à des positions relatives indépendantes de la résolution -->
+
+<WidgetList>
+  <widget name="chatBox" type="TextField">
+    <dimensions>
+      <fullDimensions type="relative">0.65 ; 0.4 ; 0.3 ; 0.3</fullDimensions>
+    </dimensions>
+  </widget>
+  <widget name="sendBox" type="TextBox">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.65 ; 0.72</position>
+      <width type="relative">0.3</width>
+      <height type="fixed">35</height>
+    </dimensions>
+  </widget>
+  <widget name="sendButton" type="Button">
+    <dimensions>
+      <!--<fullDimensions type="relative">0.2 ; 0.6 ; 0.3 ; 0.3</fullDimensions>-->
+      <position type="relative">0.7 ; 0.78</position>
+      <width type="relative">0.2</width>
+      <height type="fixed">35</height>
+    </dimensions>
+    <text>Send</text>
+    <textAlignment>center</textAlignment>
+  </widget>  
+  <widget name="draggableDragoon" type="DraggableImage">
+    <dimensions>
+      <fullDimensions type="relative">0.88 ; 0.12 ; 0.06 ; 0.1</fullDimensions>
+    </dimensions>
+  </widget>
+<widget name="draggableTreasure" type="DraggableImage">
+    <dimensions>
+      <fullDimensions type="relative">0.88 ; 0.25 ; 0.06 ; 0.1</fullDimensions>
+    </dimensions>
+  </widget>
+</WidgetList>

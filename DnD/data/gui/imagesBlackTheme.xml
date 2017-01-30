@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imageList>
+  <imageSet name ="SetBase">
+    <imageSheet name="All">
+      <texture>./Theme-Black.PNG</texture>
+      <image name = "CheckboxN" x="152" y="127" l="16" h="18"/>
+      <image name = "CheckboxM" x="152" y="127" l="16" h="18"/>
+      <image name = "CheckboxC" x="152" y="149" l="16" h="17"/>
+      <image name = "CheckboxCoche" x="42" y="0" l="13" h="13"/>
+      <image name = "ComboBoutonN" x="15" y="153" l="17" h="20"/>
+      <image name = "ComboBoutonM" x="18" y="14" l="17" h="20"/>
+      <image name = "ComboBoutonC" x="36" y="14" l="17" h="20"/>
+      <image name = "ScrollbarUpN" x="42" y="153" l="16" h="16"/>
+      <image name = "ScrollbarUpM" x="15" y="153" l="16" h="16"/>
+      <image name = "ScrollbarUpC" x="65" y="153" l="16" h="16"/>
+      <image name = "Thumb" x="15" y="177" l="16" h="16"/>
+      <image name = "CloseButtonN" x="0" y="34" l="21" h="21"/>
+      <image name = "CloseButtonM" x="22" y="34" l="21" h="21"/>
+      <image name = "CloseButtonC" x="44" y="34" l="21" h="21"/>
+      <image name = "ButtonN" x="0" y="14" l="100" h="24"/>
+      <image name = "ButtonM" x="8" y="49" l="79" h="24"/>
+      <image name = "ButtonC" x="8" y="84" l="79" h="26"/>
+    </imageSheet>
+  </imageSet>
+</imageList>

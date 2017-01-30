@@ -8,6 +8,8 @@
 #include "tools/Rectangle.h"
 #include "tools/Tools.h"
 #include "tools/WithSmartPtr.h"
+#include "ResourceImage.h"
+#include "tools/WithSmartPtr.h"
 
 //#include "DataImage.h"
 
@@ -30,6 +32,9 @@ class Entity : public WithSmartPtr<Entity>
 public: 
 	typedef std::shared_ptr<Entity> ptr;
 public:
+	typedef std::map<std::string, ResourceImage::ptr> ResourceImagesMap;
+
+public:
 	Entity(int id);
 	~Entity(void);
 
@@ -48,12 +53,18 @@ public:
 
 	void defeat() { myHasLost = true; }
 	bool hasLost() const { return myHasLost; }
+
+	void setName(const std::string& name) { myName = name; }
+
+	const std::string& getName() const { return myName; }
 	
 protected:
 	int myId;
 	bool myToDestroy;
 
 	bool myHasLost;
+
+	std::string myName;
 	//std::map<std::string, std::vector<DataImage<sf::Image> > > myImages;
 };
 
@@ -97,6 +108,14 @@ public:
 
 	Rect<double> getBoundingRect(int windowSizeX, int windowSizeY);
 
+	void addResourceImage(const std::string& idName, ResourceImage::ptr res);// {myImages.insert(std::make_pair(idName, res));}// = res;}
+																			 //void setImageBack(PtrResourceImage res) {myImageBack = res;}
+																			 //PtrResourceImage getCurrentImage() {return myCurrentImage;} //ou std::vector. Retourner éventuellement l'objet Image
+	std::vector<Image>& getCurrentImages() { return myCurrentImages; } //ou std::vector. Retourner éventuellement l'objet Image
+
+	void addCurrentDrawnImage(const std::string& name, int num = 0);
+	void setCurrentDrawnImage(const std::string& name, int num = 0);
+
 protected:
 	Rect<double> myDimensions;
 	Point<int> myAbstractPos;
@@ -106,6 +125,10 @@ protected:
 
 	float myRotation;
 	Point<double> myOrigin;
+
+	ResourceImagesMap myImages;
+	//PtrResourceImage myCurrentImage;
+	std::vector<Image> myCurrentImages;
 };
 
 

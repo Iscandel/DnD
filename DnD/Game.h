@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Treasure.h"
 
+class PlayerDef;
 class CellDef;
 class GameState;
 
@@ -20,7 +21,7 @@ public:
 
 	EntityManager& getManager() { return myManager; }
 
-	int getIdToPlay() const { return myIdToPlay; }
+	//int getIdToPlay() const { return myIdToPlay; }
 
 	int getMazeUnperfectPerc() const { return myMazeUnperfectPerc; }
 	int getMazeSize() const { return myMazeSize; }
@@ -35,23 +36,38 @@ public:
 	Dragoon::ptr getDragoon();
 	Treasure::ptr getTreasure();
 	std::vector<Entity::ptr> getEntities();
+	Entity::ptr getEntity(int id);
 	Player::ptr getPlayer(int id);
 	std::vector<Player::ptr> getPlayers();
 
 	int getCurrentIdTurn() const { return myCurrentIdTurn; }
+	void setTurnToFirstPlayer();
 
 	std::vector<int> getLocalIds() { return myLocalIds; }
+	bool isLocalId(int id) const;
+
+	bool addLocalId(int id);
+
+	void setWinner(Player::ptr winner) { myWinner = winner; }
+	Player::ptr getWinner() { return myWinner; }
+
+	void reset();
+
+	void setup1PGame(const std::string& name);
+
+	void setup2PGame(const std::string& p1, const std::string& p2);
 
 protected:
 	void initDefaultMaze();
 
+	PlayerDef& getIndexPlayerDef(int index);
 	CellDef& getIndexCellDef(int index);
 
 protected:
 	Maze::ptr myMaze;
 	EntityManager myManager;
 
-	int myIdToPlay;
+	//int myIdToPlay;
 
 	int myMazeUnperfectPerc;
 	int myMazeSize;
@@ -59,5 +75,9 @@ protected:
 	int myCurrentIdTurn;
 
 	std::vector<int> myLocalIds;
+
+	Player::ptr myWinner;
+
+	const std::string DRAGOON_NAME;
 };
 

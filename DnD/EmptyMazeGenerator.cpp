@@ -15,9 +15,9 @@ Maze::ptr EmptyMazeGenerator::generate(int x, int y)
 {
 	Maze::ptr maze = Maze::ptr(new Maze(x, y, true));
 
-	for (int i = 1; i < maze->getSizeY() - 1; i++)
+	for (int i = 0; i < maze->getSizeY(); i++)
 	{
-		for (int j = 1; j < maze->getSizeX() - 1; j++)
+		for (int j = 0; j < maze->getSizeX(); j++)
 		{
 			auto factory = ObjectFactoryManager<Side>::getInstance()->getFactory("Void");
 			maze->setSide(j, i, Direction::NORTH, factory->create());

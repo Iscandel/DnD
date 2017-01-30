@@ -1,12 +1,15 @@
 #pragma once
 
-#include "View.h"
+#include "BaseGameView.h"
 
+#include "Entity.h"
 #include "Maze.h"
+#include "Player.h"
+
 #include <SFML/Graphics.hpp>
 
 class GameView :
-	public View
+	public BaseGameView
 {
 public:
 	GameView(const std::string& path);
@@ -16,9 +19,7 @@ public:
 	void loadViewPosition(const std::string& path);
 
 protected:
-	void drawRect(GameState& state, const sf::Color& col, const sf::Vector2f& pos, const sf::Vector2f& size);
-	void drawCellShadows(GameState& state, double x, double y, int windowSizeX, int windowSizeY);
-	void drawImage(GameState& state, std::vector<Image>& resource, const sf::Vector2f& pixelSize, const sf::Vector2f& pos, float rotation);
-	void drawSecretRoom(GameState& state, int x, int y, int windowsSizeX, int windowSizeY, const sf::Color& fill);
+	void drawPlayer(GameState& state, Player::ptr player, int windowSizeX, int windowSizeY);
+	sf::Color getSecretRoomColorById(int id);
 };
 

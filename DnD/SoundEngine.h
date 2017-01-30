@@ -61,6 +61,8 @@ public:
 
 	void pushSound(const std::string& id);
 
+	void playMusic(const std::string& path);
+
 protected:
 	bool myIsSoundEnabled;
 	bool myIsMusicEnabled;
@@ -68,6 +70,8 @@ protected:
 	SoundList mySounds;
 
 	std::queue<Sound> myWaitingSounds;
+
+	sf::Music myMusic;
 };
 
 #endif

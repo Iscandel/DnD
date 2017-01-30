@@ -2,6 +2,7 @@
 
 #include "Tools/Logger.h"
 
+#include "SMainMenu.h"
 #include "SGame.h"
 #include "SGameServer.h"
 
@@ -44,7 +45,7 @@ void CommonInterface::run()
 {
 	try
 	{
-		GameState::ptr sgame(new SGame);
+		GameState::ptr sgame(new SMainMenu);//new SGame);
 		myGame.setClientGameState(sgame);//lobby);
 		ServerGameState::ptr serverGame(new SGameServer);
 		myGame.setServerGameState(serverGame);

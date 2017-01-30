@@ -1,5 +1,5 @@
-#ifndef H__NONCOPYABLE_050920110044__H
-#define H__NONCOPYABLE_050920110044__H
+#ifndef H__NONCOPYABLE_300120170039__H
+#define H__NONCOPYABLE_300120170039__H
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Utility class thats prevents any derived class to be copyable

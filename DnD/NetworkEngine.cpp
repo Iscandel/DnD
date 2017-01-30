@@ -10,12 +10,13 @@ NetworkEngine::NetworkEngine()
 :myIsMulti(false)
 ,myIsServer(false)
 ,myPort(0)
+,myIP("127.0.0.1")
 ,myReceptionThreadIsRunning(false)
 ,myConnectionThread(&NetworkEngine::th_connection, this)
 ,myReceptionThread(&NetworkEngine::th_reception, this)
 ,myIsReceptionThreadRunning(false)
 {
-	myAddress = sf::IpAddress("127.0.0.1");;//sf::IpAddress::GetLocalAddress();//sf::IpAddress("127.0.0.1");
+	myAddress = sf::IpAddress(myIP);;//sf::IpAddress::GetLocalAddress();//sf::IpAddress("127.0.0.1");
 	myPort = 8205;
 }
 
@@ -59,11 +60,14 @@ void NetworkEngine::processMessage(const Message& msg)
 	//	}
 	//	break;
 	//}
-	//case Message::MessageType::CL_CONNECTION:
-	//{
-	//	myNick = msg.sData[Message::Key::ClConnection::NAME];
-	//	connection();
-	//}
+	case Message::MessageType::CONNECTION:
+	{
+		if (!MessageBuilder::extractConnection(msg, myIP, myNick))
+			return;
+
+		myAddress = sf::IpAddress(myIP);
+		connection();
+	}
 	default:
 		break;
 	}
@@ -103,112 +107,114 @@ void NetworkEngine::sendMessage(const Message& M)
 
 void NetworkEngine::th_connection()
 {
-	//Message msg;
+	Message msg;
 
 	sf::Socket::Status status = myClientSocket.connect(myAddress, myPort);
 	if(status != sf::Socket::Done)
 	{
-		//msg = MessageBuilder::SvConnectionResult(0, WSAGetLastError());
+		msg = MessageBuilder::svConnectionResult(0, WSAGetLastError());
 		ILogger::log(ILogger::ERRORS) << "Error " << WSAGetLastError() << " on connection.\n";
 	}
 	else
 	{
-		//msg = MessageBuilder::SvConnectionResult(1, 0);
+		ILogger::log() << "Connected.\n";
+		//msg = MessageBuilder::svConnectionResult(1, 0);
 		//sendMessageToGame(MessageBuilder::ClConnection(myNick));
 
 		if(!myIsReceptionThreadRunning)
 		{
 			reception();
 		}
-
+		
+		//Message m = MessageBuilder::clConnection(myPseudo);
 		mySelector.add(myClientSocket);
 		mySockets.push_back(&myClientSocket);
 	}
 
-	//sendMessageToGame(msg);
+	sendMessageToGame(msg);
 }
 
 void NetworkEngine::th_reception()
 {
-	//if(isServer())
-	//	mySelector.add(myListener);
+	if(isServer())
+		mySelector.add(myListener);
 
-	//myReceptionThreadIsRunning = true;
+	myReceptionThreadIsRunning = true;
 
-	//while(myReceptionThreadIsRunning)
-	//{
-	//	if(mySelector.wait())
-	//	{
-	//		if(mySelector.isReady(myListener))
-	//		{
-	//			sf::TcpSocket* client = new sf::TcpSocket;
-	//			if(myListener.accept(*client) != sf::Socket::Done)
-	//			{
-	//				ILogger::log(ILogger::ERRORS) << "SV : error on accept.\n ";
-	//			}
-	//			else
-	//			{
-	//				ILogger::log() << "SV : player accepted.\n";
-	//			}
+	while(myReceptionThreadIsRunning)
+	{
+		if(mySelector.wait())
+		{
+			if(mySelector.isReady(myListener))
+			{
+				sf::TcpSocket* client = new sf::TcpSocket;
+				if(myListener.accept(*client) != sf::Socket::Done)
+				{
+					ILogger::log(ILogger::ERRORS) << "SV : error on accept.\n ";
+				}
+				else
+				{
+					ILogger::log() << "SV : player accepted.\n";
+				}
 
-	//			mySelector.add(*client);
-	//			this->myTemporarySockets.push(client);
-	//			myTemporaryIdAndSocket.push_back(std::make_pair(createNewTmpId(), client));
-	//			mySockets.push_back(client);
-	//			//sendMessageToGame(MessageBuilder::ClConnection(myNick, false));
+				mySelector.add(*client);
+				this->myTemporarySockets.push(client);
+				myTemporaryIdAndSocket.push_back(std::make_pair(createNewTmpId(), client));
+				mySockets.push_back(client);
+				//sendMessageToGame(MessageBuilder::ClConnection(myNick, false));
 
-	//			if(!canAcceptNewClient())
-	//			{
-	//				Message msg = MessageBuilder::SvServerFull(""); //empty string ok for network ????????
-	//				sf::Packet packet;
-	//				packet << msg;
-	//				client->send(packet);
-	//				disconnectPlayer(*client);
-	//			}
-	//		}
-	//		else
-	//		{
-	//			for(unsigned int i = 0; i < mySockets.size(); i++)
-	//			{
+				if(!canAcceptNewClient())
+				{
+					//Message msg = MessageBuilder::SvServerFull(""); //empty string ok for network ????????
+					//sf::Packet packet;
+					//packet << msg;
+					//client->send(packet);
+					//disconnectPlayer(*client);
+				}
+			}
+			else
+			{
+				for(unsigned int i = 0; i < mySockets.size(); i++)
+				{
 
-	//				if(mySelector.isReady(*mySockets[i]))
-	//				{
-	//					sf::Packet packet;
-	//					sf::Socket::Status status = mySockets[i]->receive(packet);
-	//					if(status == sf::Socket::Done)
-	//					{
-	//						Message msg;
-	//						packet >> msg;
-	//						//vérifier qu'on accepte selon si on est serveur ou pas
-	//						//if(msg.type == Message::MessageType::CL_CONNECTION)
-	//						//{
-	//						//	myTemporarySockets.push(mySockets[i]);
-	//						//	if(mySockets[i]->GetRemoteAddress() == sf::IpAddress::GetLocalAddress())
-	//						//		msg.iData[Message::Key::ClConnection::IS_LOCAL_CLIENT] = 1;
-	//						//	else
-	//						//		msg.iData[Message::Key::ClConnection::IS_LOCAL_CLIENT] = 0;
-	//						//}
+					if(mySelector.isReady(*mySockets[i]))
+					{
+						sf::Packet packet;
+						sf::Socket::Status status = mySockets[i]->receive(packet);
+						if(status == sf::Socket::Done)
+						{
+							Message msg;
+							packet >> msg;
+							//vérifier qu'on accepte selon si on est serveur ou pas
+							//if(msg.type == Message::MessageType::CL_CONNECTION)
+							//{
+							//	myTemporarySockets.push(mySockets[i]);
+							//	if(mySockets[i]->GetRemoteAddress() == sf::IpAddress::GetLocalAddress())
+							//		msg.iData[Message::Key::ClConnection::IS_LOCAL_CLIENT] = 1;
+							//	else
+							//		msg.iData[Message::Key::ClConnection::IS_LOCAL_CLIENT] = 0;
+							//}
 
-	//						if(isServer())
-	//							modifyMessage(msg, *mySockets[i]);
-	//						
-	//						if(checkValidity((Message::MessageType::messageType) msg.type))
-	//							sendMessageToGame(msg);
-	//					}
-	//					else if(status == sf::Socket::Disconnected)
-	//					{
-	//						disconnectPlayer(*mySockets[i]);
-	//					}
-	//					else
-	//					{
-	//						ILogger::log(ILogger::ERRORS) << "A packet has leaded to an error..\n";
-	//						disconnectPlayer(*mySockets[i]);
-	//					}
-	//				} //end ifReady
-	//			} //end for
-	//		} //end if listener
-	//	} //end wait
-	//} //end while
+							if(isServer())
+								modifyMessage(msg, *mySockets[i]);
+							
+							//if(checkValidity((Message::MessageType::messageType) msg.type))
+							//	sendMessageToGame(msg);
+						}
+						else if(status == sf::Socket::Disconnected)
+						{
+							disconnectPlayer(*mySockets[i]);
+						}
+						else
+						{
+							ILogger::log(ILogger::ERRORS) << "A packet has leaded to an error..\n";
+							disconnectPlayer(*mySockets[i]);
+						}
+					} //end ifReady
+				} //end for
+			} //end if listener
+		} //end wait
+	} //end while
 }
 
 void NetworkEngine::disconnectPlayer(sf::Socket& socket)

@@ -1,0 +1,502 @@
+#ifndef H__TEXTFIELD_170920111546__H
+#define H__TEXTFIELD_170920111546__H
+
+///////////////////////////////////////////////////////////////////////////////
+// Headers
+///////////////////////////////////////////////////////////////////////////////
+//#include "Gaia/widgets/BaseWidget.h"
+#include "Gaia/widgets/BaseTextWidget.h"
+//#include "Gaia/widgets/IText.h"
+//#include "Gaia/widgets/ICaret.h"
+#include "Gaia/widgets/TypedefList.h"
+
+namespace gaia
+{
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Structure handling a formatted text line.
+///////////////////////////////////////////////////////////////////////////////
+struct GAIA_DLL FormattedText
+{
+	FormattedText() : startPosition(0), length(0), removal(0) {}
+	unsigned int startPosition;
+	unsigned int length;
+	unsigned int removal;
+	//std::string texte; //Le texte destiné à l'affichage, sans le \n
+};
+
+///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Multiline text field.
+///////////////////////////////////////////////////////////////////////////////
+class GAIA_DLL TextField : public BaseTextWidget//public BaseWidget, public IText, public ICaret
+{
+public:
+	typedef std::vector<FormattedText> LineList;
+
+public:
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	///
+	/// \param name: Widget name. Must be absolutely unique.
+	///
+	/// \param x: X position relatively to the parent widget (or the window if
+	/// it is the top level widget).
+	///
+	/// \param y: Y position relatively to the parent widget (or the window if
+	/// it is the top level widget).
+	///
+	/// \param width: Width of the widget.
+	///
+	/// \param height: Height of the widget.
+	///////////////////////////////////////////////////////////////////////////
+	TextField(const std::string& name = "", 
+			  int x = 0, 
+			  int y = 0, 
+			  int width = 0, 
+			  int height = 0);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Constructor.
+	///
+	/// \param name: Widget name. Must be absolutely unique.
+	///
+	/// \param dimensions: Rectangle defining the widget size (top left 
+	/// position is relative to parent widget, or the screen if the widget is 
+	/// the top level widget).
+	///////////////////////////////////////////////////////////////////////////
+	TextField(const std::string& name, const IntRect& dimensions);
+
+
+	//void valeurScrollAChange(float valeur);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Inserts the given string at end of the current text.
+	///
+	/// \param text : Text to insert.
+	///////////////////////////////////////////////////////////////////////////
+	void appendText(const std::string& text);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Inserts the given string at the given position. Position must be 
+	/// a valid one.
+	///
+	/// \param text : Text to insert.
+	/// \param pos : Position of insertion.
+	///////////////////////////////////////////////////////////////////////////
+	void insertText(const std::string& text, unsigned int pos);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Deletes text.
+	///
+	/// \param startingPos : Text index defining the begining of the suppression.
+	/// \param endingPos : Text index defining the ending of the suppression.
+	///////////////////////////////////////////////////////////////////////////
+	void deleteTextRange(unsigned int startingPosition, unsigned int endingPosition);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Deletes text.
+	///
+	/// \param startingPos : Text index defining the begining of the suppression.
+	/// \param amount : Amount of characters to deletes.
+	///////////////////////////////////////////////////////////////////////////
+	void deleteText(unsigned int startingPosition, unsigned int amount);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Deletes a section of text, from startingPos to endingPos, and
+	/// replaces it by the given string
+	///
+	/// \param text : Text to insert in replacement.
+	/// \param startingPos : Text index defining the begining of the suppression.
+	/// \param endingPos : Text index defining the ending of the suppression.
+	///////////////////////////////////////////////////////////////////////////
+	void replaceTextRange(const std::string& text, unsigned int startingPos, unsigned int endingPos);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Deletes a section of text, from startingPos, and replaces it by
+	/// the given string.
+	///
+	/// \param text : Text to insert in replacement.
+	/// \param startingPos : Text index defining the begining of the replacement.
+	/// \param amount : Text index defining the ending of the replacement.
+	///////////////////////////////////////////////////////////////////////////
+	void replaceText(const std::string& text, unsigned int startingPosition, unsigned int amount);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Checks and corrects the caret position to set it valid, if 
+	/// necessary.
+	///////////////////////////////////////////////////////////////////////////
+	//void adjustCaret();
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Sets the whole text.
+	///
+	/// \param text
+	///////////////////////////////////////////////////////////////////////////
+	virtual void setText(const std::string& text);
+
+	//const std::string& getText() const {return myText;}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Initializes the ScrollBars, according the model and view
+	/// parameters.
+	///////////////////////////////////////////////////////////////////////////
+	void configureScrollBars();
+
+	///////////////////////////////////////////////////////////////////////////
+	// Affecte une scrollbar qui remplace la scrollbar courante
+	///////////////////////////////////////////////////////////////////////////
+	void setScrollBarV(PtrScrollBar scrollbar);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief  Returns the formatted text.
+	/// 
+	/// \return The formatted line list.
+	///////////////////////////////////////////////////////////////////////////
+	const LineList& getFormattedText() const {return myFormattedText;}
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief  Returns the vertical ScrollBar.
+	/// 
+	/// \return A smart pointer to the vertical ScrollBar.
+	///////////////////////////////////////////////////////////////////////////
+	PtrScrollBar getScrollBarV();
+	PtrScrollBar getScrollBarH();
+
+	/////////////////////////////////////////////////////////////////////////////
+	//// 
+	/////////////////////////////////////////////////////////////////////////////
+	virtual void onDimensionsChanged();
+
+	//@override
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Called when focus was lost.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void onLostFocus();
+
+	//Widget type
+	//static const std::string myWidgetType;
+
+protected:
+	////@override
+	//virtual bool handleMousePressed_impl(MouseEvent& ev);
+
+	////@override
+	//virtual bool handleMouseHover_impl(MouseEvent& ev);
+
+	////@ovveride
+	//virtual bool handleMouseReleased_impl(MouseEvent& ev);
+
+	////@override
+	//virtual bool handleKeyPressed_impl(KeyboardEvent& ev);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Handles in a generic way the response to a Keyboard event.
+	///////////////////////////////////////////////////////////////////////////
+	virtual bool handleMouseWheel_impl(MouseEvent& ev);
+
+	//@override
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Handles in a generic way the response to a Keyboard event.
+	///////////////////////////////////////////////////////////////////////////
+	virtual bool handleTextEntered_impl(KeyboardEvent& ev);
+
+/*	void handleDeleting(int posSiPasDeSelection)*/;
+
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Configures the line list.
+	///////////////////////////////////////////////////////////////////////////
+	void configureFormattedText();
+
+	//@override
+	///////////////////////////////////////////////////////////////////////////
+	/// \brief Updates the widget.
+	///
+	/// \param elapsedTime :elapsed time since the last call to update(). Could
+	/// be the frame time.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void update(unsigned int elapsedTime);
+
+protected:
+	unsigned int firstModifiedLine(unsigned int insertionPos);
+
+	unsigned int lookForFirstNewLine(unsigned int pos, 
+									 unsigned int firstModifLine, 
+									 size_t textSize);
+
+	void modifyLineListStartPos(unsigned int min, int amount);
+
+	void reconstructSomeFormattedText(unsigned int firstModifLine, 
+									  unsigned int newLineListIndex, 
+									  int amount, 
+									  const IntRect& textArea);
+									  //const Rect<double>& textArea);
+
+	unsigned int getCaretLine();
+
+protected:
+	//
+	//std::string myText;
+	std::vector<FormattedText> myFormattedText;
+	//std::vector<int> myNewLineList;
+	const std::string PREFIX_SCROLLBARV;
+	const std::string PREFIX_SCROLLBARH;
+
+	//bool myIsDragging;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// \brief We register the static TextField type.
+///////////////////////////////////////////////////////////////////////////////
+GAIA_REGISTER_TYPE(TextField)
+
+
+
+
+
+//class GAIA_DLL TextField : public BaseTextWidget//public BaseWidget, public IText, public ICaret
+//{
+//public:
+//	typedef std::vector<FormattedText> LineList;
+//
+//public:
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Constructor.
+//	///
+//	/// \param name: Widget name. Must be absolutely unique.
+//	///
+//	/// \param x: X position relatively to the parent widget (or the window if
+//	/// it is the top level widget).
+//	///
+//	/// \param y: Y position relatively to the parent widget (or the window if
+//	/// it is the top level widget).
+//	///
+//	/// \param width: Width of the widget.
+//	///
+//	/// \param height: Height of the widget.
+//	///////////////////////////////////////////////////////////////////////////
+//	TextField(const std::string& name = "", 
+//			  int x = 0, 
+//			  int y = 0, 
+//			  int width = 0, 
+//			  int height = 0);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Constructor.
+//	///
+//	/// \param name: Widget name. Must be absolutely unique.
+//	///
+//	/// \param dimensions: Rectangle defining the widget size (top left 
+//	/// position is relative to parent widget, or the screen if the widget is 
+//	/// the top level widget).
+//	///////////////////////////////////////////////////////////////////////////
+//	TextField(const std::string& name, const IntRect& dimensions);
+//
+//
+//	//void valeurScrollAChange(float valeur);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Inserts the given string at end of the current text.
+//	///
+//	/// \param text : Text to insert.
+//	///////////////////////////////////////////////////////////////////////////
+//	void appendText(const std::string& text);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Inserts the given string at the given position. Position must be 
+//	/// a valid one.
+//	///
+//	/// \param text : Text to insert.
+//	/// \param pos : Position of insertion.
+//	///////////////////////////////////////////////////////////////////////////
+//	void insertText(const std::string& text, int pos);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Deletes text.
+//	///
+//	/// \param startingPos : Text index defining the begining of the suppression.
+//	/// \param endingPos : Text index defining the ending of the suppression.
+//	///////////////////////////////////////////////////////////////////////////
+//	void deleteTextRange(int startingPosition, int endingPosition);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Deletes text.
+//	///
+//	/// \param startingPos : Text index defining the begining of the suppression.
+//	/// \param amount : Amount of characters to deletes.
+//	///////////////////////////////////////////////////////////////////////////
+//	void deleteText(int startingPosition, int amount);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Deletes a section of text, from startingPos to endingPos, and
+//	/// replaces it by the given string
+//	///
+//	/// \param text : Text to insert in replacement.
+//	/// \param startingPos : Text index defining the begining of the suppression.
+//	/// \param endingPos : Text index defining the ending of the suppression.
+//	///////////////////////////////////////////////////////////////////////////
+//	void replaceTextRange(const std::string& text, int startingPos, int endingPos);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Deletes a section of text, from startingPos, and replaces it by
+//	/// the given string.
+//	///
+//	/// \param text : Text to insert in replacement.
+//	/// \param startingPos : Text index defining the begining of the replacement.
+//	/// \param amount : Text index defining the ending of the replacement.
+//	///////////////////////////////////////////////////////////////////////////
+//	void replaceText(const std::string& text, int startingPosition, int amount);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Checks and corrects the caret position to set it valid, if 
+//	/// necessary.
+//	///////////////////////////////////////////////////////////////////////////
+//	void adjustCaret();
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Sets the whole text.
+//	///
+//	/// \param text
+//	///////////////////////////////////////////////////////////////////////////
+//	virtual void setText(const std::string& text);
+//
+//	//const std::string& getText() const {return myText;}
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief Initializes the ScrollBars, according the model and view
+//	/// parameters.
+//	///////////////////////////////////////////////////////////////////////////
+//	void configureScrollBars();
+//
+//	//void setColorFond(const sf::Color& coul) {myBackgroundColor = coul;}
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	// Retourne la scrollbar verticale
+//	///////////////////////////////////////////////////////////////////////////
+//	//PtrScrollBar getScrollBarV();
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	// Affecte une scrollbar qui remplace la scrollbar courante
+//	///////////////////////////////////////////////////////////////////////////
+//	void setScrollBarV(PtrScrollBar scrollbar);
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Affecte les images du curseur
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setImagesCurseur(const Image& CurseurNormal, 
+//	//	const Image& CurseurSurvole = Image(), const Image&  CurseurClique = Image());
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Les flèches haut ou gauche
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setImagesFlechesHG(const Image&  FlecheNormale, 
+//	//	const Image&  FlecheSurvolee = Image(), const Image&  FlecheCliquee = Image());
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Les flèches haut ou gauche
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setImagesFlechesBD(const Image& FlecheNormale, 
+//	//	const Image& FlecheSurvolee = Image(), const Image& FlecheCliquee = Image());
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Définit la zone de la flèche haut gauche
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setSBHauteurFlecheHautGauche(int hauteur);
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// 
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setSBHauteurFlecheBasDroite(int hauteur);
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Définit les dimensions du curseur
+//	/////////////////////////////////////////////////////////////////////////////
+//	//void setSBDimensionsCurseur(int retraitGauche, int largeur, int hauteur);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	// Définit la largeur de la scrollbar verticale
+//	///////////////////////////////////////////////////////////////////////////
+//	//void setLargeurSBV(int largeur);
+//
+//	///////////////////////////////////////////////////////////////////////////
+//	/// \brief  Returns the formatted text.
+//	/// 
+//	/// \return The formatted line list.
+//	///////////////////////////////////////////////////////////////////////////
+//	const LineList& getFormattedText() const {return myFormattedText;}
+//
+//	//int getCaretPosition() const {return monCurseur;}
+//	//void setCaretPosition(unsigned int pos);
+//
+//	PtrScrollBar getScrollBarV();
+//	PtrScrollBar getScrollBarH();
+//
+//	/////////////////////////////////////////////////////////////////////////////
+//	//// Héritée
+//	/////////////////////////////////////////////////////////////////////////////
+//	//virtual void onDimensionsChanged();
+//
+//	//@override
+//	virtual void onLostFocus();
+//
+//	//Widget type
+//	static const std::string myWidgetType;
+//
+//protected:
+//	//@override
+//	virtual bool handleMousePressed_impl(MouseEvent& ev);
+//
+//	//@override
+//	virtual bool handleMouseHover_impl(MouseEvent& ev);
+//
+//	//@ovveride
+//	virtual bool handleMouseReleased_impl(MouseEvent& ev);
+//
+//	//@override
+//	virtual bool handleKeyPressed_impl(KeyboardEvent& ev);
+//
+//	///////////////////////////////////////////////////////////////////////////////
+//	//A faire redéfinir par les widgets enfants.
+//	//Traite de façon générique la réponse à un évènement de molette de souris
+//	///////////////////////////////////////////////////////////////////////////////
+//	virtual bool handleMouseWheel_impl(MouseEvent& ev);
+//
+//	//@override
+//	virtual bool handleTextEntered_impl(KeyboardEvent& ev);
+//
+//	void handleDeleting(int posSiPasDeSelection);
+//
+//	//void updateZoneAffichable();
+//	//void updateTexteAffichable();
+//	//void drawBackground(int x, int y);
+//	//void drawText(int x, int y);
+//	//void drawEdge(int x, int y);
+//
+//	void parametrerFormattedText();
+//
+//	void initScrollBar();
+//
+//protected:
+//	int myfirstDisplayedLine;
+//
+//	//
+//	std::string myText;
+//	std::vector<FormattedText> myFormattedText;
+//	std::vector<int> mesRetoursLigne;
+//	int maPosCurseur; // ?
+//	const std::string PREFIXE_SCROLLBARV;
+//	const std::string PREFIXE_SCROLLBARH;
+//	const std::string SUFFIXE;
+//
+//	bool texteADepassePremiereFois;
+//	float offsetTexte;
+//
+//	bool myIsDragging;
+//
+//	//int monCurseur;
+//
+//};
+
+} //end namepace
+
+#endif

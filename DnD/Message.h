@@ -60,12 +60,15 @@ public:
 			CL_PLAYER_LOOSES,
 			CL_PLAYER_WOUNDED,
 			CL_END_TURN,
-			SV_DRAGOON_AWAKES,
-			SV_MOVE,
-			SV_WALL,
+			CL_CHOOSES_SECRET_ROOM,
 			PLAY_SOUND,
 			PLAY_MUSIC,
 			STOP_MUSIC,
+			CONNECTION, //internal
+			SV_DRAGOON_AWAKES,
+			SV_MOVE,
+			SV_WALL,
+			SV_CONNECTION_RESULT,
 			SV_MAZE,
 			SV_NEW_TURN,
 			SV_DRAGOON_MOVES,
@@ -73,7 +76,8 @@ public:
 			SV_PLAYER_TAKES_TREASURE_FROM_PLAYER,
 			SV_GAME_WON,
 			SV_PLAYER_WOUNDED,
-			SV_PLAYER_LOOSES
+			SV_PLAYER_LOOSES,
+			SV_GAME_RUNNING
 		};
 	};
 
@@ -84,6 +88,22 @@ public:
 			//sData map key
 			enum {
 				GAME_NAME
+			};
+		};
+
+		struct Connection {
+			//sData map key
+			enum {
+				IP,		//sData
+				PSEUDO  //sData
+			};
+		};
+
+		struct ClChoosesSecretRoom {
+			enum {
+				ID,			//iData, filled par server for distant players
+				X,  //iData, enum
+				Y
 			};
 		};
 
@@ -215,7 +235,6 @@ public:
 				ID, //iData
 			};
 		};
-
 		struct PlaySound {
 			enum {
 				ID_SOUND, //sData

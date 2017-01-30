@@ -89,10 +89,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\C et CPP\Applications\DnD\DnD\dependencies\include;D:\C et CPP\Applications\SFML\SFML-2.4.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\C et CPP\Applications\DnD\DnD\dependencies\lib32;D:\C et CPP\Applications\SFML\SFML-2.4.1\buildShared32\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-main-d.lib;sfml-network-d.lib;ws2_32.lib;sfml-audio-d.lib;Gaia-d.lib;XMLLoader-d.lib;SFMLRenderer-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,6 +106,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\C et CPP\Applications\SFML\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BaseGameView.cpp" />
     <ClCompile Include="BaseMazeGenerator.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellDefManager.cpp" />
@@ -157,6 +162,8 @@
     <ClCompile Include="CompleteMazeGenerator.cpp" />
     <ClCompile Include="CreationFichierRessources.cpp" />
     <ClCompile Include="DataTexture.cpp" />
+    <ClCompile Include="DraggableImage.cpp" />
+    <ClCompile Include="PlayerDefManager.cpp" />
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="Dragoon.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -164,12 +171,16 @@
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EntityState.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameBeginningView.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="GameView.cpp" />
+    <ClCompile Include="GameWonView.cpp" />
     <ClCompile Include="GraphicEngine.cpp" />
     <ClCompile Include="IResource.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuView.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="MazeUtils.cpp" />
     <ClCompile Include="Message.cpp" />
@@ -184,12 +195,20 @@
     <ClCompile Include="ResourcesFile.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="ResourceTexture.cpp" />
+    <ClCompile Include="SConnectionMenu.cpp" />
+    <ClCompile Include="SGameBeginningServer.cpp" />
     <ClCompile Include="SGame.cpp" />
+    <ClCompile Include="SGameBeginning.cpp" />
     <ClCompile Include="SGameServer.cpp" />
+    <ClCompile Include="SGameWon.cpp" />
     <ClCompile Include="Side.cpp" />
     <ClCompile Include="SideDefManager.cpp" />
     <ClCompile Include="SideFactory.cpp" />
     <ClCompile Include="ResourceSoundBuffer.cpp" />
+    <ClCompile Include="SLobby.cpp" />
+    <ClCompile Include="SLobbyServer.cpp" />
+    <ClCompile Include="SMainMenu.cpp" />
+    <ClCompile Include="SMainMenuSolo.cpp" />
     <ClCompile Include="SoundBufferManager.cpp" />
     <ClCompile Include="SoundEngine.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -205,6 +224,7 @@
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BaseGameView.h" />
     <ClInclude Include="BaseMazeGenerator.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellDefManager.h" />
@@ -212,6 +232,8 @@
     <ClInclude Include="CompleteMazeGenerator.h" />
     <ClInclude Include="CreationFichierRessources.h" />
     <ClInclude Include="DataTexture.h" />
+    <ClInclude Include="DraggableImage.h" />
+    <ClInclude Include="PlayerDefManager.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Dragoon.h" />
     <ClInclude Include="Engine.h" />
@@ -219,11 +241,15 @@
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EntityState.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameBeginningView.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameUtils.h" />
     <ClInclude Include="GameView.h" />
+    <ClInclude Include="GameWonView.h" />
     <ClInclude Include="GraphicEngine.h" />
     <ClInclude Include="IResource.h" />
+    <ClInclude Include="MainMenuView.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeUtils.h" />
     <ClInclude Include="Message.h" />
@@ -238,12 +264,20 @@
     <ClInclude Include="ResourcesFile.h" />
     <ClInclude Include="ResourcesManager.h" />
     <ClInclude Include="ResourceTexture.h" />
+    <ClInclude Include="SConnectionMenu.h" />
+    <ClInclude Include="SGameBeginningServer.h" />
     <ClInclude Include="SGame.h" />
+    <ClInclude Include="SGameBeginning.h" />
     <ClInclude Include="SGameServer.h" />
+    <ClInclude Include="SGameWon.h" />
     <ClInclude Include="Side.h" />
     <ClInclude Include="SideDefManager.h" />
     <ClInclude Include="SideFactory.h" />
     <ClInclude Include="ResourceSoundBuffer.h" />
+    <ClInclude Include="SLobby.h" />
+    <ClInclude Include="SLobbyServer.h" />
+    <ClInclude Include="SMainMenu.h" />
+    <ClInclude Include="SMainMenuSolo.h" />
     <ClInclude Include="SoundBufferManager.h" />
     <ClInclude Include="SoundEngine.h" />
     <ClInclude Include="TextureManager.h" />

@@ -25,9 +25,25 @@ void GameState::setClientGameState(GameState::ptr state)
 	getGameEngine()->setClientGameState(state);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+void GameState::pushClientGameState(GameState::ptr state)
+{
+	getGameEngine()->pushClientState(state);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 void GameState::setServerGameState(GameState::ptr state)
 {
 	getGameEngine()->setServerGameState(state);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+void GameState::pushServerGameState(GameState::ptr state)
+{
+	getGameEngine()->pushServerState(state);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -64,3 +80,35 @@ void GameState::draw()
 }
 
 
+void ServerGameState::sendMessage(const Message& msg, int id)
+{
+	getGameEngine()->processMessage(msg);
+	//	getNetworkEngine()->sendMessageTCPToAll(msg);
+}
+
+void ServerGameState::sendMessageToAllExcept(const Message& msg, int id)
+{
+	//	getNetworkEngine()->sendMessageTCPToAllExcept(msg, id);
+}
+
+void ServerGameState::sendMessageExceptLocal(const Message& msg)
+{
+	//	getNetworkEngine()->sendMessageTCPToAll(msg);
+}
+
+void ServerGameState::sendMessageToAllExceptSome(const Message& msg, const std::vector<int>& excluded)
+{
+	Game& game = getGameEngine()->getGame();
+	bool notLocal = false;
+
+	for (int excl : excluded)
+	{
+		//		if (game.isLocalId(excl))
+		notLocal = true;
+	}
+
+	if (!notLocal)
+		getGameEngine()->processMessage(msg);
+
+	//	getNetworkEngine()->sendMessageTCPToAllExcept(msg, excluded)
+}

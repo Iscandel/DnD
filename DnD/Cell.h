@@ -12,8 +12,8 @@ class Cell : public WithSmartPtr<Cell>, public GraphicEntity
 public:
 	using ptr = WithSmartPtr<Cell>::ptr;
 
-public:
-	typedef std::map<std::string, ResourceImage::ptr> ResourceImagesMap;
+//public:
+//	typedef std::map<std::string, ResourceImage::ptr> ResourceImagesMap;
 
 public:
 	/**
@@ -42,13 +42,13 @@ public:
 
 	virtual void update(GameState&, const Game&, unsigned int) override {}
 
-	void addResourceImage(const std::string& idName, ResourceImage::ptr res);// {myImages.insert(std::make_pair(idName, res));}// = res;}
-																		   //void setImageBack(PtrResourceImage res) {myImageBack = res;}
-	//PtrResourceImage getCurrentImage() {return myCurrentImage;} //ou std::vector. Retourner éventuellement l'objet Image
-	std::vector<Image>& getCurrentImages() { return myCurrentImages; } //ou std::vector. Retourner éventuellement l'objet Image
+	//void addResourceImage(const std::string& idName, ResourceImage::ptr res);// {myImages.insert(std::make_pair(idName, res));}// = res;}
+	//																	   //void setImageBack(PtrResourceImage res) {myImageBack = res;}
+	////PtrResourceImage getCurrentImage() {return myCurrentImage;} //ou std::vector. Retourner éventuellement l'objet Image
+	//std::vector<Image>& getCurrentImages() { return myCurrentImages; } //ou std::vector. Retourner éventuellement l'objet Image
 
-	void addCurrentDrawnImage(const std::string& name, int num = 0);
-	void setCurrentDrawnImage(const std::string& name, int num = 0);
+	//void addCurrentDrawnImage(const std::string& name, int num = 0);
+	//void setCurrentDrawnImage(const std::string& name, int num = 0);
 
 	const Point<int>& getCoords() const { return myCoords; }
 
@@ -76,8 +76,8 @@ protected:
 	*/
 	Side::ptr mySouthSide;
 
-	ResourceImagesMap myImages;
-	//PtrResourceImage myCurrentImage;
-	std::vector<Image> myCurrentImages;
+	//ResourceImagesMap myImages;
+	////PtrResourceImage myCurrentImage;
+	//std::vector<Image> myCurrentImages;
 };
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<imageList>
+  <imageSet name ="SetBase">
+    <!--<imageSheet nom ="lookDefaut">
+      <texture>./defaut.png</texture>
+      <image nom = "BoutonN" x="0" y="0" l="40" h="40"/>
+      <image nom = "BoutonM" x="42" y="0" l="40" h="40"/>
+      <image nom = "BoutonC" x="84" y="0" l="40" h="40"/>
+    </imageSheet>
+    <imageSheet nom ="lookDefaut2">
+      <texture>./defaut2.png</texture>
+      <image nom = "ThumbN" x="0" y="0" l="40" h="40"/>
+      <image nom = "ThumbM" x="42" y="0" l="40" h="40"/>
+      <image nom = "ThumbC" x="84" y="0" l="40" h="40"/>
+    </imageSheet>-->
+    <imageSheet name="CheckboxDefaut">
+      <texture>./imageSheetCB.PNG</texture>
+      <image name = "CheckboxN" x="0" y="0" l="13" h="13"/>
+      <image name = "CheckboxM" x="14" y="0" l="13" h="13"/>
+      <image name = "CheckboxC" x="28" y="0" l="13" h="13"/>
+      <image name = "CheckboxCoche" x="42" y="0" l="13" h="13"/>
+      <image name = "ComboBoutonN" x="0" y="14" l="17" h="20"/>
+      <image name = "ComboBoutonM" x="18" y="14" l="17" h="20"/>
+      <image name = "ComboBoutonC" x="36" y="14" l="17" h="20"/>
+      <image name = "ScrollbarUpN" x="54" y="14" l="16" h="20"/>
+      <image name = "ScrollbarUpM" x="71" y="14" l="16" h="20"/>
+      <image name = "ScrollbarUpC" x="88" y="14" l="16" h="20"/>
+      <image name = "Thumb" x="104" y="0" l="16" h="23"/>
+      <image name = "CloseButtonN" x="0" y="34" l="21" h="21"/>
+      <image name = "CloseButtonM" x="22" y="34" l="21" h="21"/>
+      <image name = "CloseButtonC" x="44" y="34" l="21" h="21"/>
+    </imageSheet>
+    <imageSheet name="Button">
+      <texture>./tuto.png</texture>
+      <image name = "ButtonN" x="0" y="0" l="600" h="342"/>
+      <image name = "ButtonM" x="0" y="0" l="600" h="342"/>
+      <image name = "ButtonC" x="0" y="0" l="600" h="342"/>
+    </imageSheet>
+  </imageSet>
+</imageList>
