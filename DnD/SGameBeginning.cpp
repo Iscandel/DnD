@@ -24,8 +24,6 @@ SGameBeginning::~SGameBeginning()
 
 void SGameBeginning::init()
 {
-	gaia::addFactory<DraggableImage>();
-
 	setView(View::ptr(new GameBeginningView("data/gameViewPos.txt")));
 
 	gaia::GuiManager::getInstance()->clean();
@@ -34,7 +32,7 @@ void SGameBeginning::init()
 	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
 	manager->getWidget<gaia::TextBox>("sendBox")->setTextColor(gaia::Color(255, 255, 255));
 
-
+	
 	//manager->getWidget<gaia::Button>("soloButton")->subscribeMouseReleased(gaia::my_bind(&SMainMenu::onClicSolo, this));
 }
 
@@ -138,6 +136,35 @@ void SGameBeginning::processMessage(const Message& msg)
 {
 	switch (msg.type)
 	{
+	case Message::MessageType::SV_NEW_TURN:
+	{
+		int id;
+		if (!MessageBuilder::extractSvNewTurn(msg, id))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+
+		game.setTurnTo(id);
+	}
+	break;
+
+	case Message::MessageType::SV_SECRET_ROOM_CHOSEN:
+	{
+		int id, x, y;
+		if (!MessageBuilder::extractSvSecretRoomChosen(msg, id, x, y))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+
+		Player::ptr player = game.getPlayer(id);
+		if (player)
+		{
+			player->setSecretRoomPos(Point<int>(x, y));
+			player->setAbstractPosition(player->getSecretRoomPos());
+		}
+	}
+	break;
+
 	case Message::MessageType::SV_GAME_RUNNING:
 	{
 		setClientGameState(GameState::ptr(new SGame));

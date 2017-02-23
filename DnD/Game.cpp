@@ -169,7 +169,10 @@ int Game::nextEntityTurn()
 
 	if (getCurrentIdTurn() == dragoon->getId())
 	{
-		myCurrentIdTurn = players[0]->getId();
+		if (players.size() > 0)
+			myCurrentIdTurn = players[0]->getId();
+		else
+			myCurrentIdTurn = -1;
 		return myCurrentIdTurn;
 	}
 
@@ -189,7 +192,10 @@ int Game::nextEntityTurn()
 	if(dragoon->isAwake())
 		myCurrentIdTurn = dragoon->getId();
 	else
-		myCurrentIdTurn = players[0]->getId();
+	{
+		if (players.size() > 0)
+			myCurrentIdTurn = players[0]->getId();
+	}
 
 	return myCurrentIdTurn;
 }
@@ -201,7 +207,12 @@ int Game::nextPlayerTurn()
 	int id = nextEntityTurn();
 
 	if (id == getDragoon()->getId())
-		myCurrentIdTurn = players[0]->getId();
+	{
+		if (players.size() > 0)
+			myCurrentIdTurn = players[0]->getId();
+		else
+			myCurrentIdTurn = -1;
+	}
 
 	return id;
 }
@@ -257,6 +268,56 @@ Player::ptr Game::getPlayer(int id)
 std::vector<Player::ptr> Game::getPlayers()
 {
 	return myManager.getPlayers();
+}
+
+bool Game::isNickPresent(const std::string& nick)
+{
+	std::vector<Player::ptr> players = getPlayers();
+
+	for (Player::ptr player : players)
+	{
+		if (player->getName() == nick)
+			return true;;
+	}
+
+	return false;
+}
+
+Player::ptr Game::createPlayer(const std::string& nick, bool isLocal, bool isAI)
+{
+	//int nb = myManager.getPlayers().size();
+
+	//Player::ptr player(new Player(myManager.createNewId(), this));
+	////player->setSecretRoomPos(Point<int>(0, 0));
+	//PlayerDef& def = getIndexPlayerDef(nb); //(nb - 1) + 1
+	//player->addResourceImage("main", ResourceImageManager::getInstance()->getResource(def.imageId));
+	//player->setCurrentDrawnImage("main");
+	//player->setAbstractPosition(player->getSecretRoomPos());
+	//player->setName(nick);
+	//myManager.registerPlayer(player);
+
+	Player::ptr player = createPlayer(myManager.createNewId(), nick);
+
+	if(isLocal)
+		addLocalId(player->getId());
+
+	return player;
+}
+
+Player::ptr Game::createPlayer(int id, const std::string& nick)
+{
+	int nb = myManager.getPlayers().size();
+
+	Player::ptr player(new Player(id, this));
+	//player->setSecretRoomPos(Point<int>(0, 0));
+	PlayerDef& def = getIndexPlayerDef(nb); //(nb - 1) + 1
+	player->addResourceImage("main", ResourceImageManager::getInstance()->getResource(def.imageId));
+	player->setCurrentDrawnImage("main");
+	player->setAbstractPosition(player->getSecretRoomPos());
+	player->setName(nick);
+	myManager.registerPlayer(player);
+
+	return player;
 }
 
 void Game::reset()

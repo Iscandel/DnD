@@ -14,13 +14,13 @@
 
 #include "Gaia/addFactory.h"
 #include "Gaia/widgetRenderers/ImageBoxRenderer.h"
-#include "Gaia/Gaia.h"
 #include "Gaia/SFMLRenderer.h"
 #include "Gaia/XMLGaia.h"
 
 #include "CompleteMazeGenerator.h"
 
 SGame::SGame(void)
+:myMoveIsLocked(false)
 {
 }
 
@@ -38,6 +38,9 @@ void SGame::init()
 
 	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
 	manager->getWidget<gaia::TextBox>("sendBox")->setTextColor(gaia::Color(255, 255, 255));
+
+	gaia::GuiManager::getInstance()->getWidget<gaia::TextBox>("sendBox")->subscribeKeyPressed(gaia::my_bind(&SGame::onSendChatMessage, this));
+	gaia::GuiManager::getInstance()->getWidget<gaia::TextField>("chatBox")->setEnabled(false);
 
 	initDraggable("./data/textures/dragoon.png", "dragoonImage", "draggableDragoon");
 	initDraggable("./data/textures/treasure.png", "treasureImage", "draggableTreasure");
@@ -73,39 +76,55 @@ void SGame::init()
 
 bool SGame::catchEvent(const sf::Event& ev)
 {
+	Game& game = getGameEngine()->getGame();
+
 	if (!gaia::GuiManager::getInstance()->processEvent(gaia::SFMLInput(ev)))
 	{
 		if (ev.type == sf::Event::KeyPressed)
 		{
 			if (ev.key.code == sf::Keyboard::Right)
 			{
-				//if(isLocalHumanPlayer(getCurrentId())
-				Message msg = MessageBuilder::clMove(Direction::EAST);
-				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				if (game.isLocalId(game.getCurrentIdTurn()) && !myMoveIsLocked)
+				{
+					Message msg = MessageBuilder::clMove(Direction::EAST);
+					sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				}
 			}
 
 			else if (ev.key.code == sf::Keyboard::Left)
 			{
-				Message msg = MessageBuilder::clMove(Direction::WEST);
-				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				if (game.isLocalId(game.getCurrentIdTurn()) && !myMoveIsLocked)
+				{
+					Message msg = MessageBuilder::clMove(Direction::WEST);
+					sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				}
 			}
 
 			else if (ev.key.code == sf::Keyboard::Up)
 			{
-				Message msg = MessageBuilder::clMove(Direction::NORTH);
-				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				if (game.isLocalId(game.getCurrentIdTurn()) && !myMoveIsLocked)
+				{
+					Message msg = MessageBuilder::clMove(Direction::NORTH);
+					sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				}
 			}
 
 			else if (ev.key.code == sf::Keyboard::Down)
 			{
-				Message msg = MessageBuilder::clMove(Direction::SOUTH);
-				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				if (game.isLocalId(game.getCurrentIdTurn()) && !myMoveIsLocked)
+				{
+					Message msg = MessageBuilder::clMove(Direction::SOUTH);
+					sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				}
 			}
 
 			else if (ev.key.code == sf::Keyboard::Space)
 			{
-				Message msg = MessageBuilder::clEndTurn();
-				sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				if (game.isLocalId(game.getCurrentIdTurn()) && !myMoveIsLocked)
+				{
+					Message msg = MessageBuilder::clEndTurn();
+					sendMessage(msg, getGameEngine()->getGame().getCurrentIdTurn());
+				}
 			}
 		}
 	}
@@ -187,7 +206,19 @@ void SGame::processMessage(const Message& msg)
 	case Message::MessageType::SV_MOVE:
 	{
 		//Move player
-		getSoundEngine()->playSound("move");
+		int id, cellX, cellY;
+		if (!MessageBuilder::extractSvPlayerMoves(msg, id, cellX, cellY))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		Player::ptr  player = game.getPlayer(id);
+		if (player)
+		{
+			player->setAbstractPosition(cellX, cellY);
+		}
+
+		//getSoundEngine()->playSound("move");
+		pushSoundAndLockMove("move");
 	}
 	break;
 
@@ -199,12 +230,19 @@ void SGame::processMessage(const Message& msg)
 		if (!MessageBuilder::extractSvWall(msg, cellX, cellY, direction))
 			return;
 
+		std::cout << "On révèle " << cellX << " " << cellY << std::endl;
+
 		Game& game = getGameEngine()->getGame();
 		Maze::ptr maze = game.getMaze();
+
+		auto factory = ObjectFactoryManager<Side>::getInstance()->getFactory("Wall");
+		//Be careful to call the maze when changing a side
+		maze->setSide(cellX, cellY, direction, factory->create());		
 		Cell::ptr cell = maze->getCell(cellX, cellY);
 		cell->getSide(direction)->revealSide();
 
-		getSoundEngine()->playSound("wall");
+		//getSoundEngine()->playSound("wall");
+		pushSoundAndLockMove("wall");
 	}
 	break;
 
@@ -215,12 +253,13 @@ void SGame::processMessage(const Message& msg)
 			return;
 
 		Game& game = getGameEngine()->getGame();
+
+		game.setTurnTo(id);
 		std::vector<Player::ptr> players = game.getPlayers();
 		std::string sound = getTurnSound(id);
 		if (sound != "")
-			getSoundEngine()->pushSound(sound);
-		
-		//reveal the wall
+			pushSoundAndLockMove(sound);
+			//getSoundEngine()->pushSound(sound);
 
 		//getSoundEngine()->pushSound("endTurn");
 	}
@@ -228,13 +267,15 @@ void SGame::processMessage(const Message& msg)
 
 	case Message::MessageType::SV_DRAGOON_AWAKES:
 	{
-		getSoundEngine()->pushSound("dragoonWakesUp");
+		//getSoundEngine()->pushSound("dragoonWakesUp");
+		pushSoundAndLockMove("dragoonWakesUp");
 	}
 	break;
 
 	case Message::MessageType::SV_DRAGOON_MOVES:
 	{
-		getSoundEngine()->pushSound("dragoonMoves");
+		//getSoundEngine()->pushSound("dragoonMoves");
+		pushSoundAndLockMove("dragoonMoves");
 	}
 	break;
 
@@ -253,7 +294,8 @@ void SGame::processMessage(const Message& msg)
 
 		Player::ptr player = game.getPlayer(id);
 		player->setTreasure(true);
-		getSoundEngine()->pushSound("treasureFound");
+		//getSoundEngine()->pushSound("treasureFound");
+		pushSoundAndLockMove("treasureFound");
 	}
 	break;
 
@@ -272,11 +314,12 @@ void SGame::processMessage(const Message& msg)
 
 		std::string sound = getTurnSound(id);
 		if (sound != "")
-			getSoundEngine()->pushSound(sound);
+			getSoundEngine()->pushSound(sound); //no need to lock here. It's locked after
 
 		Player::ptr player = game.getPlayer(id);
 		player->setTreasure(true);
-		getSoundEngine()->pushSound("treasureFound");
+		pushSoundAndLockMove("treasureFound");
+		//getSoundEngine()->pushSound("treasureFound");
 	}
 	break;
 
@@ -290,8 +333,9 @@ void SGame::processMessage(const Message& msg)
 		Player::ptr winner = game.getPlayer(id);
 		game.setWinner(winner);
 
-		getSoundEngine()->pushSound("win");
-		pushClientGameState(GameState::ptr(new SGameWon));
+		pushSoundAndLockMove("win");
+		//getSoundEngine()->pushSound("win");
+		pushClientGameState(GameState::ptr(new SGameWon(true)));
 	}
 	break;
 
@@ -306,7 +350,44 @@ void SGame::processMessage(const Message& msg)
 		Player::ptr player = game.getPlayer(id);
 		player->setNumberOfLives((Player::Lives)numberLives);
 
-		getSoundEngine()->pushSound("dragoonAttacks");
+		//Added
+		player->setAbstractPosition(player->getSecretRoomPos());
+
+		pushSoundAndLockMove("dragoonAttacks");
+		//getSoundEngine()->pushSound("dragoonAttacks");
+	}
+	break;
+
+	case Message::MessageType::SV_PLAYER_LOOSES:
+	{
+		getSoundEngine()->playMusic("./data/music/playerLooses.wav");
+	}
+	break;
+
+	case Message::MessageType::SV_GAME_OVER:
+	{
+
+		Game& game = getGameEngine()->getGame();
+
+		getSoundEngine()->playMusic("./data/music/gameOver.wav");
+		pushClientGameState(GameState::ptr(new SGameWon(false)));
+	}
+	break;
+
+	case Message::MessageType::SV_SEND_CHAT_MESSAGE:
+	{
+		std::string chatMsg;
+		if (!MessageBuilder::extractSvSendChatMessage(msg, chatMsg))
+			return;
+
+		gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+		std::string text = manager->getWidget<gaia::TextField>("chatBox")->getText();
+
+		if (text != "")
+			text += "\n";
+		text += chatMsg;
+
+		manager->getWidget<gaia::TextField>("chatBox")->setText(text);
 	}
 	break;
 
@@ -339,4 +420,35 @@ void SGame::initDraggable(const std::string& imageId, const std::string& imageNa
 	boost::shared_ptr<DraggableImage> dragDrag = manager->getWidget<DraggableImage>(widgetName);
 	manager->getWidget<DraggableImage>(widgetName)->setWidgetRenderer(new gaia::ImageBoxRenderer);
 	manager->getWidget<DraggableImage>(widgetName)->setImage(im);
+}
+
+void SGame::onSendChatMessage(gaia::KeyboardEvent& ev)
+{
+	if (ev.getKey() == gaia::Keyboard::RETURN)
+	{
+		gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+		std::string strMsg = manager->getWidget<gaia::TextBox>("sendBox")->getText();
+
+		Game& game = getGameEngine()->getGame();
+
+		if (strMsg != "")
+		{
+			Message msg = MessageBuilder::clSendChatMessage(strMsg);
+			sendMessage(msg, game.getFirstLocalId());
+
+			manager->getWidget<gaia::TextBox>("sendBox")->setText("");
+		}
+	}
+}
+
+void SGame::playSoundAndLockMove(const std::string& idSound)
+{
+	myMoveIsLocked = true;
+	getSoundEngine()->playSound(idSound, std::bind(&SGame::unlockMove, this));
+}
+
+void SGame::pushSoundAndLockMove(const std::string& idSound)
+{
+	myMoveIsLocked = true;
+	getSoundEngine()->pushSound(idSound, std::bind(&SGame::unlockMove, this));
 }

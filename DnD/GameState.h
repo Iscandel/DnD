@@ -105,6 +105,7 @@ public:
 class ServerGameState : public GameState
 {
 public:
+	void sendMessageTo(const Message& m, int id);
 	//Id not used here
 	virtual void sendMessage(const Message& m, int id = 0) override;
 

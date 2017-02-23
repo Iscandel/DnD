@@ -40,9 +40,17 @@ public:
 	Player::ptr getPlayer(int id);
 	std::vector<Player::ptr> getPlayers();
 
+	bool isNickPresent(const std::string& nick);
+
 	int getCurrentIdTurn() const { return myCurrentIdTurn; }
+	void setTurnTo(int id) { myCurrentIdTurn = id; }
 	void setTurnToFirstPlayer();
 
+	int getFirstLocalId() const {
+		if (myLocalIds.size() > 0) 
+			{ return myLocalIds[0]; } 
+		return 0;
+	}
 	std::vector<int> getLocalIds() { return myLocalIds; }
 	bool isLocalId(int id) const;
 
@@ -50,6 +58,10 @@ public:
 
 	void setWinner(Player::ptr winner) { myWinner = winner; }
 	Player::ptr getWinner() { return myWinner; }
+
+	Player::ptr createPlayer(const std::string& nick, bool isLocal, bool isAI = false);
+	//Client function
+	Player::ptr Game::createPlayer(int id, const std::string& nick);
 
 	void reset();
 

@@ -5,7 +5,7 @@ class SGameWon :
 	public ClientGameState
 {
 public:
-	SGameWon();
+	SGameWon(bool won);
 	~SGameWon();
 
 	///////////////////////////////////////////////////////////////////////////
@@ -20,5 +20,8 @@ public:
 	virtual void processMessage(const Message& msg);
 
 	std::string getTurnSound(int pos);
+
+protected:
+	bool myIsWon;
 };
 

@@ -240,9 +240,6 @@
     <ClCompile Include="GameUtils.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="SGameWon.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="BaseGameView.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -263,6 +260,12 @@
     </ClCompile>
     <ClCompile Include="DraggableImage.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGameWon.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLostView.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -493,6 +496,9 @@
     </ClInclude>
     <ClInclude Include="DraggableImage.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLostView.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

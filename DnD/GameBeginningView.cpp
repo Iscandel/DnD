@@ -13,6 +13,7 @@
 
 GameBeginningView::GameBeginningView(const std::string& path)
 :BaseGameView(path)
+,myIsSet(false)
 {
 }
 
@@ -26,11 +27,11 @@ void GameBeginningView::draw(GameState& state)
 	int windowSizeX = state.getGraphicEngine()->getWindowSizeX();
 	int windowSizeY = state.getGraphicEngine()->getWindowSizeY();
 
-	static bool set = false;
-	if (!set)
+	if (!myIsSet)
 	{
 		initializeSecretRoomColor(state);
-		set = true;
+		std::cout << "ok\n";
+		myIsSet = true;
 	}
 
 	Game& game = state.getGameEngine()->getGame();

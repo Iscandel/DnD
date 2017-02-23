@@ -109,12 +109,12 @@ void GameView::draw(GameState& state)
 
 	//Dragoon (debug)
 	{
-		auto resource = ResourceImageManager::getInstance()->getResource(20);
-		std::vector<Image> im; im.push_back(resource->getImage(0));
-		sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
-		auto dragoon = game.getDragoon(); //to change
-		sf::Vector2f pos((dragoon->getAbstractX() * (cellSize.x + wallSizeVert.x) + boardOffset.x) * windowSizeX, 
-			(dragoon->getAbstractY() * (cellSize.y + wallSizeHoriz.y) + boardOffset.y) * windowSizeY);
+		//auto resource = ResourceImageManager::getInstance()->getResource(20);
+		//std::vector<Image> im; im.push_back(resource->getImage(0));
+		//sf::Vector2f pixelSize(cellSize.x * windowSizeX, cellSize.y * windowSizeY);
+		//auto dragoon = game.getDragoon(); //to change
+		//sf::Vector2f pos((dragoon->getAbstractX() * (cellSize.x + wallSizeVert.x) + boardOffset.x) * windowSizeX, 
+		//	(dragoon->getAbstractY() * (cellSize.y + wallSizeHoriz.y) + boardOffset.y) * windowSizeY);
 		//drawImage(state, im, pixelSize, pos, 0.f);
 	}
 

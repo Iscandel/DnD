@@ -62,7 +62,7 @@ void SMainMenuSolo::onClic1P(gaia::MouseEvent& ev)
 	game.reset();
 	game.setup1PGame("Player 1");
 	setServerGameState(GameState::ptr(new SGameBeginningServer));
-	setClientGameState(GameState::ptr(new SGameBeginning));
+	//setClientGameState(GameState::ptr(new SGameBeginning));
 }
 
 void SMainMenuSolo::onClic2P(gaia::MouseEvent& ev)
@@ -71,5 +71,5 @@ void SMainMenuSolo::onClic2P(gaia::MouseEvent& ev)
 	game.reset();
 	game.setup2PGame("Player 1", "Player 2");
 	setServerGameState(GameState::ptr(new SGameBeginningServer));
-	setClientGameState(GameState::ptr(new SGameBeginning));
+	//setClientGameState(GameState::ptr(new SGameBeginning));
 }

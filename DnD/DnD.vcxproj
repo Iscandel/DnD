@@ -124,12 +124,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\C et CPP\Applications\DnD\DnD\dependencies\include;D:\C et CPP\Applications\SFML\SFML-2.4.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\C et CPP\Applications\DnD\DnD\dependencies\lib32;D:\C et CPP\Applications\SFML\SFML-2.4.1\buildShared32\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-window.lib;sfml-main.lib;sfml-network.lib;ws2_32.lib;sfml-audio.lib;Gaia.lib;XMLLoader.lib;SFMLRenderer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -199,6 +202,7 @@
     <ClCompile Include="SGameBeginningServer.cpp" />
     <ClCompile Include="SGame.cpp" />
     <ClCompile Include="SGameBeginning.cpp" />
+    <ClCompile Include="GameLostView.cpp" />
     <ClCompile Include="SGameServer.cpp" />
     <ClCompile Include="SGameWon.cpp" />
     <ClCompile Include="Side.cpp" />
@@ -268,6 +272,7 @@
     <ClInclude Include="SGameBeginningServer.h" />
     <ClInclude Include="SGame.h" />
     <ClInclude Include="SGameBeginning.h" />
+    <ClInclude Include="GameLostView.h" />
     <ClInclude Include="SGameServer.h" />
     <ClInclude Include="SGameWon.h" />
     <ClInclude Include="Side.h" />

@@ -439,3 +439,1162 @@
 ===============================
 
 [Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 03:36:51
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 15:51:24
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:51:37
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:55:15
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:55:17
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:56:02
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:57:04
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:58:56
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 15:59:03
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:01:44
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 16:01:53
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:01:55
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:02:45
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:03:06
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:03:15
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:05:09
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:05:18
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:07:56
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:08:01
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:08:59
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:09:07
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:09:31
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:09:39
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:10:29
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:10:37
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:11:16
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:11:21
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:12:36
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:12:45
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:13:30
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:13:38
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:14:49
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:14:55
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:15:13
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:15:19
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:15:56
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:16:01
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:51:09
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:51:15
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:53:28
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:53:34
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:55:03
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:55:08
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:56:20
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:56:28
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:57:09
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:57:15
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 16:59:55
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:00:03
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:03:29
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:03:40
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:08:17
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:08:23
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:09:02
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:09:12
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:09:45
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:10:00
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:10:06
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:30:06
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:30:18
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:34:42
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:34:49
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:35:26
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:35:32
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:36:03
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:36:10
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:36:41
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:36:46
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:38:52
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:39:02
+===============================
+
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 17:43:11
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 17:44:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 17:47:06
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 17:52:02
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:08:04
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:08:12
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 18:08:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:31:36
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:33:30
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:34:27
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:37:53
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:37:59
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 18:40:24
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:24:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:24:36
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:34:04
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:34:15
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:34:41
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:34:57
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:35:11
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:36:02
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:36:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:37:32
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:37:43
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:38:37
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:38:44
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:39:52
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:39:58
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:53:39
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:54:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:54:19
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:54:57
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 19:55:01
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:55:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:56:53
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:57:00
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:57:16
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:57:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:58:29
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 19:58:36
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:12:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:12:21
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:12:54
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:21:49
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:26:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:26:43
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:26:50
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:27:32
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:28:40
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:28:48
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:40:52
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:41:00
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:42:26
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:42:50
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:43:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:43:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:44:49
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:44:57
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:47:30
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:47:39
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:58:10
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 20:58:16
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 20:58:23
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:02:50
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:03:01
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:07:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:07:32
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:11:34
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:11:44
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:13:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 21:13:23
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:13:32
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:16:51
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:16:58
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:21:47
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:22:01
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:29:48
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:29:56
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 21:32:57
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 22:06:29
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 22:06:36
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 22:07:34
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 22:07:42
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 22:08:31
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:06:23
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:07:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 23:17:03
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:17:30
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:19:38
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:19:46
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:21:33
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:25:56
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:26:20
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:30:24
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 30/01/2017 à 23:30:35
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 30/01/2017 à 23:30:43
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 31/01/2017 à 00:05:12
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:05:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:06:31
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:06:47
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:07:02
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:09:29
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 00:17:35
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 01:58:51
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 01:59:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 02:05:07
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 21:28:33
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 31/01/2017 à 21:28:43
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 31/01/2017 à 21:32:35
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 31/01/2017 à 21:33:13
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+===============================
+ Starting logs...	 01/02/2017 à 21:03:17
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 21:04:03
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 21:04:34
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 21:04:56
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 21:05:25
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 21:06:03
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 22:14:35
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 01/02/2017 à 22:15:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 23/02/2017 à 21:20:19
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.

@@ -1,13 +1,15 @@
 #include "SGameWon.h"
 
 #include "GameWonView.h"
+#include "GameLostView.h"
 #include "SMainMenu.h"
 
 #include "Gaia/Gaia.h"
 #include "Gaia/SFMLRenderer.h"
 #include "Gaia/XMLGaia.h"
 
-SGameWon::SGameWon()
+SGameWon::SGameWon(bool won)
+:myIsWon(won)
 {
 }
 
@@ -18,7 +20,10 @@ SGameWon::~SGameWon()
 
 void SGameWon::init()
 {
-	setView(View::ptr(new GameWonView("data/gameWonViewPos.txt")));
+	if(myIsWon)
+		setView(View::ptr(new GameWonView("data/gameWonViewPos.txt")));
+	else
+		setView(View::ptr(new GameLostView));
 
 	gaia::GuiManager::getInstance()->clean();
 }

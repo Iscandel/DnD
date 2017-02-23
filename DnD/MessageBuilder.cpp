@@ -1,5 +1,7 @@
 #include "MessageBuilder.h"
 
+#include "Game.h"
+
 #include <sstream>
 
 MessageBuilder::MessageBuilder(void)
@@ -19,6 +21,26 @@ Message MessageBuilder::connection(const std::string& ip, const std::string& pse
 
 	msg.sData[Message::Key::Connection::IP] = ip;
 	msg.sData[Message::Key::Connection::PSEUDO] = pseudo;
+
+	return msg;
+}
+
+Message MessageBuilder::clConnection(const std::string& nick)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CL_CONNECTION;
+
+	msg.sData[Message::Key::ClConnection::NAME] = nick;
+
+	return msg;
+}
+
+Message MessageBuilder::clOkSendMeInfos()
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CL_OK_SEND_ME_INFOS;
 
 	return msg;
 }
@@ -122,6 +144,18 @@ Message MessageBuilder::clEndTurn(int id)
 
 	return msg;
 }
+
+Message MessageBuilder::clSendChatMessage(const std::string& message)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::CL_SEND_CHAT_MESSAGE;
+
+	msg.sData[Message::Key::ClSendChatMessage::MESSAGE] = message;
+
+	return msg;
+}
+
 
 
 Message MessageBuilder::svPlayerMove(int id, const Point<int>& coords)
@@ -272,7 +306,7 @@ Message MessageBuilder::svGameRunning()
 	return msg;
 }
 
-Message MessageBuilder::svConnectionResult(int result, int error)
+Message MessageBuilder::svConnectionResult(int result, int error, const std::string& reason)
 {
 	Message msg;
 
@@ -280,6 +314,86 @@ Message MessageBuilder::svConnectionResult(int result, int error)
 
 	msg.iData[Message::Key::SvConnectionResult::RESULT] = result;
 	msg.iData[Message::Key::SvConnectionResult::ERROR_CONNEC] = error;
+	msg.sData[Message::Key::SvConnectionResult::REASON] = reason;
+
+	return msg;
+}
+
+Message MessageBuilder::svGameOver()
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_GAME_OVER;
+
+	return msg;
+}
+
+Message MessageBuilder::svPlayerInfos(Game& game)
+{
+	Message msg;
+
+	std::vector<Player::ptr> players = game.getPlayers();
+
+	msg.type = Message::MessageType::SV_PLAYER_INFOS;
+
+	msg.iData[Message::Key::SvPlayerInfos::NB_PLAYERS] = players.size();
+
+	std::string str;
+	
+	for (unsigned int i = 0; i < players.size(); i++)
+	{
+		str += tools::numToString(players[i]->getId()) + " " + 
+			tools::numToString(players[i]->getName().size()) + " " + 
+			tools::numToString(players[i]->getName());
+		if (i != players.size() - 1)
+			str += " ";
+	}
+
+	msg.sData[Message::Key::SvPlayerInfos::INFOS] = str;
+
+	return msg;
+}
+
+Message MessageBuilder::svYourId(int id)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_YOUR_ID;
+
+	msg.iData[Message::Key::SvYourID::ID] = id;
+
+	return msg;
+}
+
+Message MessageBuilder::svNextState()
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_NEXT_STATE;
+
+	return msg;
+}
+
+Message MessageBuilder::svSecretRoomChosen(int id, int x, int y)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_SECRET_ROOM_CHOSEN;
+
+	msg.iData[Message::Key::SvSecretRoomChosen::ID] = id;
+	msg.iData[Message::Key::SvSecretRoomChosen::X] = x;
+	msg.iData[Message::Key::SvSecretRoomChosen::Y] = y;
+
+	return msg;
+}
+
+Message MessageBuilder::svSendChatMessage(const std::string& message)
+{
+	Message msg;
+
+	msg.type = Message::MessageType::SV_SEND_CHAT_MESSAGE;
+
+	msg.sData[Message::Key::SvSendChatMessage::MESSAGE] = message;
 
 	return msg;
 }
@@ -295,6 +409,99 @@ bool MessageBuilder::extractConnection(const Message& msg, std::string& ip, std:
 
 	ip = msg.sData[Message::Key::Connection::IP];
 	pseudo = msg.sData[Message::Key::Connection::PSEUDO];
+
+	return true;
+}
+
+bool MessageBuilder::extractClConnection(const Message& msg, int& id, std::string& nick)
+{
+	if (msg.type != Message::MessageType::CL_CONNECTION ||
+		msg.iData.find(Message::Key::ClConnection::TMP_ID) == msg.iData.end() ||
+		msg.sData.find(Message::Key::ClConnection::NAME) == msg.sData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::ClConnection::TMP_ID];
+	nick = msg.sData[Message::Key::ClConnection::NAME];
+
+	return true;
+}
+
+bool MessageBuilder::extractClSendMeInfos(const Message& msg, int& id)
+{
+	if (msg.type != Message::MessageType::CL_OK_SEND_ME_INFOS ||
+		msg.iData.find(Message::Key::clOkSendMeInfos::ID) == msg.iData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::clOkSendMeInfos::ID];
+
+	return true;
+}
+
+bool MessageBuilder::extractClSendChatMessage(const Message& msg, int& id, std::string& message)
+{
+	if (msg.type != Message::MessageType::CL_SEND_CHAT_MESSAGE ||
+		msg.iData.find(Message::Key::ClSendChatMessage::ID) == msg.iData.end() ||
+		msg.sData.find(Message::Key::ClSendChatMessage::MESSAGE) == msg.sData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::ClSendChatMessage::ID];
+	message = msg.sData[Message::Key::ClSendChatMessage::MESSAGE];
+
+	return true;
+}
+
+bool MessageBuilder::extractSvPlayerInfos(const Message& msg, std::vector<int>& ids, std::vector<std::string>& nicks)
+{
+	if (msg.type != Message::MessageType::SV_PLAYER_INFOS ||
+		msg.iData.find(Message::Key::SvPlayerInfos::NB_PLAYERS) == msg.iData.end() ||
+		msg.sData.find(Message::Key::SvPlayerInfos::INFOS) == msg.sData.end())
+	{
+		return false;
+	}
+
+	int nbPlayers = msg.iData[Message::Key::SvPlayerInfos::NB_PLAYERS];
+	std::string str = msg.sData[Message::Key::SvPlayerInfos::INFOS];
+
+	for (int i = 0; i < nbPlayers; i++)
+	{
+		//L'id
+		int pos = str.find(' ');
+		int id = tools::stringToNum<int>(str.substr(0, pos));
+		ids.push_back(id);
+		str = str.substr(pos + 1, str.size() - 1);
+
+		//Nick length
+		pos = str.find(' ');
+		int nickLength = tools::stringToNum<int>(str.substr(0, pos));
+		str = str.substr(pos + 1, str.size() - 1);
+
+		//Le pseudo
+		std::string nick = str.substr(0, nickLength);
+		nicks.push_back(nick);
+		if(i != nbPlayers - 1)
+			str = str.substr(nickLength + 1, str.size() - 1);
+	}
+
+	if(ids.size() == nicks.size())
+		return true;
+	return false;
+}
+
+bool MessageBuilder::extractSvYourId(const Message& msg, int& id)
+{
+	if (msg.type != Message::MessageType::SV_YOUR_ID ||
+		msg.iData.find(Message::Key::SvYourID::ID) == msg.iData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::SvYourID::ID];
 
 	return true;
 }
@@ -398,6 +605,23 @@ bool MessageBuilder::extractClPlayerWounded(const Message& msg, int& id)
 	return true;
 }
 
+bool MessageBuilder::extractSvPlayerMoves(const Message& msg, int& id, int& x, int& y)
+{
+	if (msg.type != Message::MessageType::SV_MOVE ||
+		msg.iData.find(Message::Key::SvMove::ID) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvMove::X) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvMove::Y) == msg.iData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::SvMove::ID];
+	x = msg.iData[Message::Key::SvMove::X];
+	y = msg.iData[Message::Key::SvMove::Y];
+
+	return true;
+}
+
 bool MessageBuilder::extractSvTakeTreasure(const Message& msg, int& id)
 {
 	if (msg.type != Message::MessageType::SV_TAKE_TREASURE ||
@@ -469,17 +693,49 @@ bool MessageBuilder::extractSvWall(const Message& msg, int& cellX, int& cellY, D
 	return true;
 }
 
-bool MessageBuilder::extractSvConnectionResult(const Message& msg, int& result, int& error)
+bool MessageBuilder::extractSvConnectionResult(const Message& msg, int& result, int& error, std::string& reason)
 {
 	if (msg.type != Message::MessageType::SV_CONNECTION_RESULT ||
 		msg.iData.find(Message::Key::SvConnectionResult::RESULT) == msg.iData.end() ||
-		msg.iData.find(Message::Key::SvConnectionResult::ERROR_CONNEC) == msg.iData.end())
+		msg.iData.find(Message::Key::SvConnectionResult::ERROR_CONNEC) == msg.iData.end() ||
+		msg.sData.find(Message::Key::SvConnectionResult::REASON) == msg.sData.end())
 	{
 		return false;
 	}
 
 	result = msg.iData[Message::Key::SvConnectionResult::RESULT];
 	error = msg.iData[Message::Key::SvConnectionResult::ERROR_CONNEC];
+	reason = msg.sData[Message::Key::SvConnectionResult::REASON];
+
+	return true;
+}
+
+bool MessageBuilder::extractSvSecretRoomChosen(const Message& msg, int& id, int& x, int& y)
+{
+	if (msg.type != Message::MessageType::SV_SECRET_ROOM_CHOSEN ||
+		msg.iData.find(Message::Key::SvSecretRoomChosen::ID) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvSecretRoomChosen::X) == msg.iData.end() ||
+		msg.iData.find(Message::Key::SvSecretRoomChosen::Y) == msg.iData.end())
+	{
+		return false;
+	}
+
+	id = msg.iData[Message::Key::SvSecretRoomChosen::ID];
+	x = msg.iData[Message::Key::SvSecretRoomChosen::X];
+	y = msg.iData[Message::Key::SvSecretRoomChosen::Y];
+
+	return true;
+}
+
+bool MessageBuilder::extractSvSendChatMessage(const Message& msg, std::string& message)
+{
+	if (msg.type != Message::MessageType::SV_SEND_CHAT_MESSAGE ||
+		msg.sData.find(Message::Key::SvSendChatMessage::MESSAGE) == msg.sData.end())
+	{
+		return false;
+	}
+
+	message = msg.sData[Message::Key::SvSendChatMessage::MESSAGE];
 
 	return true;
 }

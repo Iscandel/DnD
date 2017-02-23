@@ -17,11 +17,16 @@ public:
 		MyDummySoundBuffer = buffer;
 	}
 
+	void setCallback(std::function<void()> callback) { myCallback = callback; }
+
 	sf::Sound::Status getStatus() const { return mySound.getStatus(); }
 	void play() { mySound.play(); }
+
+	void callback() { if (myCallback) myCallback(); }
 protected:
 	ResourceSoundBuffer::ptr MyDummySoundBuffer;
 	sf::Sound mySound;
+	std::function<void()> myCallback;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -59,7 +64,11 @@ public:
 
 	void playSound(const std::string& id);
 
+	void playSound(const std::string& id, std::function<void()> callback);
+
 	void pushSound(const std::string& id);
+
+	void pushSound(const std::string& id, std::function<void()> callback);
 
 	void playMusic(const std::string& path);
 

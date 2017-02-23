@@ -6,6 +6,10 @@
 #include "SGame.h"
 #include "SGameServer.h"
 
+#include "Gaia/addFactory.h"
+#include "Gaia/Gaia.h"
+#include "DraggableImage.h"
+
 #include "CreationFichierRessources.h"
 
 //#include <iostream>
@@ -14,6 +18,8 @@ CommonInterface::CommonInterface(void)
 {
 	//utiles::creerGuiDat();
 	//utiles::createSounds();
+
+	gaia::addFactory<DraggableImage>();
 
 	myGame.linkGameEngine(&myGame);
 	myGame.linkGraphicEngine(&myGraphic);
@@ -47,8 +53,8 @@ void CommonInterface::run()
 	{
 		GameState::ptr sgame(new SMainMenu);//new SGame);
 		myGame.setClientGameState(sgame);//lobby);
-		ServerGameState::ptr serverGame(new SGameServer);
-		myGame.setServerGameState(serverGame);
+		//ServerGameState::ptr serverGame(new SGameServer);
+		//myGame.setServerGameState(serverGame);
 
 		while(!myGame.isFinished())
 		{

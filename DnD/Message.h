@@ -54,6 +54,8 @@ public:
 	{
 		enum messageType
 		{		
+			CL_CONNECTION,
+			CL_OK_SEND_ME_INFOS,
 			CL_MOVE,
 			CL_DRAGOON_MOVES,
 			CL_DRAGOON_AWAKES,
@@ -61,6 +63,7 @@ public:
 			CL_PLAYER_WOUNDED,
 			CL_END_TURN,
 			CL_CHOOSES_SECRET_ROOM,
+			CL_SEND_CHAT_MESSAGE,
 			PLAY_SOUND,
 			PLAY_MUSIC,
 			STOP_MUSIC,
@@ -77,7 +80,14 @@ public:
 			SV_GAME_WON,
 			SV_PLAYER_WOUNDED,
 			SV_PLAYER_LOOSES,
-			SV_GAME_RUNNING
+			SV_GAME_RUNNING,
+			SV_GAME_OVER,
+			SV_PLAYER_INFOS,
+			SV_YOUR_ID,
+			SV_GO_BEGINNING,
+			SV_NEXT_STATE,
+			SV_SECRET_ROOM_CHOSEN,
+			SV_SEND_CHAT_MESSAGE
 		};
 	};
 
@@ -111,6 +121,19 @@ public:
 			enum {
 				ID,			//iData, filled par server for distant players
 				DIRECTION,  //iData, enum
+			};
+		};
+
+		struct clOkSendMeInfos {
+			enum {
+				ID,			//iData, filled par server for distant players
+			};
+		};
+
+		struct ClSendChatMessage {
+			enum {
+				ID,			//iData, filled par server for distant players
+				MESSAGE,  //iData, enum
 			};
 		};
 
@@ -181,7 +204,6 @@ public:
 			enum {
 				TMP_ID, //iData
 				NAME, //sData
-				IS_LOCAL_CLIENT, //iData (0 or 1)
 			};
 		};
 
@@ -196,6 +218,7 @@ public:
 			enum {
 				RESULT, //iData
 				ERROR_CONNEC, //iData
+				REASON, //sData
 			};
 		};
 
@@ -235,6 +258,34 @@ public:
 				ID, //iData
 			};
 		};
+
+		struct SvPlayerInfos {
+			enum {
+				NB_PLAYERS, //iData
+				INFOS, //sData
+			};
+		};
+
+		struct SvYourID {
+			enum {
+				ID //iData
+			};
+		};
+
+		struct SvSecretRoomChosen {
+			enum {
+				ID, //iData
+				X, 
+				Y
+			};
+		};
+
+		struct SvSendChatMessage {
+			enum {
+				MESSAGE
+			};
+		};
+
 		struct PlaySound {
 			enum {
 				ID_SOUND, //sData

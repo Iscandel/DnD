@@ -8,5 +8,8 @@ public:
 	~GameBeginningView();
 
 	virtual void draw(GameState& state);
+
+protected:
+	bool myIsSet;
 };
 

@@ -22,8 +22,10 @@ void GameEngine::processMessage(const Message& msg)
 	switch(msg.type)
 	{		
 	default:
-		myServerGameStates.back()->processMessage(msg);
-		myClientGameStates.back()->processMessage(msg);
+		if(myServerGameStates.size() > 0)
+			myServerGameStates.back()->processMessage(msg);
+		if (myClientGameStates.size() > 0)
+			myClientGameStates.back()->processMessage(msg);
 	break;
 	}
 }

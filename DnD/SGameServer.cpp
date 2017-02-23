@@ -94,7 +94,7 @@ void SGameServer::processMessage(const Message& msg)
 			Cell::ptr neighbour = maze->getNeighbourCell(cell, direction);
 			if (neighbour)
 			{
-				const Point<int>& coords = neighbour->getCoords();
+				const Point<int>& coords = neighbour->getAbstractPos();
 				player->setAbstractPosition(coords.x, coords.y);
 				Message m = MessageBuilder::svPlayerMove(id, coords);
 				//getGameEngine()->processMessage(m);
@@ -102,11 +102,13 @@ void SGameServer::processMessage(const Message& msg)
 				sendMessage(m);
 
 				player->doStep();
-				if (!player->onMoved(*this))
+				if (!player->onMoved(*this)) //on moved should return true if next turn has to be called ?
 				{
 					if (!player->hasStepsRemaining()) {
 						player->resetStepsRemaining();
 						int nextId = game.nextEntityTurn();
+						if (nextId == -1)
+							return;
 						Message m = MessageBuilder::svNewTurn(nextId);
 						//getGameEngine()->processMessage(m);
 						sendMessage(m);
@@ -114,7 +116,7 @@ void SGameServer::processMessage(const Message& msg)
 				}
 				else
 				{
-					Message m = MessageBuilder::svGameWon(player->getId());
+					Message m = MessageBuilder::svGameWon(player->getId()); //Should be called elsewhere ?
 					//getGameEngine()->processMessage(m);
 
 					sendMessage(m);
@@ -127,6 +129,7 @@ void SGameServer::processMessage(const Message& msg)
 		{
 			cell->getSide(direction)->revealSide(); //to change
 			player->resetStepsRemaining();
+			std::cout << "On envoie " << cell->getAbstractX() << " " << cell->getAbstractY() << std::endl;
 			Message m = MessageBuilder::svWall(cell->getAbstractX(), cell->getAbstractY(), direction);
 			sendMessage(m);
 			
@@ -251,7 +254,7 @@ void SGameServer::processMessage(const Message& msg)
 
 		if (neighbour != cell)
 		{
-			const Point<int>& coords = neighbour->getCoords();
+			const Point<int>& coords = neighbour->getAbstractPos();
 			dragoon->setAbstractPosition(coords.x, coords.y);
 			Message m = MessageBuilder::svDragoonMoves();
 			sendMessage(m);
@@ -261,6 +264,8 @@ void SGameServer::processMessage(const Message& msg)
 			{
 				//Only players can play after a dragoon attack
 				int nextId = game.nextPlayerTurn();
+				if (nextId == -1)
+					return;
 				m = MessageBuilder::svNewTurn(nextId);
 				//getGameEngine()->processMessage(m);
 				sendMessage(m);
@@ -280,6 +285,26 @@ void SGameServer::processMessage(const Message& msg)
 		}
 	}
 	break;
+
+	case Message::MessageType::CL_SEND_CHAT_MESSAGE:
+	{
+		int id;
+		std::string strMessage;
+		if (!MessageBuilder::extractClSendChatMessage(msg, id, strMessage))
+			return;
+
+		Game& game = getGameEngine()->getGame();
+		Player::ptr player = game.getPlayer(id);
+
+		if (player)
+		{
+			std::string toSend = "[" + player->getName() + "] says: " + strMessage;
+
+			Message m = MessageBuilder::svSendChatMessage(toSend);
+			sendMessage(m);
+		}
+	}
+	break;
 	
 	default:
 		break;
@@ -295,8 +320,29 @@ void SGameServer::handlePlayerDefeat(Player::ptr player)
 
 	Message m = MessageBuilder::svPlayerLooses(player->getId());
 	sendMessage(m);
+
+	checkGameOver();
 }
 
+void SGameServer::checkGameOver()
+{
+	bool gameOver = true;
+	Game& game = getGameEngine()->getGame();
+	std::vector<Player::ptr> players = game.getPlayers();
+
+	for (Player::ptr player : players)
+	{
+		if (!player->hasLost())
+			gameOver = false;
+	}
+
+	if (gameOver)
+	{
+		Message msg = MessageBuilder::svGameOver();
+		sendMessage(msg);
+		getGameEngine()->popServerState();
+	}
+}
 
 bool SGameServer::nextPlayerIfHasLost(Player::ptr player)
 {

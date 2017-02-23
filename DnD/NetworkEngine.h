@@ -33,7 +33,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	void update();
 
-	void sendMessage(const Message& Msg);
+	//void sendMessage(const Message& Msg);
 
 	bool isMulti() {return myIsMulti;}
 
@@ -45,7 +45,8 @@ public:
 
 	void th_connection();
 
-	void disconnectPlayer(sf::Socket& socket);
+	void disconnectPlayer(int id, bool temporary);
+	void disconnectPlayer(sf::TcpSocket* socket);
 
 	//bool isRunning() const {return myReception
 
@@ -53,9 +54,17 @@ public:
 
 	//bool checkValidity(Message::MessageType::messageType type);
 
+	void changeTemporaryToFinal(int tmpId, int finalId);
+
 	void sendMessageTCP(const Message& msg);
 
 	void sendMessageTCP(const Message& msg, int id);
+
+	void sendMessageTCPToAllExcept(const Message& msg, int id);
+
+	void sendMessageTCPToAllExcept(const Message& msg, const std::vector<int>& ids);
+
+	sf::TcpSocket* getSocketById(int id, bool isTemporary);
 
 	int getIdBySocket(sf::Socket* socket) const;
 

@@ -1,5 +1,9 @@
 #pragma once
 #include "GameState.h"
+
+#include "Gaia/Gaia.h"
+#include "Gaia/SFMLRenderer.h"
+
 class SLobbyServer :
 	public ServerGameState
 {
@@ -17,5 +21,8 @@ public:
 	bool catchEvent(const sf::Event& ev);
 
 	virtual void processMessage(const Message& msg);
+
+protected:
+	void onClicStart(gaia::MouseEvent& ev);
 };
 

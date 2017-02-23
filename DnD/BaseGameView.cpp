@@ -73,7 +73,7 @@ void BaseGameView::drawMaze(GameState& state, Maze::ptr maze, int windowSizeX, i
 			drawCellShadows(state, x, y, windowSizeX, windowSizeY);
 
 			Side::ptr sideEast = cell->getSide(Direction::EAST);
-			if (sideEast->getType() == Side::WALL)// && sideEast->isRevealed())
+			if (sideEast->getType() == Side::WALL && sideEast->isRevealed())
 			{
 				std::vector<Image>& resource = sideEast->getCurrentImages();
 				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);
@@ -82,7 +82,7 @@ void BaseGameView::drawMaze(GameState& state, Maze::ptr maze, int windowSizeX, i
 			}
 
 			Side::ptr sideSouth = cell->getSide(Direction::SOUTH);
-			if (sideSouth->getType() == Side::WALL) //&& sideSouth->isRevealed())
+			if (sideSouth->getType() == Side::WALL && sideSouth->isRevealed())
 			{
 				std::vector<Image>& resource = sideSouth->getCurrentImages();
 				sf::Vector2f pixelSize(wallSizeHoriz.x * windowSizeX, wallSizeHoriz.y * windowSizeY);

@@ -50,10 +50,10 @@ public:
 	//void addCurrentDrawnImage(const std::string& name, int num = 0);
 	//void setCurrentDrawnImage(const std::string& name, int num = 0);
 
-	const Point<int>& getCoords() const { return myCoords; }
+	//const Point<int>& getCoords() const { return myCoords; }
 
 protected:
-	Point<int> myCoords;
+	//Point<int> myCoords;
 
 	//public boolean visitee = false;
 	/**

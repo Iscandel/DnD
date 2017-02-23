@@ -2,6 +2,7 @@
 
 #include "CompleteMazeGenerator.h"
 #include "Game.h"
+#include "SGameBeginning.h"
 #include "GameEngine.h"
 #include "GameUtils.h"
 #include "GraphicEngine.h"
@@ -21,7 +22,12 @@ SGameBeginningServer::~SGameBeginningServer()
 void SGameBeginningServer::init()
 {
 	//Initialize maze
-	Game& game = getGameEngine()->getGame();
+	//Game& game = getGameEngine()->getGame();
+
+	getGameEngine()->setClientGameState(GameState::ptr(new SGameBeginning));
+
+	Message msg = MessageBuilder::svNextState();
+	sendMessageExceptLocal(msg);
 
 	//CompleteMazeGenerator gene(game.getMazeUnperfectPerc());
 
@@ -76,13 +82,22 @@ void SGameBeginningServer::processMessage(const Message& msg)
 				player->setSecretRoomPos(Point<int>(x, y));
 				player->setAbstractPosition(player->getSecretRoomPos());
 
+				Message m = MessageBuilder::svSecretRoomChosen(id, x, y);
+				sendMessageExceptLocal(m);
+
 				if (allSecretRoomValidated())
 				{
 					configureMaze();
 					game.setTurnToFirstPlayer();
+
+					int nextId = game.getCurrentIdTurn();
+					Message m = MessageBuilder::svNewTurn(nextId);
+					sendMessageExceptLocal(m);
+
+					//m = MessageBuilder::svNextState();
+					//sendMessageExceptLocal(m);
+
 					setServerGameState(GameState::ptr(new SGameServer));
-					//Message m = MessageBuilder::svGameRunning();
-					//sendMessage(m);
 				}
 				else
 				{

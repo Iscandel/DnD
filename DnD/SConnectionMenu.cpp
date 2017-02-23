@@ -31,7 +31,7 @@ void SConnectionMenu::init()
 
 bool SConnectionMenu::catchEvent(const sf::Event& ev)
 {
-	Game& game = getGameEngine()->getGame();
+	//Game& game = getGameEngine()->getGame();
 
 	gaia::GuiManager::getInstance()->processEvent(gaia::SFMLInput(ev));
 
@@ -52,7 +52,8 @@ void SConnectionMenu::processMessage(const Message& msg)
 	case Message::MessageType::SV_CONNECTION_RESULT:
 	{
 		int result, error;
-		if (!MessageBuilder::extractSvConnectionResult(msg, result, error))
+		std::string reason;
+		if (!MessageBuilder::extractSvConnectionResult(msg, result, error, reason))
 			return;
 
 		if (result == 1)
@@ -61,7 +62,9 @@ void SConnectionMenu::processMessage(const Message& msg)
 		}
 		else
 		{
-
+			gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+			manager->getWidget<gaia::Label>("errorLabel")->setText(reason);
+			//manager->getWidget<gaia::Label>("errorLabel")->setTextColor(gaia::Color(255, 0, 0));
 		}
 
 	}
@@ -74,10 +77,26 @@ void SConnectionMenu::processMessage(const Message& msg)
 
 void SConnectionMenu::onClicConnection(gaia::MouseEvent& ev)
 {
-	getNetworkEngine()->connection();
+	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+	
+	Message msg = MessageBuilder::connection(
+		manager->getWidget<gaia::TextBox>("ipField")->getText(),
+		manager->getWidget<gaia::TextBox>("pseudoField")->getText());
+	sendMessageToNetwork(msg);
+	//getNetworkEngine()->connection();
 }
 
 void SConnectionMenu::onClicHost(gaia::MouseEvent& ev)
 {
-	setServerGameState(GameState::ptr(new SLobbyServer));
+	gaia::GuiManager* manager = gaia::GuiManager::getInstance();
+	std::string nick = manager->getWidget<gaia::TextBox>("pseudoField")->getText();
+
+	if(nick == "")
+		manager->getWidget<gaia::Label>("errorLabel")->setText("Nick ?");
+	else
+	{
+		Game& game = getGameEngine()->getGame();
+		game.setup1PGame(nick);
+		setServerGameState(GameState::ptr(new SLobbyServer));
+	}
 }

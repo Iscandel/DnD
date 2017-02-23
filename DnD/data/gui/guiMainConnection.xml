@@ -55,4 +55,10 @@
     <text>Host</text>
     <textColor>255 255 255</textColor>
   </widget>
+  <widget name="errorLabel" type="Label">
+    <dimensions>
+      <fullDimensions type="relative">0.7 ; 0.35 ; 0.3 ; 0.1</fullDimensions>
+    </dimensions>
+    <textColor>255 0 0</textColor>
+  </widget>
 </WidgetList>

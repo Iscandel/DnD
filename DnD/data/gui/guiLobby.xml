@@ -20,6 +20,7 @@
       <width type="relative">0.4</width>
       <height type="fixed">35</height>
     </dimensions>
+    <textColor>255 255 255</textColor>
   </widget>
   <widget name="returnButton" type="Button">
     <dimensions>

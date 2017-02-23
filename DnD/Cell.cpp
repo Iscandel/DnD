@@ -13,8 +13,9 @@ Cell::Cell()
 
 Cell::Cell(const Point<int>& coords, Side::ptr east, Side::ptr north, Side::ptr west, Side::ptr south)
 :GraphicEntity(0)
-,myCoords(coords)
 {
+	myAbstractPos = coords;
+
 	myEastSide = east;
 	myNorthSide = north;
 	myWestSide = west;

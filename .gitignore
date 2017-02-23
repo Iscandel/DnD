@@ -244,3 +244,8 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /DnD/data/player1.png
+/DnD/data/music/gameOver-ancien1.wav
+/DnD/dependencies/lib32/Gaia.lib
+/DnD/dependencies/lib32/SFMLRenderer.lib
+/DnD/dependencies/lib32/XMLLoader.lib
+/DnD/DnD.rar

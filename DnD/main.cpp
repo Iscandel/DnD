@@ -13,13 +13,13 @@
 //#pragma comment(lib, "./Dependencies/XMLLoader-s-d.lib")
 //#pragma comment(lib, "./Dependencies/SFMLRenderer-s-d.lib")
 #else
-#pragma comment(lib,"sfml-system-s.lib")
-#pragma comment(lib,"sfml-graphics-s.lib")
-#pragma comment(lib,"sfml-window-s.lib")
-#pragma comment(lib,"sfml-network-s.lib")
-#pragma comment(lib,"sfml-audio-s.lib")
-//#pragma comment(lib,"tinyxml_STL.lib")
-#pragma comment(lib,"sfml-main.lib")
+//#pragma comment(lib,"sfml-system-s.lib")
+//#pragma comment(lib,"sfml-graphics-s.lib")
+//#pragma comment(lib,"sfml-window-s.lib")
+//#pragma comment(lib,"sfml-network-s.lib")
+//#pragma comment(lib,"sfml-audio-s.lib")
+////#pragma comment(lib,"tinyxml_STL.lib")
+//#pragma comment(lib,"sfml-main.lib")
 #endif
 //#include "CreationFichierRessources.h"
 

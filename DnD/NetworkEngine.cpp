@@ -96,24 +96,24 @@ void NetworkEngine::listen(unsigned int port)
 {
 	myListener.listen(port);
 	reception();
+	myIsMulti = true;
 	myIsServer = true;
 
 	ILogger::log() << "Server listening on port " << port << ".\n";
 }
 
-void NetworkEngine::sendMessage(const Message& M)
-{
-}
+//void NetworkEngine::sendMessage(const Message& M)
+//{
+//}
 
 void NetworkEngine::th_connection()
 {
-	Message msg;
-
 	sf::Socket::Status status = myClientSocket.connect(myAddress, myPort);
 	if(status != sf::Socket::Done)
 	{
-		msg = MessageBuilder::svConnectionResult(0, WSAGetLastError());
+		Message msg = MessageBuilder::svConnectionResult(0, WSAGetLastError(), "Error when connecting.");
 		ILogger::log(ILogger::ERRORS) << "Error " << WSAGetLastError() << " on connection.\n";
+		sendMessageToGame(msg);
 	}
 	else
 	{
@@ -126,12 +126,11 @@ void NetworkEngine::th_connection()
 			reception();
 		}
 		
-		//Message m = MessageBuilder::clConnection(myPseudo);
+		Message msg = MessageBuilder::clConnection(myNick);
+		sendMessageTCP(msg);
 		mySelector.add(myClientSocket);
 		mySockets.push_back(&myClientSocket);
-	}
-
-	sendMessageToGame(msg);
+	}	
 }
 
 void NetworkEngine::th_reception()
@@ -158,10 +157,9 @@ void NetworkEngine::th_reception()
 				}
 
 				mySelector.add(*client);
-				this->myTemporarySockets.push(client);
+				//this->myTemporarySockets.push(client);
 				myTemporaryIdAndSocket.push_back(std::make_pair(createNewTmpId(), client));
 				mySockets.push_back(client);
-				//sendMessageToGame(MessageBuilder::ClConnection(myNick, false));
 
 				if(!canAcceptNewClient())
 				{
@@ -185,6 +183,7 @@ void NetworkEngine::th_reception()
 						{
 							Message msg;
 							packet >> msg;
+
 							//vérifier qu'on accepte selon si on est serveur ou pas
 							//if(msg.type == Message::MessageType::CL_CONNECTION)
 							//{
@@ -197,18 +196,20 @@ void NetworkEngine::th_reception()
 
 							if(isServer())
 								modifyMessage(msg, *mySockets[i]);
+
+							sendMessageToGame(msg);
 							
 							//if(checkValidity((Message::MessageType::messageType) msg.type))
 							//	sendMessageToGame(msg);
 						}
 						else if(status == sf::Socket::Disconnected)
 						{
-							disconnectPlayer(*mySockets[i]);
+							disconnectPlayer(mySockets[i]);
 						}
 						else
 						{
 							ILogger::log(ILogger::ERRORS) << "A packet has leaded to an error..\n";
-							disconnectPlayer(*mySockets[i]);
+							disconnectPlayer(mySockets[i]);
 						}
 					} //end ifReady
 				} //end for
@@ -217,8 +218,45 @@ void NetworkEngine::th_reception()
 	} //end while
 }
 
-void NetworkEngine::disconnectPlayer(sf::Socket& socket)
+void NetworkEngine::disconnectPlayer(int id, bool temporary)
 {
+	sf::TcpSocket* socket = getSocketById(id, temporary);
+	disconnectPlayer(socket);
+}
+
+void NetworkEngine::disconnectPlayer(sf::TcpSocket* socket)
+{
+	mySelector.remove(*socket);
+	std::vector<sf::TcpSocket*>::iterator itSocks = mySockets.begin();
+	for (; itSocks != mySockets.end();)
+	{
+		if (*itSocks == socket)
+			itSocks = mySockets.erase(itSocks);
+		else
+		{
+			++itSocks;
+		}
+	}
+
+	std::list<std::pair<int, sf::TcpSocket*> >::iterator it = myTemporaryIdAndSocket.begin();
+	for (; it != myTemporaryIdAndSocket.end(); )
+	{
+		sf::TcpSocket* sock = it->second;
+		if (sock == socket)
+			it = myIdAndSocket.erase(it);
+		else
+			++it;
+	}
+
+	it = myIdAndSocket.begin();
+	for (; it != myIdAndSocket.end();)
+	{
+		sf::TcpSocket* sock = it->second;
+		if (sock == socket)
+			it = myIdAndSocket.erase(it);
+		else
+			++it;
+	}
 }
 
 int NetworkEngine::createNewTmpId()
@@ -230,10 +268,7 @@ int NetworkEngine::createNewTmpId()
 
 void NetworkEngine::modifyMessage(Message& msg, sf::TcpSocket& socket)
 {
-	//msg.iData[0] = getIdBySocket(&socket);
-	//
-	//if(msg.type == Message::MessageType::CL_CONNECTION)
-	//	msg.iData[Message::Key::ClConnection::IS_LOCAL_CLIENT] = 0;
+	msg.iData[0] = getIdBySocket(&socket);
 }
 
 //bool NetworkEngine::checkValidity(Message::MessageType::messageType type)
@@ -262,23 +297,26 @@ void NetworkEngine::sendMessageTCP(const Message& msg)
 	sf::Packet packet;
 	packet << msg;
 
-	if(isServer())
+	if (isMulti())
 	{
-		for(unsigned int i = 0; i < mySockets.size(); i++)
+		if (isServer())
 		{
-			if(mySockets[i]->send(packet) != sf::Socket::Done)
+			for (unsigned int i = 0; i < mySockets.size(); i++)
 			{
-				ILogger::log(ILogger::ERRORS) << 
-					"Send(). Data not sent for player " << getIdBySocket(mySockets[i]) <<"\n";
+				if (mySockets[i]->send(packet) != sf::Socket::Done)
+				{
+					ILogger::log(ILogger::ERRORS) <<
+						"Send(). Data not sent for player " << getIdBySocket(mySockets[i]) << "\n";
+				}
 			}
 		}
-	}
-	else
-	{
-		if(myClientSocket.send(packet) != sf::Socket::Done)
+		else
 		{
-			ILogger::log(ILogger::ERRORS) << 
-				"Send(). Data not sent.\n";
+			if (myClientSocket.send(packet) != sf::Socket::Done)
+			{
+				ILogger::log(ILogger::ERRORS) <<
+					"Send(). Data not sent.\n";
+			}
 		}
 	}
 }
@@ -303,10 +341,43 @@ void NetworkEngine::sendMessageTCP(const Message& msg, int id)
 	}
 }
 
+void NetworkEngine::sendMessageTCPToAllExcept(const Message& msg, int id)
+{
+	std::vector<int> vec;
+	vec.push_back(id);
+	sendMessageTCPToAllExcept(msg, vec);
+}
+
+void NetworkEngine::sendMessageTCPToAllExcept(const Message& msg, const std::vector<int>& ids)
+{
+	sf::Packet packet;
+	packet << msg;
+
+	for (unsigned int i = 0; i < mySockets.size(); i++)
+	{
+		bool dontSend = false;
+		int id = getIdBySocket(mySockets[i]);
+		
+		for (int excl : ids)
+		{
+			if (excl == id)
+				dontSend = true;
+		}
+		if (!dontSend)
+		{
+			if (mySockets[i]->send(packet) != sf::Socket::Done)
+			{
+				ILogger::log(ILogger::ERRORS) <<
+					"Send(). Data not sent for player " << getIdBySocket(mySockets[i]) << "\n";
+			}
+		}
+	}
+}
+
 int NetworkEngine::getIdBySocket(sf::Socket* socket) const 
 {
 	std::list<std::pair<int, sf::TcpSocket*> >::const_iterator it = myTemporaryIdAndSocket.cbegin();
-	for(; it != myTemporaryIdAndSocket.end(); it++)
+	for(; it != myTemporaryIdAndSocket.cend(); it++)
 	{
 		sf::TcpSocket* sock = it->second;
 		if(sock == socket)
@@ -314,13 +385,63 @@ int NetworkEngine::getIdBySocket(sf::Socket* socket) const
 	}
 
 	it = myIdAndSocket.cbegin();
-	for(; it != myIdAndSocket.end(); it++)
+	for(; it != myIdAndSocket.cend(); it++)
 	{
 		sf::TcpSocket* sock = it->second;
 		if(sock == socket)
 			return it->first;
 	}
 	return 0;
+}
+
+void NetworkEngine::changeTemporaryToFinal(int tmpId, int finalId)
+{
+	sf::TcpSocket* candidate = nullptr;
+
+	std::list<std::pair<int, sf::TcpSocket*> >::iterator it = myTemporaryIdAndSocket.begin();
+	for (; it != myTemporaryIdAndSocket.end(); it++)
+	{
+		if (it->first == tmpId)
+		{
+			candidate = it->second;
+			myTemporaryIdAndSocket.erase(it);
+			break;
+		}
+	}
+
+	myIdAndSocket.push_back(std::make_pair(finalId, candidate));
+}
+
+sf::TcpSocket* NetworkEngine::getSocketById(int id, bool isTemporary)
+{
+	sf::TcpSocket* candidate = nullptr;
+
+	if(isTemporary)
+	{
+		std::list<std::pair<int, sf::TcpSocket*> >::const_iterator it = myTemporaryIdAndSocket.cbegin();
+		for (; it != myTemporaryIdAndSocket.end(); it++)
+		{
+			if (it->first == id)
+			{
+				candidate = it->second;
+				break;
+			}
+		}
+	}
+	else
+	{
+		std::list<std::pair<int, sf::TcpSocket*> >::const_iterator it = myIdAndSocket.cbegin();
+		for (; it != myIdAndSocket.end(); it++)
+		{
+			if (it->first == id)
+			{
+				candidate = it->second;
+				break;
+			}
+		}
+	}
+
+	return candidate;
 }
 
 bool NetworkEngine::canAcceptNewClient() const

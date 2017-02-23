@@ -31,6 +31,9 @@ public:
 
 	void handlePlayerDefeat(Player::ptr player);
 
+
+	void checkGameOver();
+
 protected:
 	//std::vector<TimerFunction> myTimerFunctions;
 	bool nextPlayerIfHasLost(Player::ptr player);

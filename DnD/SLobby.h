@@ -1,5 +1,8 @@
 #pragma once
 #include "GameState.h"
+
+#include "Gaia/Gaia.h"
+
 class SLobby :
 	public ClientGameState
 {
@@ -14,5 +17,8 @@ public:
 	bool catchEvent(const sf::Event& ev);
 
 	virtual void processMessage(const Message& msg);
+
+protected:
+	void onSendChatMessage(gaia::KeyboardEvent& ev);
 };
 
