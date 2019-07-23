@@ -105,7 +105,7 @@ Array2D<T>::Array2D()
 template<class T>
 Array2D<T>::Array2D(unsigned int width, unsigned int height)
 :myWidth(width)
-,myHeight(width)
+,myHeight(height)
 {
 	myArray.resize(width * height);
 }
