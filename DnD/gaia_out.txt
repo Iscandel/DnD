@@ -1598,3 +1598,60 @@
 ===============================
 
 [Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 06/03/2017 à 20:46:11
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 18/03/2017 à 14:47:07
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 26/04/2017 à 01:23:52
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 26/04/2017 à 01:24:49
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 26/04/2017 à 01:25:28
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 18/09/2017 à 16:41:08
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 18/09/2017 à 17:26:06
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 18/09/2017 à 17:26:09
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Error] -> Property textColor not found for connectionButton`
+[Error] -> Property textColor not found for hostButton`
+[Information] -> Caret cannot be moved for selection : quantity -1 is greater than last selection value : 0
+[Information] -> Caret cannot be moved for selection : quantity -1 is greater than last selection value : 0
+[Information] -> Caret cannot be moved for selection : quantity -1 is greater than last selection value : 0
+===============================
+ Starting logs...	 11/12/2017 à 01:44:56
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
+===============================
+ Starting logs...	 24/07/2019 à 00:18:13
+===============================
+
+[Error] -> Cannot register widget hierarchy of DraggableImage. ImageBox was not found.
