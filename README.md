@@ -8,5 +8,5 @@ See https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Computer_Labyrinth_Game
 -Start a new game  
 -Space to choose your starting (and home) location.  
 -Arrow keys to move  
-
+-Dragoon and treasure icon are draggable, to help the player in estimating the location of these entities.  
 
