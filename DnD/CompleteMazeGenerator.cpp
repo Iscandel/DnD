@@ -11,11 +11,14 @@ CompleteMazeGenerator::CompleteMazeGenerator(int percUnperfect)
 {
 }
 
-
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 CompleteMazeGenerator::~CompleteMazeGenerator()
 {
 }
 
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 Maze::ptr CompleteMazeGenerator::generate(int x, int y)
 {
 	Maze::ptr maze = Maze::ptr(new Maze(x, y, true));
@@ -29,6 +32,8 @@ Maze::ptr CompleteMazeGenerator::generate(int x, int y)
 	return maze;
 }
 
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 void CompleteMazeGenerator::generatePerfect(Maze::ptr maze)
 {
 	CellCoords currentCell;

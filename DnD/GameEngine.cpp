@@ -8,14 +8,13 @@ GameEngine::GameEngine()
 {
 }
 
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 GameEngine::~GameEngine(void)
 {
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Traite un message issu de la file.
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 void GameEngine::processMessage(const Message& msg)
 {
@@ -30,9 +29,7 @@ void GameEngine::processMessage(const Message& msg)
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Traite la file des messages, puis effectue l'ensemble des mises à jour à
-// faire.
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 void GameEngine::update()
 {
@@ -53,7 +50,7 @@ void GameEngine::update()
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 void GameEngine::initState(GameState::ptr state)
 {
@@ -63,10 +60,7 @@ void GameEngine::initState(GameState::ptr state)
 	state->linkSoundEngine(getSoundEngine());
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Ajoute un nouvel état de jeu par dessus le précédent (intérêt dans le cas
-// d'un menu qui apparait en jeu. Le jeu est dessiné derrière, soit 2 états
-// affichés, mais seul le premier capte les évènements
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 void GameEngine::pushState(std::vector<GameState::ptr>& vector, GameState::ptr state)
 {
@@ -75,7 +69,7 @@ void GameEngine::pushState(std::vector<GameState::ptr>& vector, GameState::ptr s
 	state->init();
 }
 
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 bool GameEngine::popState(std::vector<GameState::ptr>& vector)
 {
@@ -90,6 +84,8 @@ bool GameEngine::popState(std::vector<GameState::ptr>& vector)
 	return false;
 }
 
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 bool GameEngine::popState(std::vector<GameState::ptr>& vector, GameState::ptr state)
 {
 	std::vector<GameState::ptr>::iterator it = vector.erase(
@@ -98,13 +94,14 @@ bool GameEngine::popState(std::vector<GameState::ptr>& vector, GameState::ptr st
 	return !(it == vector.end());
 
 }
-
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 void GameEngine::catchEvents()
 {
 	sf::Event ev;
 	while(getGraphicEngine()->getEvent(ev))
 	{
-		//Si évènement non géré par le moteur jeu, on l'envoie à l'état courant
+		//If ev not handled by the game engine, send to current state
 		if(!handleEvent(ev))	
 		{
 			bool handled = false;
@@ -138,7 +135,7 @@ void GameEngine::draw()
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 ///////////////////////////////////////////////////////////////////////////////
 void GameEngine::setGameState(std::vector<GameState::ptr>& vector, GameState::ptr g)
 {
@@ -163,9 +160,6 @@ bool GameEngine::handleEvent(const sf::Event& ev)
 			stopGame();
 			handled = true;
 		}
-			//	monEstDebug = !monEstDebug;
-		//if(ev.Key.Code == sf::Keyboard::F12)
-		//	monEstDebug = !monEstDebug;
 	}
 
 	return handled;
@@ -202,6 +196,8 @@ bool GameEngine::popClientState(GameState::ptr state)
 	return popState(myClientGameStates, state);
 }
 
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 void GameEngine::setServerGameState(GameState::ptr state)
 {
 	setGameState(myServerGameStates, state);

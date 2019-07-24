@@ -8,6 +8,8 @@ ResourceSoundBuffer::ResourceSoundBuffer(PtrSoundBuffer buffer)
 	myLoadingStatus = IResource::IS_LOADED;
 }
 
+//=============================================================================
+///////////////////////////////////////////////////////////////////////////////
 ResourceSoundBuffer::~ResourceSoundBuffer(void)
 {
 }
