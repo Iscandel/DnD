@@ -60,445 +60,445 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="tools\Logger.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="CommonInterface.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="CreationFichierRessources.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="DataTexture.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourcesManager.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="tools\Color.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="tools\Exceptions.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="tools\Rng.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="tools\Timer.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceImageManager.cpp">
-      <Filter>new</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceImage.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourcesFile.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceTexture.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="View.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GameView.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicEngine.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="IResource.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundEngine.cpp">
-      <Filter>Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceSoundBuffer.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngine.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="SGameServer.cpp">
-      <Filter>Game\GameStates\ServerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
+    <ClCompile Include="src\entity\Dragoon.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="src\entity\Entity.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\entity\EntityManager.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Dragoon.cpp">
+    <ClCompile Include="src\entity\Player.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Treasure.cpp">
+    <ClCompile Include="src\entity\Treasure.cpp">
       <Filter>Entity</Filter>
     </ClCompile>
-    <ClCompile Include="NetworkEngine.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="GameWonView.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenuView.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Side.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="Maze.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="MazeUtils.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingDragoon.cpp">
+    <ClCompile Include="src\entityState\EntityState.cpp">
       <Filter>Game\EntityStates</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\entityState\MovingDragoon.cpp">
+      <Filter>Game\EntityStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factory\ObjectFactory.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factory\ObjectFactoryManager.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factory\SideFactory.cpp">
+      <Filter>Game\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Action.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
+    <ClCompile Include="src\game\Animation.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\CommonInterface.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Direction.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\DraggableImage.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Engine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\GameEngine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\GameUtils.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Message.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\MessageBuilder.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameState\GameState.cpp">
       <Filter>Game\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="SGame.cpp">
+    <ClCompile Include="src\gameState\clientState\SConnectionMenu.cpp">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClCompile>
-    <ClCompile Include="SMainMenu.cpp">
+    <ClCompile Include="src\gameState\clientState\SGame.cpp">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClCompile>
-    <ClCompile Include="SMainMenuSolo.cpp">
+    <ClCompile Include="src\gameState\clientState\SGameBeginning.cpp">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClCompile>
-    <ClCompile Include="BaseMazeGenerator.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="CompleteMazeGenerator.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityState.cpp">
-      <Filter>Game\EntityStates</Filter>
-    </ClCompile>
-    <ClCompile Include="EmptyMazeGenerator.cpp">
-      <Filter>Game\Maze</Filter>
-    </ClCompile>
-    <ClCompile Include="SideFactory.cpp">
-      <Filter>Game\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="Direction.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectFactory.cpp">
-      <Filter>Game\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectFactoryManager.cpp">
-      <Filter>Game\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="SideDefManager.cpp">
-      <Filter>Game\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundBufferManager.cpp">
-      <Filter>Game\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="CellDefManager.cpp">
-      <Filter>Game\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Message.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="MessageBuilder.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="SGameBeginning.cpp">
+    <ClCompile Include="src\gameState\clientState\SGameWon.cpp">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClCompile>
-    <ClCompile Include="SGameBeginningServer.cpp">
+    <ClCompile Include="src\gameState\clientState\SLobby.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameState\clientState\SMainMenu.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameState\clientState\SMainMenuSolo.cpp">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameState\serverState\SGameBeginningServer.cpp">
       <Filter>Game\GameStates\ServerStates</Filter>
     </ClCompile>
-    <ClCompile Include="GameUtils.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseGameView.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBeginningView.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDefManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SConnectionMenu.cpp">
-      <Filter>Game\GameStates\ClientStates</Filter>
-    </ClCompile>
-    <ClCompile Include="SLobby.cpp">
-      <Filter>Game\GameStates\ClientStates</Filter>
-    </ClCompile>
-    <ClCompile Include="SLobbyServer.cpp">
+    <ClCompile Include="src\gameState\serverState\SGameServer.cpp">
       <Filter>Game\GameStates\ServerStates</Filter>
     </ClCompile>
-    <ClCompile Include="DraggableImage.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="src\gameState\serverState\SLobbyServer.cpp">
+      <Filter>Game\GameStates\ServerStates</Filter>
     </ClCompile>
-    <ClCompile Include="SGameWon.cpp">
-      <Filter>Game\GameStates\ClientStates</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLostView.cpp">
+    <ClCompile Include="src\graphic\BaseGameView.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\GameBeginningView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\GameLostView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\GameView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\GameWonView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\GraphicEngine.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\MainMenuView.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphic\View.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\BaseMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\Cell.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\CellDefManager.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\CompleteMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\EmptyMazeGenerator.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\Maze.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\MazeUtils.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\Side.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maze\SideDefManager.cpp">
+      <Filter>Game\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\network\NetworkEngine.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\CreationFichierRessources.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\DataTexture.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\IResource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourceImage.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourceImageManager.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourcesFile.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourcesManager.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourceSoundBuffer.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\ResourceTexture.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resources\TextureManager.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sound\SoundBufferManager.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sound\SoundEngine.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\Color.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\Exceptions.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\Logger.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\Rng.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\Timer.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entity\PlayerDefManager.cpp">
+      <Filter>Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tools\NonCopyable.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Array2D.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Logger.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Singleton.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Tools.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonInterface.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="CreationFichierRessources.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="DataTexture.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourcesManager.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\FileReading.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Point.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Policy.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Rectangle.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Color.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Exceptions.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\WithSmartPtr.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="Action.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Rng.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\Timer.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceImageManager.h">
-      <Filter>new</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceImage.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourcesFile.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceTexture.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="View.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GameView.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicEngine.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="IResource.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundEngine.h">
-      <Filter>Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceSoundBuffer.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngine.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="SGameServer.h">
-      <Filter>Game\GameStates\ServerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityManager.h">
+    <ClInclude Include="src\entity\Dragoon.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="src\entity\Entity.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\entity\EntityManager.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Dragoon.h">
+    <ClInclude Include="src\entity\Player.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Treasure.h">
+    <ClInclude Include="src\entity\Treasure.h">
       <Filter>Entity</Filter>
     </ClInclude>
-    <ClInclude Include="NetworkEngine.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="GameWonView.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuView.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Side.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="Maze.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="MazeUtils.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingDragoon.h">
+    <ClInclude Include="src\entityState\EntityState.h">
       <Filter>Game\EntityStates</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\entityState\MovingDragoon.h">
+      <Filter>Game\EntityStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factory\ObjectFactory.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factory\ObjectFactoryManager.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factory\SideFactory.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Action.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
+    <ClInclude Include="src\game\Animation.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\CommonInterface.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Direction.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\DraggableImage.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Engine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\GameEngine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\GameUtils.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Message.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\MessageBuilder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameState\GameState.h">
       <Filter>Game\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="SGame.h">
+    <ClInclude Include="src\gameState\clientState\SConnectionMenu.h">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClInclude>
-    <ClInclude Include="SGameWon.h">
+    <ClInclude Include="src\gameState\clientState\SGame.h">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClInclude>
-    <ClInclude Include="SMainMenu.h">
+    <ClInclude Include="src\gameState\clientState\SGameBeginning.h">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClInclude>
-    <ClInclude Include="SMainMenuSolo.h">
+    <ClInclude Include="src\gameState\clientState\SGameWon.h">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClInclude>
-    <ClInclude Include="BaseMazeGenerator.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="CompleteMazeGenerator.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityState.h">
-      <Filter>Game\EntityStates</Filter>
-    </ClInclude>
-    <ClInclude Include="EmptyMazeGenerator.h">
-      <Filter>Game\Maze</Filter>
-    </ClInclude>
-    <ClInclude Include="SideFactory.h">
-      <Filter>Game\Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectFactory.h">
-      <Filter>Game\Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectFactoryManager.h">
-      <Filter>Game\Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="SideDefManager.h">
-      <Filter>Game\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundBufferManager.h">
-      <Filter>Game\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="CellDefManager.h">
-      <Filter>Game\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Message.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="MessageBuilder.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="SGameBeginning.h">
+    <ClInclude Include="src\gameState\clientState\SLobby.h">
       <Filter>Game\GameStates\ClientStates</Filter>
     </ClInclude>
-    <ClInclude Include="SGameBeginningServer.h">
+    <ClInclude Include="src\gameState\clientState\SMainMenu.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameState\clientState\SMainMenuSolo.h">
+      <Filter>Game\GameStates\ClientStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameState\serverState\SGameBeginningServer.h">
       <Filter>Game\GameStates\ServerStates</Filter>
     </ClInclude>
-    <ClInclude Include="GameUtils.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseGameView.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GameBeginningView.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDefManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SConnectionMenu.h">
-      <Filter>Game\GameStates\ClientStates</Filter>
-    </ClInclude>
-    <ClInclude Include="SLobby.h">
-      <Filter>Game\GameStates\ClientStates</Filter>
-    </ClInclude>
-    <ClInclude Include="SLobbyServer.h">
+    <ClInclude Include="src\gameState\serverState\SGameServer.h">
       <Filter>Game\GameStates\ServerStates</Filter>
     </ClInclude>
-    <ClInclude Include="DraggableImage.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="src\gameState\serverState\SLobbyServer.h">
+      <Filter>Game\GameStates\ServerStates</Filter>
     </ClInclude>
-    <ClInclude Include="GameLostView.h">
+    <ClInclude Include="src\graphic\BaseGameView.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\GameBeginningView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\GameLostView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\GameView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\GameWonView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\GraphicEngine.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\MainMenuView.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphic\View.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\BaseMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\Cell.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\CellDefManager.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\CompleteMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\EmptyMazeGenerator.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\Maze.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\MazeUtils.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\Side.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maze\SideDefManager.h">
+      <Filter>Game\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\network\NetworkEngine.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\CreationFichierRessources.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\DataTexture.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\IResource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourceImage.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourceImageManager.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourcesFile.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourcesManager.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourceSoundBuffer.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\ResourceTexture.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resources\TextureManager.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sound\SoundBufferManager.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sound\SoundEngine.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Array2D.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Color.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Exceptions.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\FileReading.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Logger.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\NonCopyable.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Point.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Policy.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Rectangle.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Rng.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Singleton.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Timer.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\Tools.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\WithSmartPtr.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entity\PlayerDefManager.h">
+      <Filter>Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

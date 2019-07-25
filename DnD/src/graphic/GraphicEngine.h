@@ -1,0 +1,67 @@
+#ifndef H__GRAPHICENGINE__H
+#define H__GRAPHICENGINE__H
+
+#include "game/Engine.h"
+#include "resources/DataTexture.h"
+#include "tools/Rectangle.h"
+#include "tools/Point.h"
+
+#include <SFML/Graphics.hpp>
+
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Class handling the graphic part.
+///////////////////////////////////////////////////////////////////////////////
+class GraphicEngine : public Engine
+{
+public:
+	///////////////////////////////////////////////////////////////////////////
+	/// Constructor.
+	///////////////////////////////////////////////////////////////////////////
+	GraphicEngine(void);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// Destructor.
+	///////////////////////////////////////////////////////////////////////////
+	~GraphicEngine(void);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// Processes a message.
+	///
+	/// \param msg The message to process.
+	///////////////////////////////////////////////////////////////////////////
+	virtual void processMessage(const Message&);
+
+	///////////////////////////////////////////////////////////////////////////
+	/// Updates the graphic engine. 
+	///////////////////////////////////////////////////////////////////////////
+	void update();
+
+	//bool getEvenement(sf::Event& ev);
+	///////////////////////////////////////////////////////////////////////////
+	/// Performs the drawing.
+	///////////////////////////////////////////////////////////////////////////
+	void draw();
+
+	void draw(const sf::Drawable& sp);
+
+	bool getEvent(sf::Event& ev) {return myWindow.pollEvent(ev);}
+
+	void draw(PtrTexture texture, int x, int y, IntRect& rect, int scaleX, int scaleY, float rotation = 0);
+
+	void setWindowSize(const Point<int>& windowSize) {myWindowSize = windowSize;}
+
+	void setElapsedTime(unsigned int elapsed) {myElapsedTime = elapsed;}
+	unsigned int getElapsedTime() const {return myElapsedTime;}
+
+	int getWindowSizeX() const {return myWindowSize.x;}
+	int getWindowSizeY() const {return myWindowSize.y;}
+
+protected:
+	sf::RenderWindow myWindow;
+	Point<int> myWindowSize;
+
+	sf::Clock myClock;
+	sf::Uint32 myElapsedTime;
+};
+
+#endif
